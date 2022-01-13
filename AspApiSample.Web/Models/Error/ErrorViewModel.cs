@@ -1,4 +1,4 @@
-namespace AspApiSample.Web.Models
+namespace AspApiSample.Web.Models.Error
 {
     public class ErrorViewModel
     {
