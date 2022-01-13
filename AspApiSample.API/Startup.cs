@@ -29,13 +29,29 @@ namespace AspApiSample.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /* Use this code to use SQLServer with the connection string in the appsettings.json file */
-            // services.AddDbContext<ApplicationContext>(options =>
-            //     options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            /* Use this code to use SqLite (recommended to not use this in production) */
-            services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlite(@"Data Source=Application.db;Cache=Shared"));
-
+            /* Change the "DbProvider" value in appsettings.json to your database provider */
+            /* Possible values are "mssql", "slite3", "psql" */
+            var databaseProvider = Configuration.GetSection("DbProvider").Value;
+            /* Change the connection string in appsettings.json for your configuration */
+            switch (databaseProvider)
+            {
+                case "mssql":
+                    services.AddDbContext<ApplicationContext>(option =>
+                        option.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+                    break;
+                case "sqlite3":
+                    services.AddDbContext<ApplicationContext>(option =>
+                        option.UseSqlite(Configuration.GetConnectionString("DbConnection")));
+                    break;
+                case "psql":
+                    services.AddDbContext<ApplicationContext>(option =>
+                        option.UseNpgsql(Configuration.GetConnectionString("DbConnection")));
+                    break;
+                default:
+                    throw new NotImplementedException(
+                        $"The database provider {databaseProvider} is not supported");
+            }
+            
             services.AddIdentity<User, Role>(options =>
                 {
                     /* Password configuration */
