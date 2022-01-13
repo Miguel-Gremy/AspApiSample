@@ -72,7 +72,7 @@ namespace AspApiSample.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
-                    new OpenApiInfo { Title = "AspApiSample.API", Version = "v1" });
+                    new OpenApiInfo { Title = "AspApiSample.Web.API", Version = "v1" });
             });
         }
 
@@ -84,7 +84,7 @@ namespace AspApiSample.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AspApiSample.API v1"));
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AspApiSample.Web.API v1"));
             }
 
             app.UseAuthentication();
