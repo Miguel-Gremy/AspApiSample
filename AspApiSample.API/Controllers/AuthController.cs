@@ -1,13 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using AspApiSample.API.Resources.Auth;
 using AspApiSample.Lib.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Razor.Templating.Core;
 
 namespace AspApiSample.API.Controllers
 {
@@ -18,34 +15,32 @@ namespace AspApiSample.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly IMapper _mapper;
-        private readonly IEmailSender _emailSender;
 
-        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper, IEmailSender emailSender)
+        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _mapper = mapper;
-            _emailSender = emailSender;
         }
 
         [HttpPost]
         [Route("User/SignUp")]
-        public async Task<IActionResult> SignUp(UserSignUpResource resource)
+        public async Task<ActionResult<string>> SignUp(UserSignUpResource resource)
         {
             var user = _mapper.Map<UserSignUpResource, User>(resource);
 
             var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
 
+            if (!userCreateResult.Succeeded)
+            {
+                return Problem("Cannot create user");
+            }
+
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var confirmationLink = Url.Action("SignUpConfirm", "Auth",
                 new { token, email = resource.Email }, Request.Scheme);
 
-            await _emailSender.SendEmailAsync(resource.Email, "Email confirmation",
-                $"<p>Please follow <a href=\"{confirmationLink}\">this link</a> to create your account</p>");
-
-            return userCreateResult.Succeeded
-                ? Ok()
-                : Problem(userCreateResult.Errors.First().Description, null, 500);
+            return Ok(confirmationLink);
         }
 
         [HttpGet]
@@ -115,10 +110,11 @@ namespace AspApiSample.API.Controllers
                 return NotFound("User not found");
             }
 
-            await _userManager.GeneratePasswordResetTokenAsync(user);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var resetLink = Url.Action("ResetPassword", "Auth",
+                new { token, email = resource.Email }, Request.Scheme);
 
-            //TODO Send mail
-            return Ok();
+            return Ok(resetLink);
         }
 
         [HttpPost]
