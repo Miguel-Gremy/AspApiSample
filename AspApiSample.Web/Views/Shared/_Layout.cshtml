@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - AspApiSample.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     @await RenderSectionAsync("Style", required: false)
 </head>
 <body>
@@ -26,6 +27,24 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                 </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @if (User.Identity is {IsAuthenticated: true})
+                            {
+                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="SignOut">Logout <em class="bi bi-box-arrow-right"></em></a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

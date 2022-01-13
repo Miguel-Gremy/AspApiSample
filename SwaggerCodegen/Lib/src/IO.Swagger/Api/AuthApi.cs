@@ -180,6 +180,27 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userEmail"></param>
+        /// <returns>User</returns>
+        User ApiAuthUserUserEmailGet (string userEmail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>ApiResponse of User</returns>
+        ApiResponse<User> ApiAuthUserUserEmailGetWithHttpInfo (string userEmail);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
         void ApiAuthUserUserEmailRolesPost (string userEmail, RoleAddUserResource body = null);
@@ -346,6 +367,27 @@ namespace IO.Swagger.Api
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ApiAuthUserSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of User</returns>
+        System.Threading.Tasks.Task<User> ApiAuthUserUserEmailGetAsync (string userEmail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of ApiResponse (User)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User>> ApiAuthUserUserEmailGetAsyncWithHttpInfo (string userEmail);
         /// <summary>
         /// 
         /// </summary>
@@ -1467,6 +1509,141 @@ namespace IO.Swagger.Api
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>User</returns>
+        public User ApiAuthUserUserEmailGet (string userEmail)
+        {
+             ApiResponse<User> localVarResponse = ApiAuthUserUserEmailGetWithHttpInfo(userEmail);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>ApiResponse of User</returns>
+        public ApiResponse< User > ApiAuthUserUserEmailGetWithHttpInfo (string userEmail)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AuthApi->ApiAuthUserUserEmailGet");
+
+            var localVarPath = "/api/Auth/User/{userEmail}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAuthUserUserEmailGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<User>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (User) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(User)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of User</returns>
+        public async System.Threading.Tasks.Task<User> ApiAuthUserUserEmailGetAsync (string userEmail)
+        {
+             ApiResponse<User> localVarResponse = await ApiAuthUserUserEmailGetAsyncWithHttpInfo(userEmail);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of ApiResponse (User)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User>> ApiAuthUserUserEmailGetAsyncWithHttpInfo (string userEmail)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AuthApi->ApiAuthUserUserEmailGet");
+
+            var localVarPath = "/api/Auth/User/{userEmail}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAuthUserUserEmailGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<User>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (User) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(User)));
         }
 
         /// <summary>

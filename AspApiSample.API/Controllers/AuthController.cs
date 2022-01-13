@@ -23,6 +23,20 @@ namespace AspApiSample.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [Route("User/{userEmail}")]
+        public async Task<ActionResult<User>> GetUser([Required] [EmailAddress] string userEmail)
+        {
+            var user = await _userManager.FindByEmailAsync(userEmail);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(user);
+        }
+
         [HttpPost]
         [Route("User/SignUp")]
         public async Task<ActionResult<string>> SignUp(UserSignUpResource resource)

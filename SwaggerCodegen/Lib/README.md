@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**ApiAuthUserSignInPost**](docs/AuthApi.md#apiauthusersigninpost) | **POST** /api/Auth/User/SignIn | 
 *AuthApi* | [**ApiAuthUserSignUpConfirmGet**](docs/AuthApi.md#apiauthusersignupconfirmget) | **GET** /api/Auth/User/SignUpConfirm | 
 *AuthApi* | [**ApiAuthUserSignUpPost**](docs/AuthApi.md#apiauthusersignuppost) | **POST** /api/Auth/User/SignUp | 
+*AuthApi* | [**ApiAuthUserUserEmailGet**](docs/AuthApi.md#apiauthuseruseremailget) | **GET** /api/Auth/User/{userEmail} | 
 *AuthApi* | [**ApiAuthUserUserEmailRolesPost**](docs/AuthApi.md#apiauthuseruseremailrolespost) | **POST** /api/Auth/User/{userEmail}/Roles | 
 *MailApi* | [**ApiMailSendPost**](docs/MailApi.md#apimailsendpost) | **POST** /api/Mail/Send | 
 
@@ -108,6 +109,7 @@ Class | Method | HTTP request | Description
  - [Model.EmailSendResource](docs/EmailSendResource.md)
  - [Model.RoleAddUserResource](docs/RoleAddUserResource.md)
  - [Model.RoleCreateResource](docs/RoleCreateResource.md)
+ - [Model.User](docs/User.md)
  - [Model.UserPasswordChangeResource](docs/UserPasswordChangeResource.md)
  - [Model.UserPasswordForgotResource](docs/UserPasswordForgotResource.md)
  - [Model.UserPasswordResetResource](docs/UserPasswordResetResource.md)
