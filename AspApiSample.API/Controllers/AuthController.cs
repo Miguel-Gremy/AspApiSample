@@ -99,7 +99,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpPost]
         [Route("User/ForgotPassword")]
-        public async Task<IActionResult> ForgotPassword(UserPasswordForgotResource resource)
+        public async Task<ActionResult<string>> ForgotPassword(UserPasswordForgotResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 

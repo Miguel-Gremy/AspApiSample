@@ -5,7 +5,6 @@ namespace AspApiSample.API.Resources.Mail
     public class EmailSendResource
     {
         [Required]
-        [EmailAddress]
         public string Email { get; set; }
         [Required]
         public string Subject { get; set; }

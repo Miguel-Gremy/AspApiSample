@@ -127,7 +127,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthuserforgotpasswordpost"></a>
 # **ApiAuthUserForgotPasswordPost**
-> void ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
+> string ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
 
 
 
@@ -150,7 +150,8 @@ namespace Example
 
             try
             {
-                apiInstance.ApiAuthUserForgotPasswordPost(body);
+                string result = apiInstance.ApiAuthUserForgotPasswordPost(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -178,7 +179,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/_*+json
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthuserresetpasswordpost"></a>

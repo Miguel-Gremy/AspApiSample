@@ -79,7 +79,7 @@ namespace AspApiSample.Web.Controllers
                     catch (ApiException e)
                     {
                         model.Password = string.Empty;
-                        model.Errors = new List<string> { e.Message.Remove('\"') };
+                        model.Errors = new List<string> { e.Message.RemoveChar('\"') };
                         output = View("Index", model);
                     }
                 }
