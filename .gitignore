@@ -1,3 +1,5 @@
+*.db
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,rider,windows,linux,aspnetcore,csharp
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,rider,windows,linux,aspnetcore,csharp

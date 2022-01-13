@@ -35,7 +35,7 @@ namespace AspApiSample.Web
                 cookieOption =>
                 {
                     /* Defining the login path  */
-                    cookieOption.LoginPath = "/Login";
+                    cookieOption.LoginPath = "/Login/Index";
                 });
 
             services.AddControllersWithViews();

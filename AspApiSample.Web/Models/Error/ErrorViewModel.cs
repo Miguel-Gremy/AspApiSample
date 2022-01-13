@@ -1,6 +1,6 @@
 namespace AspApiSample.Web.Models.Error
 {
-    public class ErrorViewModel
+    public class ErrorViewModel : ModelBase
     {
         public string RequestId { get; set; }
 
