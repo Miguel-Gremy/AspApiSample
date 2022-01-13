@@ -1,0 +1,156 @@
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using AspApiSample.API.Resources.Auth;
+using AspApiSample.Lib.Models;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AspApiSample.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
+    {
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
+        private readonly IMapper _mapper;
+
+        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
+        {
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _mapper = mapper;
+        }
+
+        [HttpPost]
+        [Route("User/SignUp")]
+        public async Task<IActionResult> SignUp(UserSignUpResource resource)
+        {
+            var user = _mapper.Map<UserSignUpResource, User>(resource);
+
+            var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
+
+            return userCreateResult.Succeeded
+                ? Ok()
+                : Problem(userCreateResult.Errors.First().Description, null, 500);
+        }
+
+        [HttpPost]
+        [Route("User/SignIn")]
+        public async Task<IActionResult> SignIn(UserSignInResource resource)
+        {
+            var user = await _userManager.FindByEmailAsync(resource.Email);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            var userSignInResult = await _userManager.CheckPasswordAsync(user, resource.Password);
+
+            return userSignInResult
+                ? Ok()
+                : Problem("Password incorrect");
+        }
+
+        [HttpPut]
+        [Route("User/ChangePassword")]
+        public async Task<IActionResult> ChangePassword(UserPasswordChangeResource resource)
+        {
+            var user = await _userManager.FindByEmailAsync(resource.Email);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            var userChangePasswordResult =
+                await _userManager.ChangePasswordAsync(user, resource.CurrentPassword,
+                    resource.NewPassword);
+
+            return userChangePasswordResult.Succeeded
+                ? Ok()
+                : Problem("Password incorrect");
+        }
+
+        [HttpPost]
+        [Route("User/ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword(UserPasswordForgotResource resource)
+        {
+            var user = await _userManager.FindByEmailAsync(resource.Email);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            //TODO Send mail
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("User/ResetPassword")]
+        public async Task<IActionResult> ResetPassword(UserPasswordResetResource resource)
+        {
+            var user = await _userManager.FindByEmailAsync(resource.Email);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            var userResetPasswordResult =
+                await _userManager.ResetPasswordAsync(user, resource.Token, resource.Password);
+
+            return userResetPasswordResult.Succeeded
+                ? Ok()
+                : Problem("The link is no longer working");
+        }
+
+        [HttpPost]
+        [Route("Roles")]
+        public async Task<IActionResult> CreateRole(RoleCreateResource resource)
+        {
+            if (string.IsNullOrEmpty(resource.RoleName))
+            {
+                return BadRequest("Role name should be provided");
+            }
+
+            var newRole = new Role
+            {
+                Name = resource.RoleName,
+            };
+
+            var roleCreateResult = await _roleManager.CreateAsync(newRole);
+
+            return roleCreateResult.Succeeded
+                ? Ok()
+                : Problem("Problem occured while creating the role");
+        }
+
+        [HttpPost]
+        [Route("User/{userEmail}/Roles")]
+        public async Task<IActionResult> AddUserToRole([Required] string userEmail, RoleAddUserResource resource)
+        {
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            var role = await _roleManager.FindByNameAsync(resource.RoleName);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+            if (role is null)
+            {
+                return NotFound("Role not found");
+            }
+
+            var userAddRoleResult = await _userManager.AddToRoleAsync(user, resource.RoleName);
+
+            return userAddRoleResult.Succeeded
+                ? Ok()
+                : Problem("Problem occured while adding user to role");
+        }
+    }
+}
