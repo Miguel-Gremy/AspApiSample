@@ -37,10 +37,8 @@ namespace AspApiSample.API.Controllers
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var confirmationLink = Url.Action("SignUpConfirm", "Auth",
-                new { token, email = resource.Email }, Request.Scheme);
 
-            return Ok(confirmationLink);
+            return Ok(token);
         }
 
         [HttpGet]
@@ -111,10 +109,8 @@ namespace AspApiSample.API.Controllers
             }
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = Url.Action("ResetPassword", "Auth",
-                new { token, email = resource.Email }, Request.Scheme);
 
-            return Ok(resetLink);
+            return Ok(token);
         }
 
         [HttpPost]
