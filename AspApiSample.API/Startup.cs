@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AspApiSample.API.Mappings;
+using AspApiSample.API.Services;
 using AspApiSample.Lib;
 using AspApiSample.Lib.Models;
 using AutoMapper;
@@ -10,12 +8,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace AspApiSample.API
@@ -50,6 +47,9 @@ namespace AspApiSample.API
 
                     /* User configuration */
                     options.User.RequireUniqueEmail = true;
+
+                    /* SignIn configuration */
+                    options.SignIn.RequireConfirmedEmail = true;
                 })
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
@@ -65,6 +65,8 @@ namespace AspApiSample.API
                     options.AddProfile<AuthApiMapping>();
                 }))
             );
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

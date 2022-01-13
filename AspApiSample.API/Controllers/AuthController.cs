@@ -5,7 +5,9 @@ using AspApiSample.API.Resources.Auth;
 using AspApiSample.Lib.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Razor.Templating.Core;
 
 namespace AspApiSample.API.Controllers
 {
@@ -16,12 +18,14 @@ namespace AspApiSample.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
 
-        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
+        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper, IEmailSender emailSender)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
 
         [HttpPost]
@@ -32,9 +36,34 @@ namespace AspApiSample.API.Controllers
 
             var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
 
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action("SignUpConfirm", "Auth",
+                new { token, email = resource.Email }, Request.Scheme);
+
+            await _emailSender.SendEmailAsync(resource.Email, "Email confirmation",
+                $"<p>Please follow <a href=\"{confirmationLink}\">this link</a> to create your account</p>");
+
             return userCreateResult.Succeeded
                 ? Ok()
                 : Problem(userCreateResult.Errors.First().Description, null, 500);
+        }
+
+        [HttpGet]
+        [Route("User/SignUpConfirm")]
+        public async Task<IActionResult> SignUpConfirm(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            var userSignUpConfirmResult = await _userManager.ConfirmEmailAsync(user, token);
+
+            return userSignUpConfirmResult.Succeeded
+                ? Ok()
+                : Problem("The link is no longer working");
         }
 
         [HttpPost]
@@ -85,6 +114,8 @@ namespace AspApiSample.API.Controllers
             {
                 return NotFound("User not found");
             }
+
+            await _userManager.GeneratePasswordResetTokenAsync(user);
 
             //TODO Send mail
             return Ok();
