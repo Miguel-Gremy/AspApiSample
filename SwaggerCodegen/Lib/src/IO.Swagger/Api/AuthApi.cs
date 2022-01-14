@@ -115,8 +115,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        void ApiAuthUserSignInPost (UserSignInResource body = null);
+        /// <returns>UserSignInResponse</returns>
+        UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null);
 
         /// <summary>
         /// 
@@ -126,8 +126,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null);
+        /// <returns>ApiResponse of UserSignInResponse</returns>
+        ApiResponse<UserSignInResponse> ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -310,8 +310,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserSignInPostAsync (UserSignInResource body = null);
+        /// <returns>Task of UserSignInResponse</returns>
+        System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null);
 
         /// <summary>
         /// 
@@ -321,8 +321,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null);
+        /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1099,10 +1099,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        public void ApiAuthUserSignInPost (UserSignInResource body = null)
+        /// <returns>UserSignInResponse</returns>
+        public UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null)
         {
-             ApiAuthUserSignInPostWithHttpInfo(body);
+             ApiResponse<UserSignInResponse> localVarResponse = ApiAuthUserSignInPostWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1110,8 +1111,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null)
+        /// <returns>ApiResponse of UserSignInResponse</returns>
+        public ApiResponse< UserSignInResponse > ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null)
         {
 
             var localVarPath = "/api/Auth/User/SignIn";
@@ -1132,6 +1133,9 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1159,9 +1163,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UserSignInResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
         }
 
         /// <summary>
@@ -1169,10 +1173,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserSignInPostAsync (UserSignInResource body = null)
+        /// <returns>Task of UserSignInResponse</returns>
+        public async System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null)
         {
-             await ApiAuthUserSignInPostAsyncWithHttpInfo(body);
+             ApiResponse<UserSignInResponse> localVarResponse = await ApiAuthUserSignInPostAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -1181,8 +1186,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
+        /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
         {
 
             var localVarPath = "/api/Auth/User/SignIn";
@@ -1203,6 +1208,9 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1230,9 +1238,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UserSignInResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
         }
 
         /// <summary>

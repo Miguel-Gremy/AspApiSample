@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
  - [Model.UserPasswordForgotResource](docs/UserPasswordForgotResource.md)
  - [Model.UserPasswordResetResource](docs/UserPasswordResetResource.md)
  - [Model.UserSignInResource](docs/UserSignInResource.md)
+ - [Model.UserSignInResponse](docs/UserSignInResponse.md)
  - [Model.UserSignUpResource](docs/UserSignUpResource.md)
 
 <a name="documentation-for-authorization"></a>

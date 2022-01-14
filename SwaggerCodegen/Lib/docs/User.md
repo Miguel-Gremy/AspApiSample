@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Guid?** |  | [optional] 
+**Id** | **long?** |  | [optional] 
 **UserName** | **string** |  | [optional] 
 **NormalizedUserName** | **string** |  | [optional] 
 **Email** | **string** |  | [optional] 

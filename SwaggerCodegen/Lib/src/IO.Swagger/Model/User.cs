@@ -49,7 +49,7 @@ namespace IO.Swagger.Model
         /// <param name="accessFailedCount">accessFailedCount.</param>
         /// <param name="firstName">firstName (required).</param>
         /// <param name="lastName">lastName (required).</param>
-        public User(Guid? id = default(Guid?), string userName = default(string), string normalizedUserName = default(string), string email = default(string), string normalizedEmail = default(string), bool? emailConfirmed = default(bool?), string passwordHash = default(string), string securityStamp = default(string), string concurrencyStamp = default(string), string phoneNumber = default(string), bool? phoneNumberConfirmed = default(bool?), bool? twoFactorEnabled = default(bool?), DateTime? lockoutEnd = default(DateTime?), bool? lockoutEnabled = default(bool?), int? accessFailedCount = default(int?), string firstName = default(string), string lastName = default(string))
+        public User(long? id = default(long?), string userName = default(string), string normalizedUserName = default(string), string email = default(string), string normalizedEmail = default(string), bool? emailConfirmed = default(bool?), string passwordHash = default(string), string securityStamp = default(string), string concurrencyStamp = default(string), string phoneNumber = default(string), bool? phoneNumberConfirmed = default(bool?), bool? twoFactorEnabled = default(bool?), DateTime? lockoutEnd = default(DateTime?), bool? lockoutEnabled = default(bool?), int? accessFailedCount = default(int?), string firstName = default(string), string lastName = default(string))
         {
             // to ensure "firstName" is required (not null)
             if (firstName == null)
@@ -90,7 +90,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public Guid? Id { get; set; }
+        public long? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets UserName

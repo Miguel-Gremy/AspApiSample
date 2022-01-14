@@ -241,7 +241,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthusersigninpost"></a>
 # **ApiAuthUserSignInPost**
-> void ApiAuthUserSignInPost (UserSignInResource body = null)
+> UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null)
 
 
 
@@ -264,7 +264,8 @@ namespace Example
 
             try
             {
-                apiInstance.ApiAuthUserSignInPost(body);
+                UserSignInResponse result = apiInstance.ApiAuthUserSignInPost(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -283,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserSignInResponse**](UserSignInResponse.md)
 
 ### Authorization
 
@@ -292,7 +293,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/_*+json
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthusersignupconfirmget"></a>
