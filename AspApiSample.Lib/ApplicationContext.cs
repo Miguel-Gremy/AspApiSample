@@ -7,10 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspApiSample.Lib
 {
-    public class ApplicationContext : IdentityDbContext<User, Role, long>
+    public class ApplicationContext : IdentityDbContext<User, IdentityRole<long>, long>
     {
         public override DbSet<User> Users { get; set; }
-        public override DbSet<Role> Roles { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -41,16 +40,16 @@ namespace AspApiSample.Lib
                     AccessFailedCount= 0,
                 }
             };
-            var seedRole = new List<Role>
+            var seedRole = new List<IdentityRole<long>>
             {
-                new Role
+                new IdentityRole<long>
                 {
                     Id = 1,
                     Name = "user",
                     NormalizedName = "USER",
                     ConcurrencyStamp = "c992e1d8-1c5e-452a-8eaf-838bca6eac51"
                 },
-                new Role
+                new IdentityRole<long>
                 {
                     Id = 2,
                     Name = "admin",
@@ -64,11 +63,16 @@ namespace AspApiSample.Lib
                 {
                     RoleId = 1,
                     UserId = 1
+                },
+                new IdentityUserRole<long>
+                {
+                    RoleId = 2,
+                    UserId = 1
                 }
             };
 
             builder.Entity<User>().HasData(seedUser);
-            builder.Entity<Role>().HasData(seedRole);
+            builder.Entity<IdentityRole<long>>().HasData(seedRole);
             builder.Entity<IdentityUserRole<long>>().HasData(seedUserRole);
         }
     }

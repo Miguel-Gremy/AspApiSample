@@ -15,11 +15,11 @@ namespace AspApiSample.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<Role> _roleManager;
+        private readonly RoleManager<IdentityRole<long>> _roleManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
 
-        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, SignInManager<User> signInManager, IMapper mapper)
+        public AuthController(UserManager<User> userManager, RoleManager<IdentityRole<long>> roleManager, SignInManager<User> signInManager, IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -29,7 +29,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpGet]
         [Route("User/{userEmail}")]
-        public async Task<ActionResult<User>> GetUser([Required] [EmailAddress] string userEmail)
+        public async Task<ActionResult<User>> GetUser([Required][EmailAddress] string userEmail)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
@@ -98,7 +98,7 @@ namespace AspApiSample.API.Controllers
             var userCanSignInResult = await _signInManager.CanSignInAsync(user);
 
             return userCanSignInResult
-                ? Ok(new UserSignInResponse{User = user, Roles = await _userManager.GetRolesAsync(user)})
+                ? Ok(new UserSignInResponse { User = user, Roles = await _userManager.GetRolesAsync(user) })
                 : Problem("User cannot sign in");
         }
 
@@ -167,7 +167,7 @@ namespace AspApiSample.API.Controllers
                 return BadRequest("Role name should be provided");
             }
 
-            var newRole = new Role
+            var newRole = new IdentityRole<long>
             {
                 Name = resource.RoleName,
             };

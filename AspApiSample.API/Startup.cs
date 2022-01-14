@@ -51,8 +51,8 @@ namespace AspApiSample.API
                     throw new NotImplementedException(
                         $"The database provider {databaseProvider} is not supported");
             }
-            
-            services.AddIdentity<User, Role>(options =>
+
+            services.AddIdentity<User, IdentityRole<long>>(options =>
                 {
                     /* Password configuration */
                     options.Password.RequireDigit = true;

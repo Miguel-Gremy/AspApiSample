@@ -60,13 +60,17 @@ namespace AspApiSample.Web.Controllers
                     try
                     {
                         /* Try calling API with EmailAddress and Password provided by user */
-                        await _authApi.ApiAuthUserSignInPostAsync(userLoginResource);
+                        var userSignInResponse = await _authApi.ApiAuthUserSignInPostAsync(userLoginResource);
                         /* If the API don't throw ApiException, user is well authenticated */
                         /* Create Cookies for the user */
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Email, model.Email)
                         };
+                        foreach (var role in userSignInResponse.Roles)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, role));
+                        }
                         var claimsIdentity = new ClaimsIdentity(claims,
                             CookieAuthenticationDefaults.AuthenticationScheme);
                         /* Sign in user in the application */
