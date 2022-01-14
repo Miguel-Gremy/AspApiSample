@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AspApiSample.Lib.Models
 {
-    public class User : IdentityUser<Guid>
+    public class User : IdentityUser<long>
     {
         public User()
         {

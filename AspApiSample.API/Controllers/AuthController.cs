@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AspApiSample.API.Resources.Auth;
+using AspApiSample.API.Responses.Auth;
 using AspApiSample.Lib.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +16,14 @@ namespace AspApiSample.API.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
 
-        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
+        public AuthController(UserManager<User> userManager, RoleManager<Role> roleManager, SignInManager<User> signInManager, IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
             _mapper = mapper;
         }
 
@@ -75,7 +79,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpPost]
         [Route("User/SignIn")]
-        public async Task<IActionResult> SignIn(UserSignInResource resource)
+        public async Task<ActionResult<UserSignInResponse>> SignIn(UserSignInResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
@@ -86,9 +90,16 @@ namespace AspApiSample.API.Controllers
 
             var userSignInResult = await _userManager.CheckPasswordAsync(user, resource.Password);
 
-            return userSignInResult
-                ? Ok()
-                : Problem("Password incorrect");
+            if (!userSignInResult)
+            {
+                return Problem("Password incorrect");
+            }
+
+            var userCanSignInResult = await _signInManager.CanSignInAsync(user);
+
+            return userCanSignInResult
+                ? Ok(new UserSignInResponse{User = user, Roles = await _userManager.GetRolesAsync(user)})
+                : Problem("User cannot sign in");
         }
 
         [HttpPut]
@@ -148,6 +159,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpPost]
         [Route("Roles")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> CreateRole(RoleCreateResource resource)
         {
             if (string.IsNullOrEmpty(resource.RoleName))
@@ -169,6 +181,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpPost]
         [Route("User/{userEmail}/Roles")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddUserToRole([Required] string userEmail, RoleAddUserResource resource)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
