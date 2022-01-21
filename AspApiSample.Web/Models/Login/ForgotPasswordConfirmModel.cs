@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AspApiSample.Web.Models.Account
+namespace AspApiSample.Web.Models.Login
 {
-    public class ForgotPasswordModel : ModelBase
+    public class ForgotPasswordConfirmModel : ModelBase
     {
         [Required]
-        [EmailAddress]
         public string Email { get; set; }
     }
 }

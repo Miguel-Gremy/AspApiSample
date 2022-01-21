@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AspApiSample.Web.Models.Account
+namespace AspApiSample.Web.Models.Login
 {
     public class ResetPasswordModel : ModelBase
     {
