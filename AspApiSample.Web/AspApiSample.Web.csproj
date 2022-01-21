@@ -16,8 +16,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Models\Admin" />
         <Folder Include="Models\Home" />
         <Folder Include="Views\Account" />
+        <Folder Include="Views\Admin" />
     </ItemGroup>
 
     <ItemGroup>

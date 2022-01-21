@@ -35,7 +35,13 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @if (User.Identity is {IsAuthenticated: true})
                             {
+                                if (User.IsInRole("admin"))
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                    <div class="dropdown-divider"></div>
+                                }
                                 <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="SignOut">Logout <em class="bi bi-box-arrow-right"></em></a>
                             }
                             else

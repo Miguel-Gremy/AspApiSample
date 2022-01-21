@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AspApiSample.Web.Models.Account;
 using IO.Swagger.Api;
@@ -26,12 +26,12 @@ namespace AspApiSample.Web.Controllers
             if (model is null)
                 model = new IndexModel
                 {
-                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value))
+                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email)))
                         .User
                 };
             else
                 model.User ??=
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User;
+                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User;
 
             return View(model);
         }
@@ -42,7 +42,7 @@ namespace AspApiSample.Web.Controllers
             var model = new ChangePasswordModel
             {
                 EmailAddress =
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User
+                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User
                     .Email
             };
 
