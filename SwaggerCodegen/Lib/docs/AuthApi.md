@@ -128,7 +128,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthuserforgotpasswordpost"></a>
 # **ApiAuthUserForgotPasswordPost**
-> string ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
+> UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
 
 
 
@@ -151,7 +151,7 @@ namespace Example
 
             try
             {
-                string result = apiInstance.ApiAuthUserForgotPasswordPost(body);
+                UserForgotPasswordResponse result = apiInstance.ApiAuthUserForgotPasswordPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**UserForgotPasswordResponse**](UserForgotPasswordResponse.md)
 
 ### Authorization
 
@@ -356,7 +356,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthusersignuppost"></a>
 # **ApiAuthUserSignUpPost**
-> string ApiAuthUserSignUpPost (UserSignUpResource body = null)
+> UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null)
 
 
 
@@ -379,7 +379,7 @@ namespace Example
 
             try
             {
-                string result = apiInstance.ApiAuthUserSignUpPost(body);
+                UserSignUpResponse result = apiInstance.ApiAuthUserSignUpPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**UserSignUpResponse**](UserSignUpResponse.md)
 
 ### Authorization
 
@@ -413,7 +413,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthuseruseremailget"></a>
 # **ApiAuthUserUserEmailGet**
-> User ApiAuthUserUserEmailGet (string userEmail)
+> UserGetUserResponse ApiAuthUserUserEmailGet (string userEmail)
 
 
 
@@ -436,7 +436,7 @@ namespace Example
 
             try
             {
-                User result = apiInstance.ApiAuthUserUserEmailGet(userEmail);
+                UserGetUserResponse result = apiInstance.ApiAuthUserUserEmailGet(userEmail);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserGetUserResponse**](UserGetUserResponse.md)
 
 ### Authorization
 

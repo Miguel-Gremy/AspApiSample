@@ -110,12 +110,15 @@ Class | Method | HTTP request | Description
  - [Model.RoleAddUserResource](docs/RoleAddUserResource.md)
  - [Model.RoleCreateResource](docs/RoleCreateResource.md)
  - [Model.User](docs/User.md)
+ - [Model.UserForgotPasswordResponse](docs/UserForgotPasswordResponse.md)
+ - [Model.UserGetUserResponse](docs/UserGetUserResponse.md)
  - [Model.UserPasswordChangeResource](docs/UserPasswordChangeResource.md)
  - [Model.UserPasswordForgotResource](docs/UserPasswordForgotResource.md)
  - [Model.UserPasswordResetResource](docs/UserPasswordResetResource.md)
  - [Model.UserSignInResource](docs/UserSignInResource.md)
  - [Model.UserSignInResponse](docs/UserSignInResponse.md)
  - [Model.UserSignUpResource](docs/UserSignUpResource.md)
+ - [Model.UserSignUpResponse](docs/UserSignUpResponse.md)
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization

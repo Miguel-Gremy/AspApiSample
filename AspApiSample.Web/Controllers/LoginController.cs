@@ -133,7 +133,7 @@ namespace AspApiSample.Web.Controllers
                 var token = HttpUtility.HtmlDecode(
                     (await _authApi.ApiAuthUserForgotPasswordPostAsync(
                         new UserPasswordForgotResource(model.Email)
-                    )).RemoveChar('\"')
+                    )).Token.RemoveChar('\"')
                 );
                 /* Preparing the callback Url to enter a new Password */
                 var callback = Url.Action("ResetPassword", "Login",

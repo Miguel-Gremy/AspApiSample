@@ -29,7 +29,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpGet]
         [Route("User/{userEmail}")]
-        public async Task<ActionResult<User>> GetUser([Required][EmailAddress] string userEmail)
+        public async Task<ActionResult<UserGetUserResponse>> GetUser([Required][EmailAddress] string userEmail)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
@@ -38,12 +38,12 @@ namespace AspApiSample.API.Controllers
                 return NotFound("User not found");
             }
 
-            return Ok(user);
+            return Ok(new UserGetUserResponse{User = user});
         }
 
         [HttpPost]
         [Route("User/SignUp")]
-        public async Task<ActionResult<string>> SignUp(UserSignUpResource resource)
+        public async Task<ActionResult<UserSignUpResponse>> SignUp(UserSignUpResource resource)
         {
             var user = _mapper.Map<UserSignUpResource, User>(resource);
 
@@ -56,7 +56,7 @@ namespace AspApiSample.API.Controllers
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            return Ok(token);
+            return Ok(new UserSignUpResponse{Token = token});
         }
 
         [HttpGet]
@@ -124,7 +124,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpPost]
         [Route("User/ForgotPassword")]
-        public async Task<ActionResult<string>> ForgotPassword(UserPasswordForgotResource resource)
+        public async Task<ActionResult<UserForgotPasswordResponse>> ForgotPassword(UserPasswordForgotResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
@@ -135,7 +135,7 @@ namespace AspApiSample.API.Controllers
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            return Ok(token);
+            return Ok(new UserForgotPasswordResponse{Token =token});
         }
 
         [HttpPost]

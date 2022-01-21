@@ -27,13 +27,13 @@ namespace AspApiSample.Web.Controllers
             {
                 model = new IndexModel
                 {
-                    User = await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)
+                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User
                 };
             }
             else
             {
                 model.User ??=
-                    await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value);
+                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User;
             }
 
             return View(model);
@@ -45,7 +45,7 @@ namespace AspApiSample.Web.Controllers
             var model = new ChangePasswordModel
             {
                 EmailAddress =
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).Email,
+                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User.Email,
             };
 
             return View(model);
