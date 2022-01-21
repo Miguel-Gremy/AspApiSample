@@ -5,7 +5,7 @@ namespace AspApiSample.API.Responses.Auth
 {
     public class UserSignInResponse
     {
-        public User User { get; set; }
+        public string Email { get; set; }
         public IEnumerable<string> Roles { get; set; }
     }
 }

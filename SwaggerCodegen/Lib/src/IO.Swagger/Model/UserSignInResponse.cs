@@ -32,19 +32,19 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserSignInResponse" /> class.
         /// </summary>
-        /// <param name="user">user.</param>
+        /// <param name="email">email.</param>
         /// <param name="roles">roles.</param>
-        public UserSignInResponse(User user = default(User), List<string> roles = default(List<string>))
+        public UserSignInResponse(string email = default(string), List<string> roles = default(List<string>))
         {
-            this.User = user;
+            this.Email = email;
             this.Roles = roles;
         }
         
         /// <summary>
-        /// Gets or Sets User
+        /// Gets or Sets Email
         /// </summary>
-        [DataMember(Name="user", EmitDefaultValue=false)]
-        public User User { get; set; }
+        [DataMember(Name="email", EmitDefaultValue=false)]
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or Sets Roles
@@ -60,7 +60,7 @@ namespace IO.Swagger.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UserSignInResponse {\n");
-            sb.Append("  User: ").Append(User).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -97,9 +97,9 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.User == input.User ||
-                    (this.User != null &&
-                    this.User.Equals(input.User))
+                    this.Email == input.Email ||
+                    (this.Email != null &&
+                    this.Email.Equals(input.Email))
                 ) && 
                 (
                     this.Roles == input.Roles ||
@@ -118,8 +118,8 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.User != null)
-                    hashCode = hashCode * 59 + this.User.GetHashCode();
+                if (this.Email != null)
+                    hashCode = hashCode * 59 + this.Email.GetHashCode();
                 if (this.Roles != null)
                     hashCode = hashCode * 59 + this.Roles.GetHashCode();
                 return hashCode;

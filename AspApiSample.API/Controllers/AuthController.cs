@@ -98,7 +98,7 @@ namespace AspApiSample.API.Controllers
             var userCanSignInResult = await _signInManager.CanSignInAsync(user);
 
             return userCanSignInResult
-                ? Ok(new UserSignInResponse { User = user, Roles = await _userManager.GetRolesAsync(user) })
+                ? Ok(new UserSignInResponse { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
                 : Problem("User cannot sign in");
         }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AspApiSample.Web.Extensions;
@@ -67,10 +68,7 @@ namespace AspApiSample.Web.Controllers
                         {
                             new Claim(ClaimTypes.Email, model.Email)
                         };
-                        foreach (var role in userSignInResponse.Roles)
-                        {
-                            claims.Add(new Claim(ClaimTypes.Role, role));
-                        }
+                        claims.AddRange(userSignInResponse.Roles.Select(role => new Claim(ClaimTypes.Role, role)));
                         var claimsIdentity = new ClaimsIdentity(claims,
                             CookieAuthenticationDefaults.AuthenticationScheme);
                         /* Sign in user in the application */
