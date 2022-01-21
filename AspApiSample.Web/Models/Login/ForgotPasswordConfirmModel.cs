@@ -4,7 +4,6 @@ namespace AspApiSample.Web.Models.Login
 {
     public class ForgotPasswordConfirmModel : ModelBase
     {
-        [Required]
-        public string Email { get; set; }
+        [Required] public string Email { get; set; }
     }
 }

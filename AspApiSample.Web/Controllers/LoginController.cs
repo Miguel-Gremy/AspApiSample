@@ -18,8 +18,8 @@ namespace AspApiSample.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly ILogger<LoginController> _logger;
         private readonly IAuthApi _authApi;
+        private readonly ILogger<LoginController> _logger;
         private readonly IMailApi _mailApi;
 
         public LoginController(ILogger<LoginController> logger, IAuthApi authApi, IMailApi mailApi)
@@ -35,15 +35,11 @@ namespace AspApiSample.Web.Controllers
 
             /* Check if the User is already connected */
             if (User.Identity is { IsAuthenticated: true })
-            {
                 /* If so, redirect to Home */
                 output = RedirectToAction("Index", "Home");
-            }
             else
-            {
                 /* Else, redirect to login page */
                 output = View(new IndexModel());
-            }
 
             return output;
         }
@@ -64,14 +60,16 @@ namespace AspApiSample.Web.Controllers
                     try
                     {
                         /* Try calling API with EmailAddress and Password provided by user */
-                        var userSignInResponse = await _authApi.ApiAuthUserSignInPostAsync(userLoginResource);
+                        var userSignInResponse =
+                            await _authApi.ApiAuthUserSignInPostAsync(userLoginResource);
                         /* If the API don't throw ApiException, user is well authenticated */
                         /* Create Cookies for the user */
                         var claims = new List<Claim>
                         {
-                            new Claim(ClaimTypes.Email, model.Email)
+                            new(ClaimTypes.Email, model.Email)
                         };
-                        claims.AddRange(userSignInResponse.Roles.Select(role => new Claim(ClaimTypes.Role, role)));
+                        claims.AddRange(userSignInResponse.Roles.Select(role =>
+                            new Claim(ClaimTypes.Role, role)));
                         var claimsIdentity = new ClaimsIdentity(claims,
                             CookieAuthenticationDefaults.AuthenticationScheme);
                         /* Sign in user in the application */
@@ -147,7 +145,8 @@ namespace AspApiSample.Web.Controllers
             catch (ApiException e)
             {
                 /* If catching ApiException, display the error from the API */
-                model.Errors = new List<string> { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
+                model.Errors = new List<string>
+                    { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
                 output = View(model);
             }
 
@@ -170,7 +169,7 @@ namespace AspApiSample.Web.Controllers
                 Email = email,
                 Token = token,
                 Password = string.Empty,
-                ConfirmPassword = string.Empty,
+                ConfirmPassword = string.Empty
             });
         }
 
@@ -205,7 +204,8 @@ namespace AspApiSample.Web.Controllers
             {
                 model.Password = string.Empty;
                 model.ConfirmPassword = string.Empty;
-                model.Errors = new List<string> { "Password and confirm password are not the same" };
+                model.Errors = new List<string>
+                    { "Password and confirm password are not the same" };
                 output = View(model);
             }
 

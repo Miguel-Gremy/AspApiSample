@@ -9,8 +9,8 @@ namespace AspApiSample.API.Services
     public class EmailSender : IEmailSender
     {
         private readonly string _fromMail;
-        private readonly string _passwordMail;
         private readonly string _hostEmail;
+        private readonly string _passwordMail;
         private readonly int _portEmail;
 
         public EmailSender(IConfiguration configuration)
@@ -18,19 +18,20 @@ namespace AspApiSample.API.Services
             _fromMail = configuration.GetSection("EmailParameters:From").Value;
             _passwordMail = configuration.GetSection("EmailParameters:Password").Value;
             _hostEmail = configuration.GetSection("EmailParameters:Host").Value;
-            _portEmail = int.Parse(configuration.GetSection("EmailParameters:Port").Value ?? string.Empty);
+            _portEmail = int.Parse(configuration.GetSection("EmailParameters:Port").Value ??
+                                   string.Empty);
         }
 
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var message = new MailMessage(_fromMail, email, subject, htmlMessage)
             {
-                IsBodyHtml = true,
+                IsBodyHtml = true
             };
 
             new SmtpClient(_hostEmail, _portEmail)
             {
-                Credentials = new NetworkCredential(_fromMail, _passwordMail),
+                Credentials = new NetworkCredential(_fromMail, _passwordMail)
             }.Send(message);
 
             return Task.CompletedTask;

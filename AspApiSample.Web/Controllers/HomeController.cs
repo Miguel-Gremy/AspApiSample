@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using AspApiSample.Web.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace AspApiSample.Web.Controllers

@@ -33,7 +33,7 @@
         <td>@Model.User.LastName</td>
         <td>@Model.User.Email</td>
         <td>@Model.User.UserName</td>
-        <td>@Html.CheckBoxFor(m => m.User.EmailConfirmed.Value, new {@disabled = "disabled"})</td>
+        <td>@Html.CheckBoxFor(m => m.User.EmailConfirmed.Value, new { disabled = "disabled" })</td>
         <td>@Model.User.PhoneNumber</td>
     </tr>
     </tbody>

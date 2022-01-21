@@ -25,7 +25,7 @@ namespace AspApiSample.Web
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                 /* Cookie configuration */
+                /* Cookie configuration */
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
@@ -40,10 +40,8 @@ namespace AspApiSample.Web
 
             services.AddControllersWithViews();
 
-            services.AddMvc(options =>
-            {
-                options.EnableEndpointRouting = false;
-            }).AddRazorPagesOptions(options => {})
+            services.AddMvc(options => { options.EnableEndpointRouting = false; })
+                .AddRazorPagesOptions(options => { })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             /* Defining the configuration of the API */
@@ -88,8 +86,8 @@ namespace AspApiSample.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}");
+                    "default",
+                    "{controller=Home}/{action=Index}");
             });
         }
     }

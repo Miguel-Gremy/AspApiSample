@@ -24,17 +24,14 @@ namespace AspApiSample.Web.Controllers
         public async Task<IActionResult> Index(IndexModel model)
         {
             if (model is null)
-            {
                 model = new IndexModel
                 {
-                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User
+                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value))
+                        .User
                 };
-            }
             else
-            {
                 model.User ??=
                     (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User;
-            }
 
             return View(model);
         }
@@ -45,7 +42,8 @@ namespace AspApiSample.Web.Controllers
             var model = new ChangePasswordModel
             {
                 EmailAddress =
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User.Email,
+                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.Claims.First().Value)).User
+                    .Email
             };
 
             return View(model);
@@ -83,7 +81,8 @@ namespace AspApiSample.Web.Controllers
                 model.CurrentPassword = string.Empty;
                 model.NewPassword = string.Empty;
                 model.ConfirmNewPassword = string.Empty;
-                model.Errors = new List<string> { "New password and confirm new password are not the same" };
+                model.Errors = new List<string>
+                    { "New password and confirm new password are not the same" };
                 output = View(model);
             }
 

@@ -1,11 +1,11 @@
 @model AspApiSample.Web.Models.Login.IndexModel
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index";
 }
 
 @section Style
 {
-<style>
+    <style>
 	.login-div {
 		display: flex;
 		align-items: center;
@@ -46,32 +46,32 @@
 @Html.AntiForgeryToken()
 @using (Html.BeginForm("SignIn", "Login", FormMethod.Post))
 {
-	<div class="text-center login-div">
-		<main class="form-signin">
+    <div class="text-center login-div">
+        <main class="form-signin">
 
-			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-			@if (Model.Errors is not null)
-			{
-				@foreach (var error in Model.Errors)
-				{
-					<p class="text text-danger">@error</p>
-				}
-			}
+            @if (Model.Errors is not null)
+            {
+                @foreach (var error in Model.Errors)
+                {
+                    <p class="text text-danger">@error</p>
+                }
+            }
 
-			<div class="form-floating mb-2">
-				<input type="email" id="email" name="email" value="@Model.Email"
-				   class="form-control" placeholder="name@example.com" required />
-			</div>
-			<div class="form-floating">
-				<input type="password" id="password" name="password" value="@Model.Password"
-				   class="form-control" placeholder="Password" required />
-			</div>
-			<input type="hidden" name="_target_path" value="/home" />
+            <div class="form-floating mb-2">
+                <input type="email" id="email" name="email" value="@Model.Email"
+                       class="form-control" placeholder="name@example.com" required/>
+            </div>
+            <div class="form-floating">
+                <input type="password" id="password" name="password" value="@Model.Password"
+                       class="form-control" placeholder="Password" required/>
+            </div>
+            <input type="hidden" name="_target_path" value="/home"/>
 
-			<button type="submit" class="w-100 btn btn-lg btn-primary">login</button>
-			<br />
-			<a asp-area="" asp-action="ForgotPassword" asp-controller="Login">Forgot password</a>
-		</main>
-	</div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">login</button>
+            <br/>
+            <a asp-area="" asp-action="ForgotPassword" asp-controller="Login">Forgot password</a>
+        </main>
+    </div>
 }

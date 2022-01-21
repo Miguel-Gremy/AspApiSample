@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using AspApiSample.Lib.Models;
 
 namespace AspApiSample.API.Responses.Auth
 {

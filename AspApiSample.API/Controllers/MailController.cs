@@ -20,7 +20,8 @@ namespace AspApiSample.API.Controllers
         [Route("Send")]
         public async Task<IActionResult> Send(EmailSendResource resource)
         {
-            await _emailSender.SendEmailAsync(resource.Email, resource.Subject, resource.HtmlMessage);
+            await _emailSender.SendEmailAsync(resource.Email, resource.Subject,
+                resource.HtmlMessage);
 
             return Ok();
         }
