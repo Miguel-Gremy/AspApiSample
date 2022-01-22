@@ -14,10 +14,12 @@ namespace AspApiSample.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAuthApi _authApi;
+        private readonly IAdminApi _adminApi;
 
-        public AccountController(IAuthApi authApi)
+        public AccountController(IAuthApi authApi, IAdminApi adminApi)
         {
             _authApi = authApi;
+            _adminApi = adminApi;
         }
 
         [HttpGet]
@@ -26,12 +28,12 @@ namespace AspApiSample.Web.Controllers
             if (model is null)
                 model = new IndexModel
                 {
-                    User = (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email)))
+                    User = (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email)))
                         .User
                 };
             else
                 model.User ??=
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User;
+                    (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User;
 
             return View(model);
         }
@@ -42,7 +44,7 @@ namespace AspApiSample.Web.Controllers
             var model = new ChangePasswordModel
             {
                 EmailAddress =
-                    (await _authApi.ApiAuthUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User
+                    (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User
                     .Email
             };
 

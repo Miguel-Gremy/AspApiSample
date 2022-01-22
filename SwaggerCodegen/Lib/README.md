@@ -69,16 +69,17 @@ namespace Example
     {
         public void main()
         {
-            var apiInstance = new AuthApi();
-            var body = new RoleCreateResource(); // RoleCreateResource |  (optional) 
+            var apiInstance = new AdminApi();
+            var roleName = roleName_example;  // string | 
 
             try
             {
-                apiInstance.ApiAuthRolesPost(body);
+                RoleGetRoleResponse result = apiInstance.ApiAdminRoleRoleNameGet(roleName);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthRolesPost: " + e.Message );
+                Debug.Print("Exception when calling AdminApi.ApiAdminRoleRoleNameGet: " + e.Message );
             }
         }
     }
@@ -92,26 +93,35 @@ All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthApi* | [**ApiAuthRolesPost**](docs/AuthApi.md#apiauthrolespost) | **POST** /api/Auth/Roles | 
+*AdminApi* | [**ApiAdminRoleRoleNameGet**](docs/AdminApi.md#apiadminrolerolenameget) | **GET** /api/Admin/Role/{roleName} | 
+*AdminApi* | [**ApiAdminRolesCreatePost**](docs/AdminApi.md#apiadminrolescreatepost) | **POST** /api/Admin/Roles/Create | 
+*AdminApi* | [**ApiAdminRolesDeleteRoleNameDelete**](docs/AdminApi.md#apiadminrolesdeleterolenamedelete) | **DELETE** /api/Admin/Roles/Delete/{roleName} | 
+*AdminApi* | [**ApiAdminRolesGet**](docs/AdminApi.md#apiadminrolesget) | **GET** /api/Admin/Roles | 
+*AdminApi* | [**ApiAdminUserUserEmailGet**](docs/AdminApi.md#apiadminuseruseremailget) | **GET** /api/Admin/User/{userEmail} | 
+*AdminApi* | [**ApiAdminUserUserEmailRolesPost**](docs/AdminApi.md#apiadminuseruseremailrolespost) | **POST** /api/Admin/User/{userEmail}/Roles | 
+*AdminApi* | [**ApiAdminUsersDeleteUserNameDelete**](docs/AdminApi.md#apiadminusersdeleteusernamedelete) | **DELETE** /api/Admin/Users/Delete/{userName} | 
+*AdminApi* | [**ApiAdminUsersGet**](docs/AdminApi.md#apiadminusersget) | **GET** /api/Admin/Users | 
 *AuthApi* | [**ApiAuthUserChangePasswordPut**](docs/AuthApi.md#apiauthuserchangepasswordput) | **PUT** /api/Auth/User/ChangePassword | 
 *AuthApi* | [**ApiAuthUserForgotPasswordPost**](docs/AuthApi.md#apiauthuserforgotpasswordpost) | **POST** /api/Auth/User/ForgotPassword | 
 *AuthApi* | [**ApiAuthUserResetPasswordPost**](docs/AuthApi.md#apiauthuserresetpasswordpost) | **POST** /api/Auth/User/ResetPassword | 
 *AuthApi* | [**ApiAuthUserSignInPost**](docs/AuthApi.md#apiauthusersigninpost) | **POST** /api/Auth/User/SignIn | 
 *AuthApi* | [**ApiAuthUserSignUpConfirmGet**](docs/AuthApi.md#apiauthusersignupconfirmget) | **GET** /api/Auth/User/SignUpConfirm | 
 *AuthApi* | [**ApiAuthUserSignUpPost**](docs/AuthApi.md#apiauthusersignuppost) | **POST** /api/Auth/User/SignUp | 
-*AuthApi* | [**ApiAuthUserUserEmailGet**](docs/AuthApi.md#apiauthuseruseremailget) | **GET** /api/Auth/User/{userEmail} | 
-*AuthApi* | [**ApiAuthUserUserEmailRolesPost**](docs/AuthApi.md#apiauthuseruseremailrolespost) | **POST** /api/Auth/User/{userEmail}/Roles | 
 *MailApi* | [**ApiMailSendPost**](docs/MailApi.md#apimailsendpost) | **POST** /api/Mail/Send | 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
  - [Model.EmailSendResource](docs/EmailSendResource.md)
+ - [Model.Int64IdentityRole](docs/Int64IdentityRole.md)
  - [Model.RoleAddUserResource](docs/RoleAddUserResource.md)
  - [Model.RoleCreateResource](docs/RoleCreateResource.md)
+ - [Model.RoleGetRoleResponse](docs/RoleGetRoleResponse.md)
+ - [Model.RoleGetRolesResponse](docs/RoleGetRolesResponse.md)
  - [Model.User](docs/User.md)
  - [Model.UserForgotPasswordResponse](docs/UserForgotPasswordResponse.md)
  - [Model.UserGetUserResponse](docs/UserGetUserResponse.md)
+ - [Model.UserGetUsersResponse](docs/UserGetUsersResponse.md)
  - [Model.UserPasswordChangeResource](docs/UserPasswordChangeResource.md)
  - [Model.UserPasswordForgotResource](docs/UserPasswordForgotResource.md)
  - [Model.UserPasswordResetResource](docs/UserPasswordResetResource.md)

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AspApiSample.API.Resources.Auth
+namespace AspApiSample.API.Resources.Admin
 {
     public class RoleCreateResource
     {

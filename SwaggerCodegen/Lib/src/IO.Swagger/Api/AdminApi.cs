@@ -20,7 +20,7 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IAuthApi : IApiAccessor
+        public interface IAdminApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -30,9 +30,30 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>RoleGetRoleResponse</returns>
+        RoleGetRoleResponse ApiAdminRoleRoleNameGet (string roleName);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>ApiResponse of RoleGetRoleResponse</returns>
+        ApiResponse<RoleGetRoleResponse> ApiAdminRoleRoleNameGetWithHttpInfo (string roleName);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthUserChangePasswordPut (UserPasswordChangeResource body = null);
+        void ApiAdminRolesCreatePost (RoleCreateResource body = null);
 
         /// <summary>
         /// 
@@ -43,7 +64,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null);
+        ApiResponse<Object> ApiAdminRolesCreatePostWithHttpInfo (RoleCreateResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -51,9 +72,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>UserForgotPasswordResponse</returns>
-        UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null);
+        /// <param name="roleName"></param>
+        /// <returns></returns>
+        void ApiAdminRolesDeleteRoleNameDelete (string roleName);
 
         /// <summary>
         /// 
@@ -62,9 +83,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserForgotPasswordResponse</returns>
-        ApiResponse<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null);
+        /// <param name="roleName"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ApiAdminRolesDeleteRoleNameDeleteWithHttpInfo (string roleName);
         /// <summary>
         /// 
         /// </summary>
@@ -72,9 +93,50 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RoleGetRolesResponse</returns>
+        RoleGetRolesResponse ApiAdminRolesGet ();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RoleGetRolesResponse</returns>
+        ApiResponse<RoleGetRolesResponse> ApiAdminRolesGetWithHttpInfo ();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>UserGetUserResponse</returns>
+        UserGetUserResponse ApiAdminUserUserEmailGet (string userEmail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>ApiResponse of UserGetUserResponse</returns>
+        ApiResponse<UserGetUserResponse> ApiAdminUserUserEmailGetWithHttpInfo (string userEmail);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthUserResetPasswordPost (UserPasswordResetResource body = null);
+        void ApiAdminUserUserEmailRolesPost (string userEmail, RoleAddUserResource body = null);
 
         /// <summary>
         /// 
@@ -83,9 +145,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null);
+        ApiResponse<Object> ApiAdminUserUserEmailRolesPostWithHttpInfo (string userEmail, RoleAddUserResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -93,31 +156,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>UserSignInResponse</returns>
-        UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserSignInResponse</returns>
-        ApiResponse<UserSignInResponse> ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
+        /// <param name="userName"></param>
         /// <returns></returns>
-        void ApiAuthUserSignUpConfirmGet (string token = null, string email = null);
+        void ApiAdminUsersDeleteUserNameDelete (string userName);
 
         /// <summary>
         /// 
@@ -126,10 +167,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
+        /// <param name="userName"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserSignUpConfirmGetWithHttpInfo (string token = null, string email = null);
+        ApiResponse<Object> ApiAdminUsersDeleteUserNameDeleteWithHttpInfo (string userName);
         /// <summary>
         /// 
         /// </summary>
@@ -137,9 +177,8 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>UserSignUpResponse</returns>
-        UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null);
+        /// <returns>UserGetUsersResponse</returns>
+        UserGetUsersResponse ApiAdminUsersGet ();
 
         /// <summary>
         /// 
@@ -148,9 +187,8 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserSignUpResponse</returns>
-        ApiResponse<UserSignUpResponse> ApiAuthUserSignUpPostWithHttpInfo (UserSignUpResource body = null);
+        /// <returns>ApiResponse of UserGetUsersResponse</returns>
+        ApiResponse<UserGetUsersResponse> ApiAdminUsersGetWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -160,9 +198,30 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>Task of RoleGetRoleResponse</returns>
+        System.Threading.Tasks.Task<RoleGetRoleResponse> ApiAdminRoleRoleNameGetAsync (string roleName);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>Task of ApiResponse (RoleGetRoleResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RoleGetRoleResponse>> ApiAdminRoleRoleNameGetAsyncWithHttpInfo (string roleName);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserChangePasswordPutAsync (UserPasswordChangeResource body = null);
+        System.Threading.Tasks.Task ApiAdminRolesCreatePostAsync (RoleCreateResource body = null);
 
         /// <summary>
         /// 
@@ -173,7 +232,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminRolesCreatePostAsyncWithHttpInfo (RoleCreateResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -181,9 +240,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserForgotPasswordResponse</returns>
-        System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostAsync (UserPasswordForgotResource body = null);
+        /// <param name="roleName"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ApiAdminRolesDeleteRoleNameDeleteAsync (string roleName);
 
         /// <summary>
         /// 
@@ -192,9 +251,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserForgotPasswordResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthUserForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null);
+        /// <param name="roleName"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminRolesDeleteRoleNameDeleteAsyncWithHttpInfo (string roleName);
         /// <summary>
         /// 
         /// </summary>
@@ -202,9 +261,50 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RoleGetRolesResponse</returns>
+        System.Threading.Tasks.Task<RoleGetRolesResponse> ApiAdminRolesGetAsync ();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RoleGetRolesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RoleGetRolesResponse>> ApiAdminRolesGetAsyncWithHttpInfo ();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of UserGetUserResponse</returns>
+        System.Threading.Tasks.Task<UserGetUserResponse> ApiAdminUserUserEmailGetAsync (string userEmail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of ApiResponse (UserGetUserResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserGetUserResponse>> ApiAdminUserUserEmailGetAsyncWithHttpInfo (string userEmail);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserResetPasswordPostAsync (UserPasswordResetResource body = null);
+        System.Threading.Tasks.Task ApiAdminUserUserEmailRolesPostAsync (string userEmail, RoleAddUserResource body = null);
 
         /// <summary>
         /// 
@@ -213,9 +313,10 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminUserUserEmailRolesPostAsyncWithHttpInfo (string userEmail, RoleAddUserResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -223,31 +324,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserSignInResponse</returns>
-        System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
+        /// <param name="userName"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserSignUpConfirmGetAsync (string token = null, string email = null);
+        System.Threading.Tasks.Task ApiAdminUsersDeleteUserNameDeleteAsync (string userName);
 
         /// <summary>
         /// 
@@ -256,10 +335,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
+        /// <param name="userName"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminUsersDeleteUserNameDeleteAsyncWithHttpInfo (string userName);
         /// <summary>
         /// 
         /// </summary>
@@ -267,9 +345,8 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserSignUpResponse</returns>
-        System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthUserSignUpPostAsync (UserSignUpResource body = null);
+        /// <returns>Task of UserGetUsersResponse</returns>
+        System.Threading.Tasks.Task<UserGetUsersResponse> ApiAdminUsersGetAsync ();
 
         /// <summary>
         /// 
@@ -278,24 +355,23 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserSignUpResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthUserSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null);
+        /// <returns>Task of ApiResponse (UserGetUsersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserGetUsersResponse>> ApiAdminUsersGetAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class AuthApi : IAuthApi
+        public partial class AdminApi : IAdminApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthApi"/> class.
+        /// Initializes a new instance of the <see cref="AdminApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AuthApi(String basePath)
+        public AdminApi(String basePath)
         {
             this.Configuration = new IO.Swagger.Client.Configuration { BasePath = basePath };
 
@@ -303,10 +379,10 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthApi"/> class
+        /// Initializes a new instance of the <see cref="AdminApi"/> class
         /// </summary>
         /// <returns></returns>
-        public AuthApi()
+        public AdminApi()
         {
             this.Configuration = IO.Swagger.Client.Configuration.Default;
 
@@ -314,12 +390,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthApi"/> class
+        /// Initializes a new instance of the <see cref="AdminApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public AuthApi(IO.Swagger.Client.Configuration configuration = null)
+        public AdminApi(IO.Swagger.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = IO.Swagger.Client.Configuration.Default;
@@ -396,152 +472,11 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        public void ApiAuthUserChangePasswordPut (UserPasswordChangeResource body = null)
+        /// <param name="roleName"></param>
+        /// <returns>RoleGetRoleResponse</returns>
+        public RoleGetRoleResponse ApiAdminRoleRoleNameGet (string roleName)
         {
-             ApiAuthUserChangePasswordPutWithHttpInfo(body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/ChangePassword";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserChangePasswordPut", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserChangePasswordPutAsync (UserPasswordChangeResource body = null)
-        {
-             await ApiAuthUserChangePasswordPutAsyncWithHttpInfo(body);
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/ChangePassword";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserChangePasswordPut", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>UserForgotPasswordResponse</returns>
-        public UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
-        {
-             ApiResponse<UserForgotPasswordResponse> localVarResponse = ApiAuthUserForgotPasswordPostWithHttpInfo(body);
+             ApiResponse<RoleGetRoleResponse> localVarResponse = ApiAdminRoleRoleNameGetWithHttpInfo(roleName);
              return localVarResponse.Data;
         }
 
@@ -549,12 +484,15 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserForgotPasswordResponse</returns>
-        public ApiResponse< UserForgotPasswordResponse > ApiAuthUserForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null)
+        /// <param name="roleName"></param>
+        /// <returns>ApiResponse of RoleGetRoleResponse</returns>
+        public ApiResponse< RoleGetRoleResponse > ApiAdminRoleRoleNameGetWithHttpInfo (string roleName)
         {
+            // verify the required parameter 'roleName' is set
+            if (roleName == null)
+                throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRoleRoleNameGet");
 
-            var localVarPath = "/api/Auth/User/ForgotPassword";
+            var localVarPath = "/api/Admin/Role/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -564,9 +502,6 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -580,442 +515,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserForgotPasswordPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<UserForgotPasswordResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserForgotPasswordResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserForgotPasswordResponse)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserForgotPasswordResponse</returns>
-        public async System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostAsync (UserPasswordForgotResource body = null)
-        {
-             ApiResponse<UserForgotPasswordResponse> localVarResponse = await ApiAuthUserForgotPasswordPostAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserForgotPasswordResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthUserForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/ForgotPassword";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserForgotPasswordPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<UserForgotPasswordResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserForgotPasswordResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserForgotPasswordResponse)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        public void ApiAuthUserResetPasswordPost (UserPasswordResetResource body = null)
-        {
-             ApiAuthUserResetPasswordPostWithHttpInfo(body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/ResetPassword";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserResetPasswordPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserResetPasswordPostAsync (UserPasswordResetResource body = null)
-        {
-             await ApiAuthUserResetPasswordPostAsyncWithHttpInfo(body);
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/ResetPassword";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserResetPasswordPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>UserSignInResponse</returns>
-        public UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null)
-        {
-             ApiResponse<UserSignInResponse> localVarResponse = ApiAuthUserSignInPostWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserSignInResponse</returns>
-        public ApiResponse< UserSignInResponse > ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/SignIn";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserSignInPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<UserSignInResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserSignInResponse</returns>
-        public async System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null)
-        {
-             ApiResponse<UserSignInResponse> localVarResponse = await ApiAuthUserSignInPostAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
-        {
-
-            var localVarPath = "/api/Auth/User/SignIn";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiAuthUserSignInPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<UserSignInResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
-        /// <returns></returns>
-        public void ApiAuthUserSignUpConfirmGet (string token = null, string email = null)
-        {
-             ApiAuthUserSignUpConfirmGetWithHttpInfo(token, email);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserSignUpConfirmGetWithHttpInfo (string token = null, string email = null)
-        {
-
-            var localVarPath = "/api/Auth/User/SignUpConfirm";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (token != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
-            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (roleName != null) localVarPathParams.Add("roleName", this.Configuration.ApiClient.ParameterToString(roleName)); // path parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -1026,25 +526,25 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAdminRoleRoleNameGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<RoleGetRoleResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (RoleGetRoleResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRoleResponse)));
         }
 
         /// <summary>
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserSignUpConfirmGetAsync (string token = null, string email = null)
+        /// <param name="roleName"></param>
+        /// <returns>Task of RoleGetRoleResponse</returns>
+        public async System.Threading.Tasks.Task<RoleGetRoleResponse> ApiAdminRoleRoleNameGetAsync (string roleName)
         {
-             await ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo(token, email);
+             ApiResponse<RoleGetRoleResponse> localVarResponse = await ApiAdminRoleRoleNameGetAsyncWithHttpInfo(roleName);
+             return localVarResponse.Data;
 
         }
 
@@ -1052,13 +552,15 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"> (optional)</param>
-        /// <param name="email"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null)
+        /// <param name="roleName"></param>
+        /// <returns>Task of ApiResponse (RoleGetRoleResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RoleGetRoleResponse>> ApiAdminRoleRoleNameGetAsyncWithHttpInfo (string roleName)
         {
+            // verify the required parameter 'roleName' is set
+            if (roleName == null)
+                throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRoleRoleNameGet");
 
-            var localVarPath = "/api/Auth/User/SignUpConfirm";
+            var localVarPath = "/api/Admin/Role/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1073,13 +575,15 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (token != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
-            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (roleName != null) localVarPathParams.Add("roleName", this.Configuration.ApiClient.ParameterToString(roleName)); // path parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1090,13 +594,13 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAdminRoleRoleNameGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<RoleGetRoleResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (RoleGetRoleResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRoleResponse)));
         }
 
         /// <summary>
@@ -1104,11 +608,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>UserSignUpResponse</returns>
-        public UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null)
+        /// <returns></returns>
+        public void ApiAdminRolesCreatePost (RoleCreateResource body = null)
         {
-             ApiResponse<UserSignUpResponse> localVarResponse = ApiAuthUserSignUpPostWithHttpInfo(body);
-             return localVarResponse.Data;
+             ApiAdminRolesCreatePostWithHttpInfo(body);
         }
 
         /// <summary>
@@ -1116,11 +619,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserSignUpResponse</returns>
-        public ApiResponse< UserSignUpResponse > ApiAuthUserSignUpPostWithHttpInfo (UserSignUpResource body = null)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ApiAdminRolesCreatePostWithHttpInfo (RoleCreateResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUp";
+            var localVarPath = "/api/Admin/Roles/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1138,9 +641,6 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1164,13 +664,13 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAdminRolesCreatePost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserSignUpResponse>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserSignUpResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignUpResponse)));
+                null);
         }
 
         /// <summary>
@@ -1178,11 +678,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserSignUpResponse</returns>
-        public async System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthUserSignUpPostAsync (UserSignUpResource body = null)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ApiAdminRolesCreatePostAsync (RoleCreateResource body = null)
         {
-             ApiResponse<UserSignUpResponse> localVarResponse = await ApiAuthUserSignUpPostAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
+             await ApiAdminRolesCreatePostAsyncWithHttpInfo(body);
 
         }
 
@@ -1191,11 +690,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserSignUpResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthUserSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminRolesCreatePostAsyncWithHttpInfo (RoleCreateResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUp";
+            var localVarPath = "/api/Admin/Roles/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1213,9 +712,6 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1239,13 +735,801 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAdminRolesCreatePost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserSignUpResponse>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserSignUpResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignUpResponse)));
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
+        public void ApiAdminRolesDeleteRoleNameDelete (string roleName)
+        {
+             ApiAdminRolesDeleteRoleNameDeleteWithHttpInfo(roleName);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ApiAdminRolesDeleteRoleNameDeleteWithHttpInfo (string roleName)
+        {
+            // verify the required parameter 'roleName' is set
+            if (roleName == null)
+                throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRolesDeleteRoleNameDelete");
+
+            var localVarPath = "/api/Admin/Roles/Delete/{roleName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (roleName != null) localVarPathParams.Add("roleName", this.Configuration.ApiClient.ParameterToString(roleName)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminRolesDeleteRoleNameDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ApiAdminRolesDeleteRoleNameDeleteAsync (string roleName)
+        {
+             await ApiAdminRolesDeleteRoleNameDeleteAsyncWithHttpInfo(roleName);
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="roleName"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminRolesDeleteRoleNameDeleteAsyncWithHttpInfo (string roleName)
+        {
+            // verify the required parameter 'roleName' is set
+            if (roleName == null)
+                throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRolesDeleteRoleNameDelete");
+
+            var localVarPath = "/api/Admin/Roles/Delete/{roleName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (roleName != null) localVarPathParams.Add("roleName", this.Configuration.ApiClient.ParameterToString(roleName)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminRolesDeleteRoleNameDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RoleGetRolesResponse</returns>
+        public RoleGetRolesResponse ApiAdminRolesGet ()
+        {
+             ApiResponse<RoleGetRolesResponse> localVarResponse = ApiAdminRolesGetWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RoleGetRolesResponse</returns>
+        public ApiResponse< RoleGetRolesResponse > ApiAdminRolesGetWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/Admin/Roles";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminRolesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RoleGetRolesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (RoleGetRolesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRolesResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RoleGetRolesResponse</returns>
+        public async System.Threading.Tasks.Task<RoleGetRolesResponse> ApiAdminRolesGetAsync ()
+        {
+             ApiResponse<RoleGetRolesResponse> localVarResponse = await ApiAdminRolesGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RoleGetRolesResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RoleGetRolesResponse>> ApiAdminRolesGetAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/Admin/Roles";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminRolesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RoleGetRolesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (RoleGetRolesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRolesResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>UserGetUserResponse</returns>
+        public UserGetUserResponse ApiAdminUserUserEmailGet (string userEmail)
+        {
+             ApiResponse<UserGetUserResponse> localVarResponse = ApiAdminUserUserEmailGetWithHttpInfo(userEmail);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>ApiResponse of UserGetUserResponse</returns>
+        public ApiResponse< UserGetUserResponse > ApiAdminUserUserEmailGetWithHttpInfo (string userEmail)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailGet");
+
+            var localVarPath = "/api/Admin/User/{userEmail}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUserUserEmailGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserGetUserResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserGetUserResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUserResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of UserGetUserResponse</returns>
+        public async System.Threading.Tasks.Task<UserGetUserResponse> ApiAdminUserUserEmailGetAsync (string userEmail)
+        {
+             ApiResponse<UserGetUserResponse> localVarResponse = await ApiAdminUserUserEmailGetAsyncWithHttpInfo(userEmail);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <returns>Task of ApiResponse (UserGetUserResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserGetUserResponse>> ApiAdminUserUserEmailGetAsyncWithHttpInfo (string userEmail)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailGet");
+
+            var localVarPath = "/api/Admin/User/{userEmail}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUserUserEmailGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserGetUserResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserGetUserResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUserResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <param name="body"> (optional)</param>
+        /// <returns></returns>
+        public void ApiAdminUserUserEmailRolesPost (string userEmail, RoleAddUserResource body = null)
+        {
+             ApiAdminUserUserEmailRolesPostWithHttpInfo(userEmail, body);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <param name="body"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ApiAdminUserUserEmailRolesPostWithHttpInfo (string userEmail, RoleAddUserResource body = null)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailRolesPost");
+
+            var localVarPath = "/api/Admin/User/{userEmail}/Roles";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/_*+json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUserUserEmailRolesPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ApiAdminUserUserEmailRolesPostAsync (string userEmail, RoleAddUserResource body = null)
+        {
+             await ApiAdminUserUserEmailRolesPostAsyncWithHttpInfo(userEmail, body);
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userEmail"></param>
+        /// <param name="body"> (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminUserUserEmailRolesPostAsyncWithHttpInfo (string userEmail, RoleAddUserResource body = null)
+        {
+            // verify the required parameter 'userEmail' is set
+            if (userEmail == null)
+                throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailRolesPost");
+
+            var localVarPath = "/api/Admin/User/{userEmail}/Roles";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/_*+json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userEmail != null) localVarPathParams.Add("userEmail", this.Configuration.ApiClient.ParameterToString(userEmail)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUserUserEmailRolesPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public void ApiAdminUsersDeleteUserNameDelete (string userName)
+        {
+             ApiAdminUsersDeleteUserNameDeleteWithHttpInfo(userName);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userName"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ApiAdminUsersDeleteUserNameDeleteWithHttpInfo (string userName)
+        {
+            // verify the required parameter 'userName' is set
+            if (userName == null)
+                throw new ApiException(400, "Missing required parameter 'userName' when calling AdminApi->ApiAdminUsersDeleteUserNameDelete");
+
+            var localVarPath = "/api/Admin/Users/Delete/{userName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userName != null) localVarPathParams.Add("userName", this.Configuration.ApiClient.ParameterToString(userName)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUsersDeleteUserNameDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userName"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ApiAdminUsersDeleteUserNameDeleteAsync (string userName)
+        {
+             await ApiAdminUsersDeleteUserNameDeleteAsyncWithHttpInfo(userName);
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="userName"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminUsersDeleteUserNameDeleteAsyncWithHttpInfo (string userName)
+        {
+            // verify the required parameter 'userName' is set
+            if (userName == null)
+                throw new ApiException(400, "Missing required parameter 'userName' when calling AdminApi->ApiAdminUsersDeleteUserNameDelete");
+
+            var localVarPath = "/api/Admin/Users/Delete/{userName}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (userName != null) localVarPathParams.Add("userName", this.Configuration.ApiClient.ParameterToString(userName)); // path parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUsersDeleteUserNameDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UserGetUsersResponse</returns>
+        public UserGetUsersResponse ApiAdminUsersGet ()
+        {
+             ApiResponse<UserGetUsersResponse> localVarResponse = ApiAdminUsersGetWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UserGetUsersResponse</returns>
+        public ApiResponse< UserGetUsersResponse > ApiAdminUsersGetWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/Admin/Users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUsersGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserGetUsersResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserGetUsersResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUsersResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of UserGetUsersResponse</returns>
+        public async System.Threading.Tasks.Task<UserGetUsersResponse> ApiAdminUsersGetAsync ()
+        {
+             ApiResponse<UserGetUsersResponse> localVarResponse = await ApiAdminUsersGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (UserGetUsersResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserGetUsersResponse>> ApiAdminUsersGetAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/Admin/Users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ApiAdminUsersGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserGetUsersResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserGetUsersResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUsersResponse)));
         }
 
     }

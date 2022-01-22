@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspApiSample.API.Controllers
 {
@@ -27,18 +28,6 @@ namespace AspApiSample.API.Controllers
             _roleManager = roleManager;
             _signInManager = signInManager;
             _mapper = mapper;
-        }
-
-        [HttpGet]
-        [Route("User/{userEmail}")]
-        public async Task<ActionResult<UserGetUserResponse>> GetUser(
-            [Required] [EmailAddress] string userEmail)
-        {
-            var user = await _userManager.FindByEmailAsync(userEmail);
-
-            if (user is null) return NotFound("User not found");
-
-            return Ok(new UserGetUserResponse { User = user });
         }
 
         [HttpPost]
@@ -136,45 +125,6 @@ namespace AspApiSample.API.Controllers
             return userResetPasswordResult.Succeeded
                 ? Ok()
                 : Problem("The link is no longer working");
-        }
-
-        [HttpPost]
-        [Route("Roles")]
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> CreateRole(RoleCreateResource resource)
-        {
-            if (string.IsNullOrEmpty(resource.RoleName))
-                return BadRequest("Role name should be provided");
-
-            var newRole = new IdentityRole<long>
-            {
-                Name = resource.RoleName
-            };
-
-            var roleCreateResult = await _roleManager.CreateAsync(newRole);
-
-            return roleCreateResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while creating the role");
-        }
-
-        [HttpPost]
-        [Route("User/{userEmail}/Roles")]
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> AddUserToRole([Required] string userEmail,
-            RoleAddUserResource resource)
-        {
-            var user = await _userManager.FindByEmailAsync(userEmail);
-            var role = await _roleManager.FindByNameAsync(resource.RoleName);
-
-            if (user is null) return NotFound("User not found");
-            if (role is null) return NotFound("Role not found");
-
-            var userAddRoleResult = await _userManager.AddToRoleAsync(user, resource.RoleName);
-
-            return userAddRoleResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while adding user to role");
         }
     }
 }

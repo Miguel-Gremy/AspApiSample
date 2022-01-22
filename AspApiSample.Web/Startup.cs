@@ -57,6 +57,7 @@ namespace AspApiSample.Web
             /* Adding interfaces for the dependency injection */
             services.AddScoped<IAuthApi, AuthApi>(provider => new AuthApi(apiConfiguration));
             services.AddScoped<IMailApi, MailApi>(provider => new MailApi(apiConfiguration));
+            services.AddScoped<IAdminApi, AdminApi>(provider => new AdminApi(apiConfiguration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
