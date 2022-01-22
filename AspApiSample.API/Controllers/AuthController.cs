@@ -31,7 +31,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpPost]
-        [Route("User/SignUp")]
+        [Route("SignUp")]
         public async Task<ActionResult<UserSignUpResponse>> SignUp(UserSignUpResource resource)
         {
             var user = _mapper.Map<UserSignUpResource, User>(resource);
@@ -46,7 +46,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpGet]
-        [Route("User/SignUpConfirm")]
+        [Route("SignUpConfirm")]
         public async Task<IActionResult> SignUpConfirm(string token, string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -61,7 +61,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpPost]
-        [Route("User/SignIn")]
+        [Route("SignIn")]
         public async Task<ActionResult<UserSignInResponse>> SignIn(UserSignInResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
@@ -81,7 +81,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpPut]
-        [Route("User/ChangePassword")]
+        [Route("ChangePassword")]
         public async Task<IActionResult> ChangePassword(UserPasswordChangeResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
@@ -98,7 +98,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpPost]
-        [Route("User/ForgotPassword")]
+        [Route("ForgotPassword")]
         public async Task<ActionResult<UserForgotPasswordResponse>> ForgotPassword(
             UserPasswordForgotResource resource)
         {
@@ -112,7 +112,7 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpPost]
-        [Route("User/ResetPassword")]
+        [Route("ResetPassword")]
         public async Task<IActionResult> ResetPassword(UserPasswordResetResource resource)
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);

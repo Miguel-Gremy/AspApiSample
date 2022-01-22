@@ -101,12 +101,12 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**ApiAdminUserUserEmailRolesPost**](docs/AdminApi.md#apiadminuseruseremailrolespost) | **POST** /api/Admin/User/{userEmail}/Roles | 
 *AdminApi* | [**ApiAdminUsersDeleteUserNameDelete**](docs/AdminApi.md#apiadminusersdeleteusernamedelete) | **DELETE** /api/Admin/Users/Delete/{userName} | 
 *AdminApi* | [**ApiAdminUsersGet**](docs/AdminApi.md#apiadminusersget) | **GET** /api/Admin/Users | 
-*AuthApi* | [**ApiAuthUserChangePasswordPut**](docs/AuthApi.md#apiauthuserchangepasswordput) | **PUT** /api/Auth/User/ChangePassword | 
-*AuthApi* | [**ApiAuthUserForgotPasswordPost**](docs/AuthApi.md#apiauthuserforgotpasswordpost) | **POST** /api/Auth/User/ForgotPassword | 
-*AuthApi* | [**ApiAuthUserResetPasswordPost**](docs/AuthApi.md#apiauthuserresetpasswordpost) | **POST** /api/Auth/User/ResetPassword | 
-*AuthApi* | [**ApiAuthUserSignInPost**](docs/AuthApi.md#apiauthusersigninpost) | **POST** /api/Auth/User/SignIn | 
-*AuthApi* | [**ApiAuthUserSignUpConfirmGet**](docs/AuthApi.md#apiauthusersignupconfirmget) | **GET** /api/Auth/User/SignUpConfirm | 
-*AuthApi* | [**ApiAuthUserSignUpPost**](docs/AuthApi.md#apiauthusersignuppost) | **POST** /api/Auth/User/SignUp | 
+*AuthApi* | [**ApiAuthChangePasswordPut**](docs/AuthApi.md#apiauthchangepasswordput) | **PUT** /api/Auth/ChangePassword | 
+*AuthApi* | [**ApiAuthForgotPasswordPost**](docs/AuthApi.md#apiauthforgotpasswordpost) | **POST** /api/Auth/ForgotPassword | 
+*AuthApi* | [**ApiAuthResetPasswordPost**](docs/AuthApi.md#apiauthresetpasswordpost) | **POST** /api/Auth/ResetPassword | 
+*AuthApi* | [**ApiAuthSignInPost**](docs/AuthApi.md#apiauthsigninpost) | **POST** /api/Auth/SignIn | 
+*AuthApi* | [**ApiAuthSignUpConfirmGet**](docs/AuthApi.md#apiauthsignupconfirmget) | **GET** /api/Auth/SignUpConfirm | 
+*AuthApi* | [**ApiAuthSignUpPost**](docs/AuthApi.md#apiauthsignuppost) | **POST** /api/Auth/SignUp | 
 *MailApi* | [**ApiMailSendPost**](docs/MailApi.md#apimailsendpost) | **POST** /api/Mail/Send | 
 
 <a name="documentation-for-models"></a>

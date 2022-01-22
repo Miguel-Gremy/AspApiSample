@@ -23,6 +23,13 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpGet]
+        [Route("Users")]
+        public async Task<ActionResult<UserGetUsersResponse>> GetUsers()
+        {
+            return new UserGetUsersResponse{Users = await _userManager.Users.ToListAsync()};
+        }
+
+        [HttpGet]
         [Route("User/{userEmail}")]
         public async Task<ActionResult<UserGetUserResponse>> GetUser(
             [Required] [EmailAddress] string userEmail)
@@ -32,13 +39,6 @@ namespace AspApiSample.API.Controllers
             if (user is null) return NotFound("User not found");
 
             return Ok(new UserGetUserResponse { User = user });
-        }
-
-        [HttpGet]
-        [Route("Users")]
-        public async Task<ActionResult<UserGetUsersResponse>> GetUsers()
-        {
-            return new UserGetUsersResponse{Users = await _userManager.Users.ToListAsync()};
         }
 
         //TODO Create user (no signup)
@@ -62,6 +62,13 @@ namespace AspApiSample.API.Controllers
         }
 
         [HttpGet]
+        [Route("Roles")]
+        public async Task<ActionResult<RoleGetRolesResponse>> GetRoles()
+        {
+            return new RoleGetRolesResponse { Roles = await _roleManager.Roles.ToListAsync() };
+        }
+
+        [HttpGet]
         [Route("Role/{roleName}")]
         public async Task<ActionResult<RoleGetRoleResponse>> GetRole([Required] string roleName)
         {
@@ -70,13 +77,6 @@ namespace AspApiSample.API.Controllers
             if (role is null) return NotFound("User not found");
 
             return Ok(new RoleGetRoleResponse{ Role = await _roleManager.FindByNameAsync(roleName)});
-        }
-
-        [HttpGet]
-        [Route("Roles")]
-        public async Task<ActionResult<RoleGetRolesResponse>> GetRoles()
-        {
-            return new RoleGetRolesResponse { Roles = await _roleManager.Roles.ToListAsync() };
         }
 
         [HttpPost]

@@ -4,16 +4,16 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiAuthUserChangePasswordPut**](AuthApi.md#apiauthuserchangepasswordput) | **PUT** /api/Auth/User/ChangePassword | 
-[**ApiAuthUserForgotPasswordPost**](AuthApi.md#apiauthuserforgotpasswordpost) | **POST** /api/Auth/User/ForgotPassword | 
-[**ApiAuthUserResetPasswordPost**](AuthApi.md#apiauthuserresetpasswordpost) | **POST** /api/Auth/User/ResetPassword | 
-[**ApiAuthUserSignInPost**](AuthApi.md#apiauthusersigninpost) | **POST** /api/Auth/User/SignIn | 
-[**ApiAuthUserSignUpConfirmGet**](AuthApi.md#apiauthusersignupconfirmget) | **GET** /api/Auth/User/SignUpConfirm | 
-[**ApiAuthUserSignUpPost**](AuthApi.md#apiauthusersignuppost) | **POST** /api/Auth/User/SignUp | 
+[**ApiAuthChangePasswordPut**](AuthApi.md#apiauthchangepasswordput) | **PUT** /api/Auth/ChangePassword | 
+[**ApiAuthForgotPasswordPost**](AuthApi.md#apiauthforgotpasswordpost) | **POST** /api/Auth/ForgotPassword | 
+[**ApiAuthResetPasswordPost**](AuthApi.md#apiauthresetpasswordpost) | **POST** /api/Auth/ResetPassword | 
+[**ApiAuthSignInPost**](AuthApi.md#apiauthsigninpost) | **POST** /api/Auth/SignIn | 
+[**ApiAuthSignUpConfirmGet**](AuthApi.md#apiauthsignupconfirmget) | **GET** /api/Auth/SignUpConfirm | 
+[**ApiAuthSignUpPost**](AuthApi.md#apiauthsignuppost) | **POST** /api/Auth/SignUp | 
 
-<a name="apiauthuserchangepasswordput"></a>
-# **ApiAuthUserChangePasswordPut**
-> void ApiAuthUserChangePasswordPut (UserPasswordChangeResource body = null)
+<a name="apiauthchangepasswordput"></a>
+# **ApiAuthChangePasswordPut**
+> void ApiAuthChangePasswordPut (UserPasswordChangeResource body = null)
 
 
 
@@ -27,7 +27,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserChangePasswordPutExample
+    public class ApiAuthChangePasswordPutExample
     {
         public void main()
         {
@@ -36,11 +36,11 @@ namespace Example
 
             try
             {
-                apiInstance.ApiAuthUserChangePasswordPut(body);
+                apiInstance.ApiAuthChangePasswordPut(body);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserChangePasswordPut: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthChangePasswordPut: " + e.Message );
             }
         }
     }
@@ -67,9 +67,9 @@ No authorization required
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthuserforgotpasswordpost"></a>
-# **ApiAuthUserForgotPasswordPost**
-> UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
+<a name="apiauthforgotpasswordpost"></a>
+# **ApiAuthForgotPasswordPost**
+> UserForgotPasswordResponse ApiAuthForgotPasswordPost (UserPasswordForgotResource body = null)
 
 
 
@@ -83,7 +83,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserForgotPasswordPostExample
+    public class ApiAuthForgotPasswordPostExample
     {
         public void main()
         {
@@ -92,12 +92,12 @@ namespace Example
 
             try
             {
-                UserForgotPasswordResponse result = apiInstance.ApiAuthUserForgotPasswordPost(body);
+                UserForgotPasswordResponse result = apiInstance.ApiAuthForgotPasswordPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserForgotPasswordPost: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthForgotPasswordPost: " + e.Message );
             }
         }
     }
@@ -124,9 +124,9 @@ No authorization required
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthuserresetpasswordpost"></a>
-# **ApiAuthUserResetPasswordPost**
-> void ApiAuthUserResetPasswordPost (UserPasswordResetResource body = null)
+<a name="apiauthresetpasswordpost"></a>
+# **ApiAuthResetPasswordPost**
+> void ApiAuthResetPasswordPost (UserPasswordResetResource body = null)
 
 
 
@@ -140,7 +140,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserResetPasswordPostExample
+    public class ApiAuthResetPasswordPostExample
     {
         public void main()
         {
@@ -149,11 +149,11 @@ namespace Example
 
             try
             {
-                apiInstance.ApiAuthUserResetPasswordPost(body);
+                apiInstance.ApiAuthResetPasswordPost(body);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserResetPasswordPost: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthResetPasswordPost: " + e.Message );
             }
         }
     }
@@ -180,9 +180,9 @@ No authorization required
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthusersigninpost"></a>
-# **ApiAuthUserSignInPost**
-> UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null)
+<a name="apiauthsigninpost"></a>
+# **ApiAuthSignInPost**
+> UserSignInResponse ApiAuthSignInPost (UserSignInResource body = null)
 
 
 
@@ -196,7 +196,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserSignInPostExample
+    public class ApiAuthSignInPostExample
     {
         public void main()
         {
@@ -205,12 +205,12 @@ namespace Example
 
             try
             {
-                UserSignInResponse result = apiInstance.ApiAuthUserSignInPost(body);
+                UserSignInResponse result = apiInstance.ApiAuthSignInPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserSignInPost: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthSignInPost: " + e.Message );
             }
         }
     }
@@ -237,9 +237,9 @@ No authorization required
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthusersignupconfirmget"></a>
-# **ApiAuthUserSignUpConfirmGet**
-> void ApiAuthUserSignUpConfirmGet (string token = null, string email = null)
+<a name="apiauthsignupconfirmget"></a>
+# **ApiAuthSignUpConfirmGet**
+> void ApiAuthSignUpConfirmGet (string token = null, string email = null)
 
 
 
@@ -253,7 +253,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserSignUpConfirmGetExample
+    public class ApiAuthSignUpConfirmGetExample
     {
         public void main()
         {
@@ -263,11 +263,11 @@ namespace Example
 
             try
             {
-                apiInstance.ApiAuthUserSignUpConfirmGet(token, email);
+                apiInstance.ApiAuthSignUpConfirmGet(token, email);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserSignUpConfirmGet: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthSignUpConfirmGet: " + e.Message );
             }
         }
     }
@@ -295,9 +295,9 @@ No authorization required
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthusersignuppost"></a>
-# **ApiAuthUserSignUpPost**
-> UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null)
+<a name="apiauthsignuppost"></a>
+# **ApiAuthSignUpPost**
+> UserSignUpResponse ApiAuthSignUpPost (UserSignUpResource body = null)
 
 
 
@@ -311,7 +311,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthUserSignUpPostExample
+    public class ApiAuthSignUpPostExample
     {
         public void main()
         {
@@ -320,12 +320,12 @@ namespace Example
 
             try
             {
-                UserSignUpResponse result = apiInstance.ApiAuthUserSignUpPost(body);
+                UserSignUpResponse result = apiInstance.ApiAuthSignUpPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthUserSignUpPost: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthSignUpPost: " + e.Message );
             }
         }
     }

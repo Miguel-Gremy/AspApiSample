@@ -61,7 +61,7 @@ namespace AspApiSample.Web.Controllers
             {
                 try
                 {
-                    await _authApi.ApiAuthUserChangePasswordPutAsync(
+                    await _authApi.ApiAuthChangePasswordPutAsync(
                         new UserPasswordChangeResource(model.EmailAddress, model.CurrentPassword,
                             model.NewPassword)
                     );

@@ -61,7 +61,7 @@ namespace AspApiSample.Web.Controllers
                     {
                         /* Try calling API with EmailAddress and Password provided by user */
                         var userSignInResponse =
-                            await _authApi.ApiAuthUserSignInPostAsync(userLoginResource);
+                            await _authApi.ApiAuthSignInPostAsync(userLoginResource);
                         /* If the API don't throw ApiException, user is well authenticated */
                         /* Create Cookies for the user */
                         var claims = new List<Claim>
@@ -129,7 +129,7 @@ namespace AspApiSample.Web.Controllers
             {
                 /* Getting reset Password token from the API for the entered Email */
                 var token = HttpUtility.HtmlDecode(
-                    (await _authApi.ApiAuthUserForgotPasswordPostAsync(
+                    (await _authApi.ApiAuthForgotPasswordPostAsync(
                         new UserPasswordForgotResource(model.Email)
                     )).Token.RemoveChar('\"')
                 );
@@ -185,7 +185,7 @@ namespace AspApiSample.Web.Controllers
                 try
                 {
                     /* Call the API to reset the password */
-                    await _authApi.ApiAuthUserResetPasswordPostAsync(
+                    await _authApi.ApiAuthResetPasswordPostAsync(
                         new UserPasswordResetResource(model.Email, model.Password, model.Token)
                     );
                     output = RedirectToAction("ResetPasswordConfirm", "Login");

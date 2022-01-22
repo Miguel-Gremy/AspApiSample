@@ -32,7 +32,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthUserChangePasswordPut (UserPasswordChangeResource body = null);
+        void ApiAuthChangePasswordPut (UserPasswordChangeResource body = null);
 
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null);
+        ApiResponse<Object> ApiAuthChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -53,7 +53,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserForgotPasswordResponse</returns>
-        UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null);
+        UserForgotPasswordResponse ApiAuthForgotPasswordPost (UserPasswordForgotResource body = null);
 
         /// <summary>
         /// 
@@ -64,7 +64,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserForgotPasswordResponse</returns>
-        ApiResponse<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null);
+        ApiResponse<UserForgotPasswordResponse> ApiAuthForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -74,7 +74,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthUserResetPasswordPost (UserPasswordResetResource body = null);
+        void ApiAuthResetPasswordPost (UserPasswordResetResource body = null);
 
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null);
+        ApiResponse<Object> ApiAuthResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -95,7 +95,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserSignInResponse</returns>
-        UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null);
+        UserSignInResponse ApiAuthSignInPost (UserSignInResource body = null);
 
         /// <summary>
         /// 
@@ -106,7 +106,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserSignInResponse</returns>
-        ApiResponse<UserSignInResponse> ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null);
+        ApiResponse<UserSignInResponse> ApiAuthSignInPostWithHttpInfo (UserSignInResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -117,7 +117,7 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthUserSignUpConfirmGet (string token = null, string email = null);
+        void ApiAuthSignUpConfirmGet (string token = null, string email = null);
 
         /// <summary>
         /// 
@@ -129,7 +129,7 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthUserSignUpConfirmGetWithHttpInfo (string token = null, string email = null);
+        ApiResponse<Object> ApiAuthSignUpConfirmGetWithHttpInfo (string token = null, string email = null);
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +139,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserSignUpResponse</returns>
-        UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null);
+        UserSignUpResponse ApiAuthSignUpPost (UserSignUpResource body = null);
 
         /// <summary>
         /// 
@@ -150,7 +150,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserSignUpResponse</returns>
-        ApiResponse<UserSignUpResponse> ApiAuthUserSignUpPostWithHttpInfo (UserSignUpResource body = null);
+        ApiResponse<UserSignUpResponse> ApiAuthSignUpPostWithHttpInfo (UserSignUpResource body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -162,7 +162,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserChangePasswordPutAsync (UserPasswordChangeResource body = null);
+        System.Threading.Tasks.Task ApiAuthChangePasswordPutAsync (UserPasswordChangeResource body = null);
 
         /// <summary>
         /// 
@@ -173,7 +173,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -183,7 +183,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserForgotPasswordResponse</returns>
-        System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostAsync (UserPasswordForgotResource body = null);
+        System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthForgotPasswordPostAsync (UserPasswordForgotResource body = null);
 
         /// <summary>
         /// 
@@ -194,7 +194,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserForgotPasswordResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthUserForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -204,7 +204,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserResetPasswordPostAsync (UserPasswordResetResource body = null);
+        System.Threading.Tasks.Task ApiAuthResetPasswordPostAsync (UserPasswordResetResource body = null);
 
         /// <summary>
         /// 
@@ -215,7 +215,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -225,7 +225,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserSignInResponse</returns>
-        System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null);
+        System.Threading.Tasks.Task<UserSignInResponse> ApiAuthSignInPostAsync (UserSignInResource body = null);
 
         /// <summary>
         /// 
@@ -236,7 +236,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthSignInPostAsyncWithHttpInfo (UserSignInResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -247,7 +247,7 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthUserSignUpConfirmGetAsync (string token = null, string email = null);
+        System.Threading.Tasks.Task ApiAuthSignUpConfirmGetAsync (string token = null, string email = null);
 
         /// <summary>
         /// 
@@ -259,7 +259,7 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null);
         /// <summary>
         /// 
         /// </summary>
@@ -269,7 +269,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserSignUpResponse</returns>
-        System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthUserSignUpPostAsync (UserSignUpResource body = null);
+        System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthSignUpPostAsync (UserSignUpResource body = null);
 
         /// <summary>
         /// 
@@ -280,7 +280,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserSignUpResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthUserSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null);
+        System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null);
         #endregion Asynchronous Operations
     }
 
@@ -398,9 +398,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void ApiAuthUserChangePasswordPut (UserPasswordChangeResource body = null)
+        public void ApiAuthChangePasswordPut (UserPasswordChangeResource body = null)
         {
-             ApiAuthUserChangePasswordPutWithHttpInfo(body);
+             ApiAuthChangePasswordPutWithHttpInfo(body);
         }
 
         /// <summary>
@@ -409,10 +409,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null)
+        public ApiResponse<Object> ApiAuthChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ChangePassword";
+            var localVarPath = "/api/Auth/ChangePassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -453,7 +453,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserChangePasswordPut", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthChangePasswordPut", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -468,9 +468,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserChangePasswordPutAsync (UserPasswordChangeResource body = null)
+        public async System.Threading.Tasks.Task ApiAuthChangePasswordPutAsync (UserPasswordChangeResource body = null)
         {
-             await ApiAuthUserChangePasswordPutAsyncWithHttpInfo(body);
+             await ApiAuthChangePasswordPutAsyncWithHttpInfo(body);
 
         }
 
@@ -480,10 +480,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ChangePassword";
+            var localVarPath = "/api/Auth/ChangePassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -524,7 +524,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserChangePasswordPut", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthChangePasswordPut", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -539,9 +539,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserForgotPasswordResponse</returns>
-        public UserForgotPasswordResponse ApiAuthUserForgotPasswordPost (UserPasswordForgotResource body = null)
+        public UserForgotPasswordResponse ApiAuthForgotPasswordPost (UserPasswordForgotResource body = null)
         {
-             ApiResponse<UserForgotPasswordResponse> localVarResponse = ApiAuthUserForgotPasswordPostWithHttpInfo(body);
+             ApiResponse<UserForgotPasswordResponse> localVarResponse = ApiAuthForgotPasswordPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -551,10 +551,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserForgotPasswordResponse</returns>
-        public ApiResponse< UserForgotPasswordResponse > ApiAuthUserForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null)
+        public ApiResponse< UserForgotPasswordResponse > ApiAuthForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ForgotPassword";
+            var localVarPath = "/api/Auth/ForgotPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -598,7 +598,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserForgotPasswordPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthForgotPasswordPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -613,9 +613,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserForgotPasswordResponse</returns>
-        public async System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthUserForgotPasswordPostAsync (UserPasswordForgotResource body = null)
+        public async System.Threading.Tasks.Task<UserForgotPasswordResponse> ApiAuthForgotPasswordPostAsync (UserPasswordForgotResource body = null)
         {
-             ApiResponse<UserForgotPasswordResponse> localVarResponse = await ApiAuthUserForgotPasswordPostAsyncWithHttpInfo(body);
+             ApiResponse<UserForgotPasswordResponse> localVarResponse = await ApiAuthForgotPasswordPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -626,10 +626,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserForgotPasswordResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthUserForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ForgotPassword";
+            var localVarPath = "/api/Auth/ForgotPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -673,7 +673,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserForgotPasswordPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthForgotPasswordPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -688,9 +688,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void ApiAuthUserResetPasswordPost (UserPasswordResetResource body = null)
+        public void ApiAuthResetPasswordPost (UserPasswordResetResource body = null)
         {
-             ApiAuthUserResetPasswordPostWithHttpInfo(body);
+             ApiAuthResetPasswordPostWithHttpInfo(body);
         }
 
         /// <summary>
@@ -699,10 +699,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null)
+        public ApiResponse<Object> ApiAuthResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ResetPassword";
+            var localVarPath = "/api/Auth/ResetPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -743,7 +743,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserResetPasswordPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthResetPasswordPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -758,9 +758,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserResetPasswordPostAsync (UserPasswordResetResource body = null)
+        public async System.Threading.Tasks.Task ApiAuthResetPasswordPostAsync (UserPasswordResetResource body = null)
         {
-             await ApiAuthUserResetPasswordPostAsyncWithHttpInfo(body);
+             await ApiAuthResetPasswordPostAsyncWithHttpInfo(body);
 
         }
 
@@ -770,10 +770,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/ResetPassword";
+            var localVarPath = "/api/Auth/ResetPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -814,7 +814,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserResetPasswordPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthResetPasswordPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -829,9 +829,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserSignInResponse</returns>
-        public UserSignInResponse ApiAuthUserSignInPost (UserSignInResource body = null)
+        public UserSignInResponse ApiAuthSignInPost (UserSignInResource body = null)
         {
-             ApiResponse<UserSignInResponse> localVarResponse = ApiAuthUserSignInPostWithHttpInfo(body);
+             ApiResponse<UserSignInResponse> localVarResponse = ApiAuthSignInPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -841,10 +841,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserSignInResponse</returns>
-        public ApiResponse< UserSignInResponse > ApiAuthUserSignInPostWithHttpInfo (UserSignInResource body = null)
+        public ApiResponse< UserSignInResponse > ApiAuthSignInPostWithHttpInfo (UserSignInResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignIn";
+            var localVarPath = "/api/Auth/SignIn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -888,7 +888,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignInPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignInPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -903,9 +903,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserSignInResponse</returns>
-        public async System.Threading.Tasks.Task<UserSignInResponse> ApiAuthUserSignInPostAsync (UserSignInResource body = null)
+        public async System.Threading.Tasks.Task<UserSignInResponse> ApiAuthSignInPostAsync (UserSignInResource body = null)
         {
-             ApiResponse<UserSignInResponse> localVarResponse = await ApiAuthUserSignInPostAsyncWithHttpInfo(body);
+             ApiResponse<UserSignInResponse> localVarResponse = await ApiAuthSignInPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -916,10 +916,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserSignInResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthUserSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignIn";
+            var localVarPath = "/api/Auth/SignIn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -963,7 +963,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignInPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignInPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -979,9 +979,9 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns></returns>
-        public void ApiAuthUserSignUpConfirmGet (string token = null, string email = null)
+        public void ApiAuthSignUpConfirmGet (string token = null, string email = null)
         {
-             ApiAuthUserSignUpConfirmGetWithHttpInfo(token, email);
+             ApiAuthSignUpConfirmGetWithHttpInfo(token, email);
         }
 
         /// <summary>
@@ -991,10 +991,10 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthUserSignUpConfirmGetWithHttpInfo (string token = null, string email = null)
+        public ApiResponse<Object> ApiAuthSignUpConfirmGetWithHttpInfo (string token = null, string email = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUpConfirm";
+            var localVarPath = "/api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1026,7 +1026,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1042,9 +1042,9 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthUserSignUpConfirmGetAsync (string token = null, string email = null)
+        public async System.Threading.Tasks.Task ApiAuthSignUpConfirmGetAsync (string token = null, string email = null)
         {
-             await ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo(token, email);
+             await ApiAuthSignUpConfirmGetAsyncWithHttpInfo(token, email);
 
         }
 
@@ -1055,10 +1055,10 @@ namespace IO.Swagger.Api
         /// <param name="token"> (optional)</param>
         /// <param name="email"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthUserSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmGetAsyncWithHttpInfo (string token = null, string email = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUpConfirm";
+            var localVarPath = "/api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1090,7 +1090,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1105,9 +1105,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>UserSignUpResponse</returns>
-        public UserSignUpResponse ApiAuthUserSignUpPost (UserSignUpResource body = null)
+        public UserSignUpResponse ApiAuthSignUpPost (UserSignUpResource body = null)
         {
-             ApiResponse<UserSignUpResponse> localVarResponse = ApiAuthUserSignUpPostWithHttpInfo(body);
+             ApiResponse<UserSignUpResponse> localVarResponse = ApiAuthSignUpPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -1117,10 +1117,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of UserSignUpResponse</returns>
-        public ApiResponse< UserSignUpResponse > ApiAuthUserSignUpPostWithHttpInfo (UserSignUpResource body = null)
+        public ApiResponse< UserSignUpResponse > ApiAuthSignUpPostWithHttpInfo (UserSignUpResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUp";
+            var localVarPath = "/api/Auth/SignUp";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1164,7 +1164,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1179,9 +1179,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of UserSignUpResponse</returns>
-        public async System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthUserSignUpPostAsync (UserSignUpResource body = null)
+        public async System.Threading.Tasks.Task<UserSignUpResponse> ApiAuthSignUpPostAsync (UserSignUpResource body = null)
         {
-             ApiResponse<UserSignUpResponse> localVarResponse = await ApiAuthUserSignUpPostAsyncWithHttpInfo(body);
+             ApiResponse<UserSignUpResponse> localVarResponse = await ApiAuthSignUpPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -1192,10 +1192,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (UserSignUpResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthUserSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null)
         {
 
-            var localVarPath = "/api/Auth/User/SignUp";
+            var localVarPath = "/api/Auth/SignUp";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1239,7 +1239,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthUserSignUpPost", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
