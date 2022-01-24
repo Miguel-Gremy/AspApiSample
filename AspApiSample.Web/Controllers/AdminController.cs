@@ -9,7 +9,7 @@ namespace AspApiSample.Web.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        private readonly IAdminApi _adminApi;HEADER
+        private readonly IAdminApi _adminApi;
 
         public AdminController(IAdminApi adminApi)
         {
