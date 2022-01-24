@@ -16,12 +16,12 @@ namespace AspApiSample.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly RoleManager<IdentityRole<long>> _roleManager;
+        private readonly RoleManager<Role> _roleManager;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
 
         public AuthController(UserManager<User> userManager,
-            RoleManager<IdentityRole<long>> roleManager, SignInManager<User> signInManager,
+            RoleManager<Role> roleManager, SignInManager<User> signInManager,
             IMapper mapper)
         {
             _userManager = userManager;

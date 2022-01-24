@@ -14,9 +14,9 @@ namespace AspApiSample.API.Controllers
     public class AdminController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole<long>> _roleManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public AdminController(UserManager<User> userManager, RoleManager<IdentityRole<long>> roleManager)
+        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -86,7 +86,7 @@ namespace AspApiSample.API.Controllers
             if (string.IsNullOrEmpty(resource.RoleName))
                 return BadRequest("Role name should be provided");
 
-            var newRole = new IdentityRole<long>
+            var newRole = new Role
             {
                 Name = resource.RoleName
             };

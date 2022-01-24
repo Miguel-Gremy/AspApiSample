@@ -33,7 +33,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="RoleGetRolesResponse" /> class.
         /// </summary>
         /// <param name="roles">roles.</param>
-        public RoleGetRolesResponse(List<Int64IdentityRole> roles = default(List<Int64IdentityRole>))
+        public RoleGetRolesResponse(List<Role> roles = default(List<Role>))
         {
             this.Roles = roles;
         }
@@ -42,7 +42,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Roles
         /// </summary>
         [DataMember(Name="roles", EmitDefaultValue=false)]
-        public List<Int64IdentityRole> Roles { get; set; }
+        public List<Role> Roles { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

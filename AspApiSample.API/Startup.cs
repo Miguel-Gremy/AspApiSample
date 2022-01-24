@@ -51,7 +51,7 @@ namespace AspApiSample.API
                         $"The database provider {databaseProvider} is not supported");
             }
 
-            services.AddIdentity<User, IdentityRole<long>>(options =>
+            services.AddIdentity<User, Role>(options =>
                 {
                     /* Password configuration */
                     options.Password.RequireDigit = true;

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Int64IdentityRole
+# IO.Swagger.Model.Role
 ## Properties
 
 Name | Type | Description | Notes

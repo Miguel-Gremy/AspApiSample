@@ -1,9 +1,10 @@
+using AspApiSample.Lib.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace AspApiSample.API.Responses.Admin
 {
     public class RoleGetRoleResponse
     {
-        public IdentityRole<long> Role { get; set; }
+        public Role Role { get; set; }
     }
 }

@@ -63,70 +63,70 @@ namespace IO.Swagger.Test
         }
 
         /// <summary>
-        /// Test ApiAuthUserChangePasswordPut
+        /// Test ApiAuthChangePasswordPut
         /// </summary>
         [Test]
-        public void ApiAuthUserChangePasswordPutTest()
+        public void ApiAuthChangePasswordPutTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //UserPasswordChangeResource body = null;
-            //instance.ApiAuthUserChangePasswordPut(body);
+            //instance.ApiAuthChangePasswordPut(body);
             
         }
         /// <summary>
-        /// Test ApiAuthUserForgotPasswordPost
+        /// Test ApiAuthForgotPasswordPost
         /// </summary>
         [Test]
-        public void ApiAuthUserForgotPasswordPostTest()
+        public void ApiAuthForgotPasswordPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //UserPasswordForgotResource body = null;
-            //var response = instance.ApiAuthUserForgotPasswordPost(body);
+            //var response = instance.ApiAuthForgotPasswordPost(body);
             //Assert.IsInstanceOf<UserForgotPasswordResponse> (response, "response is UserForgotPasswordResponse");
         }
         /// <summary>
-        /// Test ApiAuthUserResetPasswordPost
+        /// Test ApiAuthResetPasswordPost
         /// </summary>
         [Test]
-        public void ApiAuthUserResetPasswordPostTest()
+        public void ApiAuthResetPasswordPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //UserPasswordResetResource body = null;
-            //instance.ApiAuthUserResetPasswordPost(body);
+            //instance.ApiAuthResetPasswordPost(body);
             
         }
         /// <summary>
-        /// Test ApiAuthUserSignInPost
+        /// Test ApiAuthSignInPost
         /// </summary>
         [Test]
-        public void ApiAuthUserSignInPostTest()
+        public void ApiAuthSignInPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //UserSignInResource body = null;
-            //var response = instance.ApiAuthUserSignInPost(body);
+            //var response = instance.ApiAuthSignInPost(body);
             //Assert.IsInstanceOf<UserSignInResponse> (response, "response is UserSignInResponse");
         }
         /// <summary>
-        /// Test ApiAuthUserSignUpConfirmGet
+        /// Test ApiAuthSignUpConfirmGet
         /// </summary>
         [Test]
-        public void ApiAuthUserSignUpConfirmGetTest()
+        public void ApiAuthSignUpConfirmGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string token = null;
             //string email = null;
-            //instance.ApiAuthUserSignUpConfirmGet(token, email);
+            //instance.ApiAuthSignUpConfirmGet(token, email);
             
         }
         /// <summary>
-        /// Test ApiAuthUserSignUpPost
+        /// Test ApiAuthSignUpPost
         /// </summary>
         [Test]
-        public void ApiAuthUserSignUpPostTest()
+        public void ApiAuthSignUpPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //UserSignUpResource body = null;
-            //var response = instance.ApiAuthUserSignUpPost(body);
+            //var response = instance.ApiAuthSignUpPost(body);
             //Assert.IsInstanceOf<UserSignUpResponse> (response, "response is UserSignUpResponse");
         }
     }

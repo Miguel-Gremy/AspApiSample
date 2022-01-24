@@ -24,19 +24,19 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Int64IdentityRole
+    /// Role
     /// </summary>
     [DataContract]
-        public partial class Int64IdentityRole :  IEquatable<Int64IdentityRole>, IValidatableObject
+        public partial class Role :  IEquatable<Role>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Int64IdentityRole" /> class.
+        /// Initializes a new instance of the <see cref="Role" /> class.
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
         /// <param name="normalizedName">normalizedName.</param>
         /// <param name="concurrencyStamp">concurrencyStamp.</param>
-        public Int64IdentityRole(long? id = default(long?), string name = default(string), string normalizedName = default(string), string concurrencyStamp = default(string))
+        public Role(long? id = default(long?), string name = default(string), string normalizedName = default(string), string concurrencyStamp = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -75,7 +75,7 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Int64IdentityRole {\n");
+            sb.Append("class Role {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NormalizedName: ").Append(NormalizedName).Append("\n");
@@ -100,15 +100,15 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Int64IdentityRole);
+            return this.Equals(input as Role);
         }
 
         /// <summary>
-        /// Returns true if Int64IdentityRole instances are equal
+        /// Returns true if Role instances are equal
         /// </summary>
-        /// <param name="input">Instance of Int64IdentityRole to be compared</param>
+        /// <param name="input">Instance of Role to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Int64IdentityRole input)
+        public bool Equals(Role input)
         {
             if (input == null)
                 return false;

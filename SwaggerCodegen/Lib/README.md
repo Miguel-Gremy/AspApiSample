@@ -113,7 +113,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Model.EmailSendResource](docs/EmailSendResource.md)
- - [Model.Int64IdentityRole](docs/Int64IdentityRole.md)
+ - [Model.Role](docs/Role.md)
  - [Model.RoleAddUserResource](docs/RoleAddUserResource.md)
  - [Model.RoleCreateResource](docs/RoleCreateResource.md)
  - [Model.RoleGetRoleResponse](docs/RoleGetRoleResponse.md)
