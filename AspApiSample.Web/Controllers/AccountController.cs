@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AspApiSample.Web.Extensions;
 using AspApiSample.Web.Models.Account;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
@@ -74,7 +75,7 @@ namespace AspApiSample.Web.Controllers
                     model.CurrentPassword = string.Empty;
                     model.NewPassword = string.Empty;
                     model.ConfirmNewPassword = string.Empty;
-                    model.Errors = new List<string> { "Password incorrect" };
+                    model.Errors = new List<string> { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
                     output = View(model);
                 }
             }
