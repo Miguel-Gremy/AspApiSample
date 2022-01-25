@@ -91,6 +91,7 @@ namespace AspApiSample.Web.Controllers
                 {
                     model.Password = string.Empty;
                     model.Errors = new List<string> { "Email or password is empty" };
+                    output = View("Index", model);
                 }
             }
             /* If the ModelState is not valid, then redirect to the page */
@@ -98,6 +99,7 @@ namespace AspApiSample.Web.Controllers
             {
                 model.Password = string.Empty;
                 model.Errors = new List<string> { "Error while sending the request" };
+                output = View("Index", model);
             }
 
             return output;

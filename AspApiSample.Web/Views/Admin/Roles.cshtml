@@ -3,5 +3,33 @@
     ViewData["Title"] = "Roles";
 }
 
-<h1>Roles</h1>
+@if (Model.Errors is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var message in Model.Errors)
+        {
+            <p>@message</p>
+        }
+    </div>
+}
 
+<table class="table table-responsive text-center">
+    <caption>Roles</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.Roles)
+        {
+            <tr>
+                <th scope="row">@role.Id</th>
+                <td>@role.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-area="" asp-controller="Admin" asp-action="AddRole">Add role</a>
