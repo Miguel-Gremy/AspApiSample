@@ -8,6 +8,7 @@ namespace AspApiSample.Web.Models.Login
         [EmailAddress]
         [Display(Name = "Email address", Prompt = "example@address.com")]
         public string Email { get; set; } = string.Empty;
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password", Prompt = "Password")]

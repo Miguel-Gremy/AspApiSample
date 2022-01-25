@@ -4,14 +4,8 @@
         <Reference Include="IO.Swagger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\SwaggerCodegen\Lib\bin\IO.Swagger.dll</HintPath>
         </Reference>
-        <Reference Include="JsonSubTypes, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\SwaggerCodegen\Lib\bin\JsonSubTypes.dll</HintPath>
-        </Reference>
         <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
             <HintPath>..\SwaggerCodegen\Lib\bin\Newtonsoft.Json.dll</HintPath>
-        </Reference>
-        <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\SwaggerCodegen\Lib\bin\RestSharp.dll</HintPath>
         </Reference>
     </ItemGroup>
 

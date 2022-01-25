@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using AspApiSample.Web.Extensions;
 using AspApiSample.Web.Models.Login;
 using IO.Swagger.Api;
@@ -13,7 +14,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RestSharp.Contrib;
 
 namespace AspApiSample.Web.Controllers
 {
@@ -165,7 +165,6 @@ namespace AspApiSample.Web.Controllers
             IActionResult output = null;
 
             if (ModelState.IsValid)
-            {
                 output = View(new ResetPasswordModel
                 {
                     Email = email,
@@ -173,19 +172,16 @@ namespace AspApiSample.Web.Controllers
                     Password = string.Empty,
                     ConfirmPassword = string.Empty
                 });
-            }
             else
-            {
                 RedirectToAction("Index", "Login", new IndexModel
                 {
-                    Errors = ModelState.GetErrorsAsStringTable(),
+                    Errors = ModelState.GetErrorsAsStringTable()
                 });
-            }
 
             return output;
         }
 
-    [AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)

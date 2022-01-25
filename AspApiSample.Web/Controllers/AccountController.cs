@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AspApiSample.Web.Extensions;
@@ -9,16 +8,14 @@ using IO.Swagger.Client;
 using IO.Swagger.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace AspApiSample.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly IAuthApi _authApi;
         private readonly IAdminApi _adminApi;
+        private readonly IAuthApi _authApi;
 
         public AccountController(IAuthApi authApi, IAdminApi adminApi)
         {
@@ -32,12 +29,14 @@ namespace AspApiSample.Web.Controllers
             if (model is null)
                 model = new IndexModel
                 {
-                    User = (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email)))
+                    User = (await _adminApi.ApiAdminUserUserEmailGetAsync(
+                            User.FindFirstValue(ClaimTypes.Email)))
                         .User
                 };
             else
                 model.User ??=
-                    (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User;
+                    (await _adminApi.ApiAdminUserUserEmailGetAsync(
+                        User.FindFirstValue(ClaimTypes.Email))).User;
 
             return View(model);
         }
@@ -48,7 +47,8 @@ namespace AspApiSample.Web.Controllers
             var model = new ChangePasswordModel
             {
                 EmailAddress =
-                    (await _adminApi.ApiAdminUserUserEmailGetAsync(User.FindFirstValue(ClaimTypes.Email))).User
+                    (await _adminApi.ApiAdminUserUserEmailGetAsync(
+                        User.FindFirstValue(ClaimTypes.Email))).User
                     .Email
             };
 
@@ -61,7 +61,8 @@ namespace AspApiSample.Web.Controllers
         {
             IActionResult output = null;
 
-            if (ModelState.IsValid){
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     await _authApi.ApiAuthChangePasswordPutAsync(
@@ -69,7 +70,7 @@ namespace AspApiSample.Web.Controllers
                             model.NewPassword)
                     );
                     var outputModel = new IndexModel
-                    { Messages = new List<string> { "Password has been changed" } };
+                        { Messages = new List<string> { "Password has been changed" } };
                     output = RedirectToAction("Index", "Account", outputModel);
                 }
                 catch (ApiException e)

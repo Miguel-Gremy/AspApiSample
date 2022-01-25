@@ -16,19 +16,19 @@
 <table class="table table-responsive text-center">
     <caption>Roles</caption>
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-        </tr>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var role in Model.Roles)
-        {
-            <tr>
-                <th scope="row">@role.Id</th>
-                <td>@role.Name</td>
-            </tr>
-        }
+    @foreach (var role in Model.Roles)
+    {
+        <tr>
+            <th scope="row">@role.Id</th>
+            <td>@role.Name</td>
+        </tr>
+    }
     </tbody>
 </table>
 

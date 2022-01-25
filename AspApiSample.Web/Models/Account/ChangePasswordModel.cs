@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspApiSample.Web.Models.Account
 {
@@ -21,8 +21,6 @@ namespace AspApiSample.Web.Models.Account
         [Compare(nameof(NewPassword), ErrorMessage = "Passwords does not match")]
         public string ConfirmNewPassword { get; set; }
 
-        [Required]
-        [HiddenInput]
-        public string EmailAddress { get; set; }
+        [Required] [HiddenInput] public string EmailAddress { get; set; }
     }
 }

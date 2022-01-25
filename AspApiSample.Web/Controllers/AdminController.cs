@@ -36,7 +36,7 @@ namespace AspApiSample.Web.Controllers
                 var usersGetResponse = await _adminApi.ApiAdminUsersGetAsync();
                 var model = new UsersModel
                 {
-                    Users = usersGetResponse.Users,
+                    Users = usersGetResponse.Users
                 };
                 output = View(model);
             }
@@ -44,7 +44,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new UsersModel
                 {
-                    Errors = e.GetDetailTable(),
+                    Errors = e.GetDetailTable()
                 };
                 output = View(model);
             }
@@ -62,7 +62,7 @@ namespace AspApiSample.Web.Controllers
                 var rolesGetResponse = await _adminApi.ApiAdminRolesGetAsync();
                 var model = new RolesModel
                 {
-                    Roles = rolesGetResponse.Roles,
+                    Roles = rolesGetResponse.Roles
                 };
                 output = View(model);
             }
@@ -70,7 +70,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new RolesModel
                 {
-                    Errors = e.GetDetailTable(),
+                    Errors = e.GetDetailTable()
                 };
                 output = View(model);
             }
@@ -83,7 +83,7 @@ namespace AspApiSample.Web.Controllers
         {
             return View(new AddRoleModel
             {
-                RoleName = string.Empty,
+                RoleName = string.Empty
             });
         }
 
@@ -97,9 +97,10 @@ namespace AspApiSample.Web.Controllers
             {
                 try
                 {
-                    await _adminApi.ApiAdminRolesCreatePostAsync(new RoleCreateResource(model.RoleName));
+                    await _adminApi.ApiAdminRolesCreatePostAsync(
+                        new RoleCreateResource(model.RoleName));
                     var outputModel = new IndexModel
-                    { Messages = new List<string> { "Role has been added" } };
+                        { Messages = new List<string> { "Role has been added" } };
                     output = RedirectToAction("Index", "Admin", outputModel);
                 }
                 catch (ApiException e)
