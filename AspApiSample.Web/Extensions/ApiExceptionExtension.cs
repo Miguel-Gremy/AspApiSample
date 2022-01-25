@@ -9,14 +9,14 @@ namespace AspApiSample.Web.Extensions
 {
     public static class ApiExceptionExtension
     {
-        public static string GetDetailString(this ApiException e)
+        private static string GetDetailString(this ApiException e)
         {
-            return new string(JObject.Parse(e.ErrorContent.ToString()).detail.ToString()).RemoveChar('\"');
+            return new string(e.ErrorContent).RemoveChar('\"');
         }
 
-        public static string[] GetDetailTable(this ApiException e)
+        public static IEnumerable<string> GetDetailTable(this ApiException e)
         {
-            return new string(JObject.Parse(e.ErrorContent.ToString()).detail.ToString()).RemoveChar('\"').Split("\r\n");
+            return e.GetDetailString().Split("\r\n");
         }
     }
 }

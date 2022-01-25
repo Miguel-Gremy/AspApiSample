@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using AspApiSample.API.Resources.Admin;
 using AspApiSample.API.Responses.Admin;
@@ -36,7 +37,7 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
-            if (user is null) return Problem("User not found");
+            if (user is null) return NotFound("User not found");
 
             return Ok(new UserGetUserResponse { User = user });
         }
@@ -52,7 +53,7 @@ namespace AspApiSample.API.Controllers
 
             var user = await _userManager.FindByEmailAsync(userName);
 
-            if (user is null) return Problem("User not found");
+            if (user is null) return NotFound("User not found");
 
             var userDeleteResult = await _userManager.DeleteAsync(user);
 
@@ -61,14 +62,9 @@ namespace AspApiSample.API.Controllers
                 return Ok();
             }
 
-            var errorString = string.Empty;
+            var errorString = userDeleteResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
-            foreach (var error in userDeleteResult.Errors)
-            {
-                errorString += $"{error.Code} : {error.Description} \r\n ";
-            }
-
-            return Problem(errorString);
+            return BadRequest(errorString);
         }
 
         [HttpGet]
@@ -84,7 +80,7 @@ namespace AspApiSample.API.Controllers
         {
             var role = await _roleManager.FindByNameAsync(roleName);
 
-            if (role is null) return Problem("User not found");
+            if (role is null) return BadRequest("User not found");
 
             return Ok(new RoleGetRoleResponse { Role = await _roleManager.FindByNameAsync(roleName) });
         }
@@ -108,14 +104,9 @@ namespace AspApiSample.API.Controllers
                 return Ok();
             }
 
-            var errorString = string.Empty;
+            var errorString = roleCreateResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
-            foreach (var error in roleCreateResult.Errors)
-            {
-                errorString += $"{error.Code} : {error.Description} \r\n ";
-            }
-
-            return Problem(errorString);
+            return BadRequest(errorString);
         }
 
         [HttpDelete]
@@ -127,7 +118,7 @@ namespace AspApiSample.API.Controllers
 
             var role = await _roleManager.FindByNameAsync(roleName);
 
-            if (role is null) return Problem("Role not found");
+            if (role is null) return NotFound("Role not found");
 
             var roleDeleteResult = await _roleManager.DeleteAsync(role);
 
@@ -136,14 +127,9 @@ namespace AspApiSample.API.Controllers
                 return Ok();
             }
 
-            var errorString = string.Empty;
+            var errorString = roleDeleteResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
-            foreach (var error in roleDeleteResult.Errors)
-            {
-                errorString += $"{error.Code} : {error.Description} \r\n ";
-            }
-
-            return Problem(errorString);
+            return BadRequest(errorString);
         }
 
         [HttpPost]
@@ -154,8 +140,8 @@ namespace AspApiSample.API.Controllers
             var user = await _userManager.FindByEmailAsync(userEmail);
             var role = await _roleManager.FindByNameAsync(resource.RoleName);
 
-            if (user is null) return Problem("User not found");
-            if (role is null) return Problem("Role not found");
+            if (user is null) return NotFound("User not found");
+            if (role is null) return NotFound("Role not found");
 
             var userAddRoleResult = await _userManager.AddToRoleAsync(user, resource.RoleName);
 
@@ -164,14 +150,9 @@ namespace AspApiSample.API.Controllers
                 return Ok();
             }
 
-            var errorString = string.Empty;
+            var errorString = userAddRoleResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
-            foreach (var error in userAddRoleResult.Errors)
-            {
-                errorString += $"{error.Code} : {error.Description} \r\n ";
-            }
-
-            return Problem(errorString);
+            return BadRequest(errorString);
         }
     }
 }
