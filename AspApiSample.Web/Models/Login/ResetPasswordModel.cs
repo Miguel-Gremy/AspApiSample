@@ -10,9 +10,10 @@ namespace AspApiSample.Web.Models.Login
         [Display(Name = "Password", Prompt = "Password")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         [Display(Name = "Password", Prompt = "Password")]
+        [Compare(nameof(Password), ErrorMessage = "Passwords does not match")]
         public string ConfirmPassword { get; set; }
 
         [Required]

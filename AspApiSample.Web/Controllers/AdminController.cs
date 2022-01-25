@@ -95,33 +95,24 @@ namespace AspApiSample.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                if (!string.IsNullOrEmpty(model.RoleName))
+                try
                 {
-                    try
-                    {
-                        await _adminApi.ApiAdminRolesCreatePostAsync(new RoleCreateResource(model.RoleName));
-                        var outputModel = new IndexModel
-                        { Messages = new List<string> { "Role has been added" } };
-                        output = RedirectToAction("Index", "Admin", outputModel);
-                    }
-                    catch (ApiException e)
-                    {
-                        model.RoleName = string.Empty;
-                        model.Errors = new List<string>(e.GetDetailTable());
-                        output = View("AddRole", model);
-                    }
+                    await _adminApi.ApiAdminRolesCreatePostAsync(new RoleCreateResource(model.RoleName));
+                    var outputModel = new IndexModel
+                    { Messages = new List<string> { "Role has been added" } };
+                    output = RedirectToAction("Index", "Admin", outputModel);
                 }
-                else
+                catch (ApiException e)
                 {
                     model.RoleName = string.Empty;
-                    model.Errors = new List<string> { "Role name is empty" };
+                    model.Errors = new List<string>(e.GetDetailTable());
                     output = View("AddRole", model);
                 }
             }
             else
             {
                 model.RoleName = string.Empty;
-                model.Errors = new List<string> { "Error while sending the request" };
+                model.Errors = new List<string> ( ModelState.GetErrorsAsStringTable());
                 output = View("AddRole", model);
             }
 

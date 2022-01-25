@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AspApiSample.Web.Extensions;
@@ -60,8 +61,7 @@ namespace AspApiSample.Web.Controllers
         {
             IActionResult output = null;
 
-            if (model.NewPassword.Equals(model.ConfirmNewPassword))
-            {
+            if (ModelState.IsValid){
                 try
                 {
                     await _authApi.ApiAuthChangePasswordPutAsync(
@@ -83,12 +83,10 @@ namespace AspApiSample.Web.Controllers
             }
             else
             {
-                model.CurrentPassword = string.Empty;
                 model.NewPassword = string.Empty;
-                model.ConfirmNewPassword = string.Empty;
-                model.Errors = new List<string>
-                    { "New password and confirm new password are not the same" };
-                output = View(model);
+                model.CurrentPassword = string.Empty;
+                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
+                output = View("ChangePassword", model);
             }
 
             return output;

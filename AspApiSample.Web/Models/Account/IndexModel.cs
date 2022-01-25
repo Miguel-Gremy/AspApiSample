@@ -6,7 +6,9 @@ namespace AspApiSample.Web.Models.Account
 {
     public class IndexModel : ModelBase
     {
-        [Required] public User User { get; set; }
+        [Required]
+        [Display(Name = "Users", Prompt = "Users")]
+        public User User { get; set; }
 
         public ICollection<string> Messages { get; set; }
     }

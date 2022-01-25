@@ -52,53 +52,41 @@ namespace AspApiSample.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                /* Check if EmailAddress and Password are empty or not */
-                if (!string.IsNullOrEmpty(model.Email) && !string.IsNullOrEmpty(model.Password))
+                /* If not empty, create the object we have to send to the API to login in application */
+                var userLoginResource = new UserSignInResource(model.Email, model.Password);
+                try
                 {
-                    /* If not empty, create the object we have to send to the API to login in application */
-                    var userLoginResource = new UserSignInResource(model.Email, model.Password);
-                    try
+                    /* Try calling API with EmailAddress and Password provided by user */
+                    var userSignInResponse =
+                        await _authApi.ApiAuthSignInPostAsync(userLoginResource);
+                    /* If the API don't throw ApiException, user is well authenticated */
+                    /* Create Cookies for the user */
+                    var claims = new List<Claim>
                     {
-                        /* Try calling API with EmailAddress and Password provided by user */
-                        var userSignInResponse =
-                            await _authApi.ApiAuthSignInPostAsync(userLoginResource);
-                        /* If the API don't throw ApiException, user is well authenticated */
-                        /* Create Cookies for the user */
-                        var claims = new List<Claim>
-                        {
-                            new(ClaimTypes.Email, model.Email)
-                        };
-                        claims.AddRange(userSignInResponse.Roles.Select(role =>
-                            new Claim(ClaimTypes.Role, role)));
-                        var claimsIdentity = new ClaimsIdentity(claims,
-                            CookieAuthenticationDefaults.AuthenticationScheme);
-                        /* Sign in user in the application */
-                        await HttpContext.SignInAsync(
-                            CookieAuthenticationDefaults.AuthenticationScheme,
-                            new ClaimsPrincipal(claimsIdentity));
-                        output = RedirectToAction("Index", "Home");
-                    }
-                    /* If catching ApiException, the user cannot authenticate */
-                    catch (ApiException e)
-                    {
-                        model.Password = string.Empty;
-                        model.Errors = new List<string>(e.GetDetailTable());
-                        output = View("Index", model);
-                    }
+                        new(ClaimTypes.Email, model.Email)
+                    };
+                    claims.AddRange(userSignInResponse.Roles.Select(role =>
+                        new Claim(ClaimTypes.Role, role)));
+                    var claimsIdentity = new ClaimsIdentity(claims,
+                        CookieAuthenticationDefaults.AuthenticationScheme);
+                    /* Sign in user in the application */
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity));
+                    output = RedirectToAction("Index", "Home");
                 }
-                /* If EmailAddress or Password is empty, the user cannot authenticate */
-                else
+                /* If catching ApiException, the user cannot authenticate */
+                catch (ApiException e)
                 {
                     model.Password = string.Empty;
-                    model.Errors = new List<string> { "Email or password is empty" };
+                    model.Errors = new List<string>(e.GetDetailTable());
                     output = View("Index", model);
                 }
             }
-            /* If the ModelState is not valid, then redirect to the page */
             else
             {
                 model.Password = string.Empty;
-                model.Errors = new List<string> { "Error while sending the request" };
+                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
                 output = View("Index", model);
             }
 
@@ -127,27 +115,35 @@ namespace AspApiSample.Web.Controllers
         {
             IActionResult output = null;
 
-            try
+            if (ModelState.IsValid)
             {
-                /* Getting reset Password token from the API for the entered Email */
-                var token = HttpUtility.HtmlDecode(
-                    (await _authApi.ApiAuthForgotPasswordPostAsync(
-                        new UserPasswordForgotResource(model.Email)
-                    )).Token.RemoveChar('\"')
-                );
-                /* Preparing the callback Url to enter a new Password */
-                var callback = Url.Action("ResetPassword", "Login",
-                    new { token, email = model.Email }, Request.Scheme);
-                /* Call the API to send the mail */
-                await _mailApi.ApiMailSendPostAsync(new EmailSendResource(model.Email,
-                    "Reset password", callback));
-                output = RedirectToAction("ForgotPasswordConfirm", "Login",
-                    new ForgotPasswordConfirmModel { Email = model.Email });
+                try
+                {
+                    /* Getting reset Password token from the API for the entered Email */
+                    var token = HttpUtility.HtmlDecode(
+                        (await _authApi.ApiAuthForgotPasswordPostAsync(
+                            new UserPasswordForgotResource(model.Email)
+                        )).Token.RemoveChar('\"')
+                    );
+                    /* Preparing the callback Url to enter a new Password */
+                    var callback = Url.Action("ResetPassword", "Login",
+                        new { token, email = model.Email }, Request.Scheme);
+                    /* Call the API to send the mail */
+                    await _mailApi.ApiMailSendPostAsync(new EmailSendResource(model.Email,
+                        "Reset password", callback));
+                    output = RedirectToAction("ForgotPasswordConfirm", "Login",
+                        new ForgotPasswordConfirmModel { Email = model.Email });
+                }
+                catch (ApiException e)
+                {
+                    /* If catching ApiException, display the error from the API */
+                    model.Errors = new List<string>(e.GetDetailTable());
+                    output = View(model);
+                }
             }
-            catch (ApiException e)
+            else
             {
-                /* If catching ApiException, display the error from the API */
-                model.Errors = new List<string>(e.GetDetailTable());
+                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
                 output = View(model);
             }
 
@@ -181,7 +177,7 @@ namespace AspApiSample.Web.Controllers
         {
             IActionResult output = null;
 
-            if (model.Password.Equals(model.ConfirmPassword))
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -204,8 +200,7 @@ namespace AspApiSample.Web.Controllers
             {
                 model.Password = string.Empty;
                 model.ConfirmPassword = string.Empty;
-                model.Errors = new List<string>
-                    { "Password and confirm password are not the same" };
+                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
                 output = View(model);
             }
 

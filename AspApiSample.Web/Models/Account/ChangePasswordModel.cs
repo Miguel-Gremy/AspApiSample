@@ -17,9 +17,8 @@ namespace AspApiSample.Web.Models.Account
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare(nameof(NewPassword),
-            ErrorMessage = "The password and confirmation password do not match.")]
         [Display(Name = "Confirm new password", Prompt = "Confirm new password")]
+        [Compare(nameof(NewPassword), ErrorMessage = "Passwords does not match")]
         public string ConfirmNewPassword { get; set; }
 
         [Required]

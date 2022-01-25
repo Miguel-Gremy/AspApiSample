@@ -8,6 +8,8 @@ namespace AspApiSample.Web.Models.Admin
 {
     public class AddRoleModel : ModelBase
     {
-        [Required] public string RoleName { get; set; }
+        [Required]
+        [Display(Name = "Role name", Prompt = "Role name")]
+        public string RoleName { get; set; }
     }
 }
