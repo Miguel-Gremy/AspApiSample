@@ -82,7 +82,7 @@ namespace AspApiSample.Web.Controllers
                     catch (ApiException e)
                     {
                         model.Password = string.Empty;
-                        model.Errors = new List<string> { e.Message.RemoveChar('\"') };
+                        model.Errors = new List<string>(e.GetDetailTable());
                         output = View("Index", model);
                     }
                 }
@@ -147,8 +147,7 @@ namespace AspApiSample.Web.Controllers
             catch (ApiException e)
             {
                 /* If catching ApiException, display the error from the API */
-                model.Errors = new List<string>
-                    { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
+                model.Errors = new List<string>(e.GetDetailTable());
                 output = View(model);
             }
 
@@ -197,8 +196,7 @@ namespace AspApiSample.Web.Controllers
                 {
                     model.Password = string.Empty;
                     model.ConfirmPassword = string.Empty;
-                    model.Errors = new List<string>
-                        { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
+                    model.Errors = new List<string>(e.GetDetailTable());
                     output = View(model);
                 }
             }

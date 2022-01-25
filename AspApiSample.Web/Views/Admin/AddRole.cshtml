@@ -3,9 +3,7 @@
     ViewData["Title"] = "Add role";
 }
 
-@Html.AntiForgeryToken()
-@using (Html.BeginForm("AddRole", "Admin", FormMethod.Post))
-{
+<form asp-controller="Admin" asp-action="AddRole" asp-antiforgery="true" method="post">
     <div class="text-center login-div">
         <main class="form-signin">
 
@@ -19,13 +17,11 @@
                 }
             }
 
-
             <div class="form-floating mb-2">
-                <input type="text" id="RoleName" name="RoleName" value="@Model.RoleName"
-                       class="form-control mb-2" placeholder="Role name" required />
+                <input asp-for="RoleName" class="form-control" />
             </div>
 
             <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
         </main>
     </div>
-}
+</form>

@@ -6,46 +6,44 @@
 @section Style
 {
     <style>
-	.login-div {
-		display: flex;
-		align-items: center;
-		padding-top: 40px;
-		padding-bottom: 40px;
-		background-color: #f5f5f5;
-	}
+        .login-div {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
 
-	.form-signin {
-		width: 100%;
-		max-width: 330px;
-		padding: 15px;
-		margin: auto;
-	}
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
 
-		.form-signin .checkbox {
-			font-weight: 400;
-		}
+            .form-signin .checkbox {
+                font-weight: 400;
+            }
 
-		.form-signin .form-floating:focus-within {
-			z-index: 2;
-		}
+            .form-signin .form-floating:focus-within {
+                z-index: 2;
+            }
 
-		.form-signin input[type="email"] {
-			margin-bottom: -1px;
-			border-bottom-right-radius: 0;
-			border-bottom-left-radius: 0;
-		}
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
 
-		.form-signin input[type="password"] {
-			margin-bottom: 10px;
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
-</style>
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+    </style>
 }
 
-@Html.AntiForgeryToken()
-@using (Html.BeginForm("SignIn", "Login", FormMethod.Post))
-{
+<form asp-area="" asp-controller="Login" asp-action="SignIn" asp-antiforgery="true" method="post">
     <div class="text-center login-div">
         <main class="form-signin">
 
@@ -60,18 +58,12 @@
             }
 
             <div class="form-floating mb-2">
-                <input type="email" id="email" name="email" value="@Model.Email"
-                       class="form-control" placeholder="name@example.com" required/>
+                <input class="form-control" asp-for="Email" />
+                <input class="form-control" asp-for="Password" />
             </div>
-            <div class="form-floating">
-                <input type="password" id="password" name="password" value="@Model.Password"
-                       class="form-control" placeholder="Password" required/>
-            </div>
-            <input type="hidden" name="_target_path" value="/home"/>
+            <button type="submit" class="w-100 btn btn-lg btn-primary mb-4">login</button>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary">login</button>
-            <br/>
-            <a asp-area="" asp-action="ForgotPassword" asp-controller="Login">Forgot password</a>
+            <a asp-action="ForgotPassword" asp-controller="Login">Forgot password</a>
         </main>
     </div>
-}
+</form>

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AspApiSample.API.Resources.Auth;
@@ -16,16 +17,13 @@ namespace AspApiSample.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly RoleManager<Role> _roleManager;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
 
-        public AuthController(UserManager<User> userManager,
-            RoleManager<Role> roleManager, SignInManager<User> signInManager,
+        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager,
             IMapper mapper)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
             _signInManager = signInManager;
             _mapper = mapper;
         }
@@ -38,7 +36,17 @@ namespace AspApiSample.API.Controllers
 
             var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
 
-            if (!userCreateResult.Succeeded) return Problem("Cannot create user");
+            if (!userCreateResult.Succeeded)
+            {
+                var errorString = string.Empty;
+
+                foreach (var error in userCreateResult.Errors)
+                {
+                    errorString += $"{error.Code} : {error.Description} \r\n ";
+                }
+
+                return Problem(errorString);
+            }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
@@ -51,13 +59,23 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var userSignUpConfirmResult = await _userManager.ConfirmEmailAsync(user, token);
 
-            return userSignUpConfirmResult.Succeeded
-                ? Ok()
-                : Problem("The link is no longer working");
+            if (userSignUpConfirmResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in userSignUpConfirmResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
 
         [HttpPost]
@@ -66,7 +84,7 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var userSignInResult = await _userManager.CheckPasswordAsync(user, resource.Password);
 
@@ -76,7 +94,7 @@ namespace AspApiSample.API.Controllers
 
             return userCanSignInResult
                 ? Ok(new UserSignInResponse
-                    { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
+                { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
                 : Problem("User cannot sign in");
         }
 
@@ -86,15 +104,25 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var userChangePasswordResult =
                 await _userManager.ChangePasswordAsync(user, resource.CurrentPassword,
                     resource.NewPassword);
 
-            return userChangePasswordResult.Succeeded
-                ? Ok()
-                : Problem("Password incorrect");
+            if (userChangePasswordResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in userChangePasswordResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
 
         [HttpPost]
@@ -104,7 +132,7 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
@@ -117,14 +145,24 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var userResetPasswordResult =
                 await _userManager.ResetPasswordAsync(user, resource.Token, resource.Password);
 
-            return userResetPasswordResult.Succeeded
-                ? Ok()
-                : Problem("The link is no longer working");
+            if (userResetPasswordResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in userResetPasswordResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
     }
 }

@@ -8,6 +8,8 @@ using IO.Swagger.Client;
 using IO.Swagger.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 
 namespace AspApiSample.Web.Controllers
 {
@@ -67,7 +69,7 @@ namespace AspApiSample.Web.Controllers
                             model.NewPassword)
                     );
                     var outputModel = new IndexModel
-                        { Messages = new List<string> { "Password has been changed" } };
+                    { Messages = new List<string> { "Password has been changed" } };
                     output = RedirectToAction("Index", "Account", outputModel);
                 }
                 catch (ApiException e)
@@ -75,7 +77,7 @@ namespace AspApiSample.Web.Controllers
                     model.CurrentPassword = string.Empty;
                     model.NewPassword = string.Empty;
                     model.ConfirmNewPassword = string.Empty;
-                    model.Errors = new List<string> { new string(e.ErrorContent.ToString()).RemoveChar('\"') };
+                    model.Errors = new List<string>(e.GetDetailTable());
                     output = View(model);
                 }
             }

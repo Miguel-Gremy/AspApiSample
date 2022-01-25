@@ -4,6 +4,9 @@ namespace AspApiSample.Web.Models.Login
 {
     public class ForgotPasswordModel : ModelBase
     {
-        [Required] [EmailAddress] public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email address", Prompt = "example@address.com")]
+        public string Email { get; set; }
     }
 }

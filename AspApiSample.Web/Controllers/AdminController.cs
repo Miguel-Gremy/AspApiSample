@@ -44,7 +44,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new UsersModel
                 {
-                    Errors = new List<string> { new string(e.ErrorContent.ToString()).RemoveChar('\"') },
+                    Errors = new List<string>(e.GetDetailTable()),
                 };
                 output = View(model);
             }
@@ -70,7 +70,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new RolesModel
                 {
-                    Errors = new List<string> { new string(e.ErrorContent.ToString()).RemoveChar('\"') },
+                    Errors = new List<string>(e.GetDetailTable()),
                 };
                 output = View(model);
             }
@@ -107,7 +107,7 @@ namespace AspApiSample.Web.Controllers
                     catch (ApiException e)
                     {
                         model.RoleName = string.Empty;
-                        model.Errors = new List<string> { e.Message.RemoveChar('\"') };
+                        model.Errors = new List<string>(e.GetDetailTable());
                         output = View("AddRole", model);
                     }
                 }

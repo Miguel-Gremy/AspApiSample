@@ -26,17 +26,17 @@ namespace AspApiSample.API.Controllers
         [Route("Users")]
         public async Task<ActionResult<UserGetUsersResponse>> GetUsers()
         {
-            return new UserGetUsersResponse{Users = await _userManager.Users.ToListAsync()};
+            return new UserGetUsersResponse { Users = await _userManager.Users.ToListAsync() };
         }
 
         [HttpGet]
         [Route("User/{userEmail}")]
         public async Task<ActionResult<UserGetUserResponse>> GetUser(
-            [Required] [EmailAddress] string userEmail)
+            [Required][EmailAddress] string userEmail)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             return Ok(new UserGetUserResponse { User = user });
         }
@@ -52,13 +52,23 @@ namespace AspApiSample.API.Controllers
 
             var user = await _userManager.FindByEmailAsync(userName);
 
-            if (user is null) return NotFound("User not found");
+            if (user is null) return Problem("User not found");
 
             var userDeleteResult = await _userManager.DeleteAsync(user);
 
-            return userDeleteResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while deleting user");
+            if (userDeleteResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in userDeleteResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
 
         [HttpGet]
@@ -74,9 +84,9 @@ namespace AspApiSample.API.Controllers
         {
             var role = await _roleManager.FindByNameAsync(roleName);
 
-            if (role is null) return NotFound("User not found");
+            if (role is null) return Problem("User not found");
 
-            return Ok(new RoleGetRoleResponse{ Role = await _roleManager.FindByNameAsync(roleName)});
+            return Ok(new RoleGetRoleResponse { Role = await _roleManager.FindByNameAsync(roleName) });
         }
 
         [HttpPost]
@@ -93,9 +103,19 @@ namespace AspApiSample.API.Controllers
 
             var roleCreateResult = await _roleManager.CreateAsync(newRole);
 
-            return roleCreateResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while creating the role");
+            if (roleCreateResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in roleCreateResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
 
         [HttpDelete]
@@ -107,13 +127,23 @@ namespace AspApiSample.API.Controllers
 
             var role = await _roleManager.FindByNameAsync(roleName);
 
-            if (role is null) return NotFound("Role not found");
+            if (role is null) return Problem("Role not found");
 
             var roleDeleteResult = await _roleManager.DeleteAsync(role);
 
-            return roleDeleteResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while deleting role");
+            if (roleDeleteResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in roleDeleteResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
 
         [HttpPost]
@@ -124,14 +154,24 @@ namespace AspApiSample.API.Controllers
             var user = await _userManager.FindByEmailAsync(userEmail);
             var role = await _roleManager.FindByNameAsync(resource.RoleName);
 
-            if (user is null) return NotFound("User not found");
-            if (role is null) return NotFound("Role not found");
+            if (user is null) return Problem("User not found");
+            if (role is null) return Problem("Role not found");
 
             var userAddRoleResult = await _userManager.AddToRoleAsync(user, resource.RoleName);
 
-            return userAddRoleResult.Succeeded
-                ? Ok()
-                : Problem("Problem occured while adding user to role");
+            if (userAddRoleResult.Succeeded)
+            {
+                return Ok();
+            }
+
+            var errorString = string.Empty;
+
+            foreach (var error in userAddRoleResult.Errors)
+            {
+                errorString += $"{error.Code} : {error.Description} \r\n ";
+            }
+
+            return Problem(errorString);
         }
     }
 }
