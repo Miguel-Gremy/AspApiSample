@@ -14,8 +14,8 @@ namespace AspApiSample.API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
+        private readonly UserManager<User> _userManager;
 
         public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
@@ -33,7 +33,7 @@ namespace AspApiSample.API.Controllers
         [HttpGet]
         [Route("User/{userEmail}")]
         public async Task<ActionResult<UserGetUserResponse>> GetUser(
-            [Required][EmailAddress] string userEmail)
+            [Required] [EmailAddress] string userEmail)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
@@ -57,12 +57,10 @@ namespace AspApiSample.API.Controllers
 
             var userDeleteResult = await _userManager.DeleteAsync(user);
 
-            if (userDeleteResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (userDeleteResult.Succeeded) return Ok();
 
-            var errorString = userDeleteResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userDeleteResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
@@ -82,7 +80,8 @@ namespace AspApiSample.API.Controllers
 
             if (role is null) return BadRequest("User not found");
 
-            return Ok(new RoleGetRoleResponse { Role = await _roleManager.FindByNameAsync(roleName) });
+            return Ok(new RoleGetRoleResponse
+                { Role = await _roleManager.FindByNameAsync(roleName) });
         }
 
         [HttpPost]
@@ -99,12 +98,10 @@ namespace AspApiSample.API.Controllers
 
             var roleCreateResult = await _roleManager.CreateAsync(newRole);
 
-            if (roleCreateResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (roleCreateResult.Succeeded) return Ok();
 
-            var errorString = roleCreateResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = roleCreateResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
@@ -122,12 +119,10 @@ namespace AspApiSample.API.Controllers
 
             var roleDeleteResult = await _roleManager.DeleteAsync(role);
 
-            if (roleDeleteResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (roleDeleteResult.Succeeded) return Ok();
 
-            var errorString = roleDeleteResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = roleDeleteResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
@@ -145,12 +140,10 @@ namespace AspApiSample.API.Controllers
 
             var userAddRoleResult = await _userManager.AddToRoleAsync(user, resource.RoleName);
 
-            if (userAddRoleResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (userAddRoleResult.Succeeded) return Ok();
 
-            var errorString = userAddRoleResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userAddRoleResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }

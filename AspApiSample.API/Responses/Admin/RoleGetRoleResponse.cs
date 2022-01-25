@@ -1,5 +1,4 @@
 using AspApiSample.Lib.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace AspApiSample.API.Responses.Admin
 {

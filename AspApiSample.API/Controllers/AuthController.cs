@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,10 +5,8 @@ using AspApiSample.API.Resources.Auth;
 using AspApiSample.API.Responses.Auth;
 using AspApiSample.Lib.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AspApiSample.API.Controllers
 {
@@ -44,14 +41,16 @@ namespace AspApiSample.API.Controllers
                 return Ok(new UserSignUpResponse { Token = token });
             }
 
-            var errorString = userCreateResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userCreateResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
 
         [HttpGet]
         [Route("SignUpConfirm")]
-        public async Task<IActionResult> SignUpConfirm([Required] string token, [Required] string email)
+        public async Task<IActionResult> SignUpConfirm([Required] string token,
+            [Required] string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
 
@@ -61,7 +60,8 @@ namespace AspApiSample.API.Controllers
 
             if (userSignUpConfirmResult.Succeeded) return Ok();
 
-            var errorString = userSignUpConfirmResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userSignUpConfirmResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
@@ -82,7 +82,7 @@ namespace AspApiSample.API.Controllers
 
             return userCanSignInResult
                 ? Ok(new UserSignInResponse
-                { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
+                    { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
                 : BadRequest("User cannot sign in");
         }
 
@@ -98,12 +98,10 @@ namespace AspApiSample.API.Controllers
                 await _userManager.ChangePasswordAsync(user, resource.CurrentPassword,
                     resource.NewPassword);
 
-            if (userChangePasswordResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (userChangePasswordResult.Succeeded) return Ok();
 
-            var errorString = userChangePasswordResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userChangePasswordResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
@@ -133,12 +131,10 @@ namespace AspApiSample.API.Controllers
             var userResetPasswordResult =
                 await _userManager.ResetPasswordAsync(user, resource.Token, resource.Password);
 
-            if (userResetPasswordResult.Succeeded)
-            {
-                return Ok();
-            }
+            if (userResetPasswordResult.Succeeded) return Ok();
 
-            var errorString = userResetPasswordResult.Errors.Aggregate(string.Empty, (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userResetPasswordResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
 
             return BadRequest(errorString);
         }
