@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspApiSample.API.Resources.Admin
 {
-    public class RoleAddUserResource
+    public class
+        RoleAddUserResource
     {
         [FromBody] [Required] public string RoleName { get; set; }
     }

@@ -51,7 +51,7 @@ namespace AspApiSample.API.Controllers
 
         [HttpGet]
         [Route("SignUpConfirm")]
-        public async Task<IActionResult> SignUpConfirm(string token, string email)
+        public async Task<IActionResult> SignUpConfirm([Required] string token, [Required] string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
 

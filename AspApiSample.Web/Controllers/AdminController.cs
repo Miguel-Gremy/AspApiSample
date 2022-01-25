@@ -44,7 +44,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new UsersModel
                 {
-                    Errors = new List<string>(e.GetDetailTable()),
+                    Errors = e.GetDetailTable(),
                 };
                 output = View(model);
             }
@@ -70,7 +70,7 @@ namespace AspApiSample.Web.Controllers
             {
                 var model = new RolesModel
                 {
-                    Errors = new List<string>(e.GetDetailTable()),
+                    Errors = e.GetDetailTable(),
                 };
                 output = View(model);
             }
@@ -105,14 +105,14 @@ namespace AspApiSample.Web.Controllers
                 catch (ApiException e)
                 {
                     model.RoleName = string.Empty;
-                    model.Errors = new List<string>(e.GetDetailTable());
+                    model.Errors = e.GetDetailTable();
                     output = View("AddRole", model);
                 }
             }
             else
             {
                 model.RoleName = string.Empty;
-                model.Errors = new List<string> ( ModelState.GetErrorsAsStringTable());
+                model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("AddRole", model);
             }
 

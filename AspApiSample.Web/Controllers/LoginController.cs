@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -143,7 +144,7 @@ namespace AspApiSample.Web.Controllers
             }
             else
             {
-                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
+                model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View(model);
             }
 
@@ -159,18 +160,32 @@ namespace AspApiSample.Web.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult ResetPassword(string token, string email)
+        public IActionResult ResetPassword([Required] string token, [Required] string email)
         {
-            return View(new ResetPasswordModel
+            IActionResult output = null;
+
+            if (ModelState.IsValid)
             {
-                Email = email,
-                Token = token,
-                Password = string.Empty,
-                ConfirmPassword = string.Empty
-            });
+                output = View(new ResetPasswordModel
+                {
+                    Email = email,
+                    Token = token,
+                    Password = string.Empty,
+                    ConfirmPassword = string.Empty
+                });
+            }
+            else
+            {
+                RedirectToAction("Index", "Login", new IndexModel
+                {
+                    Errors = ModelState.GetErrorsAsStringTable(),
+                });
+            }
+
+            return output;
         }
 
-        [AllowAnonymous]
+    [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
@@ -192,7 +207,7 @@ namespace AspApiSample.Web.Controllers
                 {
                     model.Password = string.Empty;
                     model.ConfirmPassword = string.Empty;
-                    model.Errors = new List<string>(e.GetDetailTable());
+                    model.Errors = e.GetDetailTable();
                     output = View(model);
                 }
             }
@@ -200,7 +215,7 @@ namespace AspApiSample.Web.Controllers
             {
                 model.Password = string.Empty;
                 model.ConfirmPassword = string.Empty;
-                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
+                model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View(model);
             }
 

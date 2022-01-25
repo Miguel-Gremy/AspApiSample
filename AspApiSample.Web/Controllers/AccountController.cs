@@ -77,7 +77,7 @@ namespace AspApiSample.Web.Controllers
                     model.CurrentPassword = string.Empty;
                     model.NewPassword = string.Empty;
                     model.ConfirmNewPassword = string.Empty;
-                    model.Errors = new List<string>(e.GetDetailTable());
+                    model.Errors = e.GetDetailTable();
                     output = View(model);
                 }
             }
@@ -85,7 +85,7 @@ namespace AspApiSample.Web.Controllers
             {
                 model.NewPassword = string.Empty;
                 model.CurrentPassword = string.Empty;
-                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
+                model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("ChangePassword", model);
             }
 
