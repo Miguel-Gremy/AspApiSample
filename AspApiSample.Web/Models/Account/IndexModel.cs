@@ -9,7 +9,5 @@ namespace AspApiSample.Web.Models.Account
         [Required]
         [Display(Name = "Users", Prompt = "Users")]
         public User User { get; set; }
-
-        public ICollection<string> Messages { get; set; }
     }
 }

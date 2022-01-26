@@ -44,6 +44,7 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
+            //TODO Remove API call, beause the cookie already know the EmailAddress
             var model = new ChangePasswordModel
             {
                 EmailAddress =
