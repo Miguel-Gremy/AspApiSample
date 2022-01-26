@@ -3,15 +3,8 @@
     ViewData["Title"] = "Index";
 }
 
-@if (Model.Messages is not null)
-{
-    <div class="alert alert-success" role="alert">
-        @foreach (var message in Model.Messages)
-        {
-            <p>@message</p>
-        }
-    </div>
-}
+<partial name="_ErrorsDisplay" />
+<partial name="_MessagesDisplay" />
 
 <a asp-area="" asp-controller="Admin" asp-action="Users">Users</a>
 <a asp-area="" asp-controller="Admin" asp-action="Roles">Roles</a>

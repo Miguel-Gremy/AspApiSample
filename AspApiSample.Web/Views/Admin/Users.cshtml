@@ -3,41 +3,34 @@
     ViewData["Title"] = "Users";
 }
 
-@if (Model.Errors is not null)
-{
-    <div class="alert alert-danger" role="alert">
-        @foreach (var message in Model.Errors)
-        {
-            <p>@message</p>
-        }
-    </div>
-}
+<partial name="_ErrorsDisplay" />
+<partial name="_MessagesDisplay" />
 
 <table class="table table-responsive text-center">
     <caption>Users</caption>
     <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First name</th>
-        <th scope="col">Last name</th>
-        <th scope="col">Email</th>
-        <th scope="col">User name</th>
-        <th scope="col">Is email confirmed</th>
-        <th scope="col">Phone number</th>
-    </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">User name</th>
+            <th scope="col">Is email confirmed</th>
+            <th scope="col">Phone number</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var user in Model.Users)
-    {
-        <tr>
-            <th scope="row">@user.Id</th>
-            <td>@user.FirstName</td>
-            <td>@user.LastName</td>
-            <td>@user.Email</td>
-            <td>@user.UserName</td>
-            <td>@Html.CheckBoxFor(m => user.EmailConfirmed.Value, new { disabled = "disabled" })</td>
-            <td>@user.PhoneNumber</td>
-        </tr>
-    }
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <th scope="row">@user.Id</th>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>@Html.CheckBoxFor(m => user.EmailConfirmed.Value, new { disabled = "disabled" })</td>
+                <td>@user.PhoneNumber</td>
+            </tr>
+        }
     </tbody>
 </table>

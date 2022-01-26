@@ -1,0 +1,11 @@
+﻿@model ModelBase
+
+@if (Model.Messages is not null)
+{
+    <div class="alert alert-success" role="alert">
+        @foreach (var message in Model.Messages)
+        {
+            <p>@message</p>
+        }
+    </div>
+}

@@ -3,39 +3,32 @@
     ViewData["Title"] = "Index";
 }
 
-@if (Model.Messages is not null)
-{
-    <div class="alert alert-success" role="alert">
-        @foreach (var message in Model.Messages)
-        {
-            <p>@message</p>
-        }
-    </div>
-}
+<partial name="_ErrorsDisplay" />
+<partial name="_MessagesDisplay" />
 
 <table class="table table-responsive text-center">
     <caption>User</caption>
     <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First name</th>
-        <th scope="col">Last name</th>
-        <th scope="col">Email</th>
-        <th scope="col">User name</th>
-        <th scope="col">Is email confirmed</th>
-        <th scope="col">Phone number</th>
-    </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">User name</th>
+            <th scope="col">Is email confirmed</th>
+            <th scope="col">Phone number</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">@Model.User.Id</th>
-        <td>@Model.User.FirstName</td>
-        <td>@Model.User.LastName</td>
-        <td>@Model.User.Email</td>
-        <td>@Model.User.UserName</td>
-        <td>@Html.CheckBoxFor(m => m.User.EmailConfirmed.Value, new { disabled = "disabled" })</td>
-        <td>@Model.User.PhoneNumber</td>
-    </tr>
+        <tr>
+            <th scope="row">@Model.User.Id</th>
+            <td>@Model.User.FirstName</td>
+            <td>@Model.User.LastName</td>
+            <td>@Model.User.Email</td>
+            <td>@Model.User.UserName</td>
+            <td>@Html.CheckBoxFor(m => m.User.EmailConfirmed.Value, new { disabled = "disabled" })</td>
+            <td>@Model.User.PhoneNumber</td>
+        </tr>
     </tbody>
 </table>
 <a class="btn btn-outline-secondary" asp-area="" asp-controller="Account" asp-action="ChangePassword">Change password</a>

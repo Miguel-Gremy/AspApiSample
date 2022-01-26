@@ -84,8 +84,9 @@ namespace AspApiSample.Web.Controllers
             }
             else
             {
-                model.NewPassword = string.Empty;
                 model.CurrentPassword = string.Empty;
+                model.NewPassword = string.Empty;
+                model.ConfirmNewPassword = string.Empty;
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("ChangePassword", model);
             }
