@@ -54,7 +54,7 @@ namespace AspApiSample.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
 
-            if (user is null) return Problem("User not found");
+            if (user is null) return NotFound("User not found");
 
             var userSignUpConfirmResult = await _userManager.ConfirmEmailAsync(user, token);
 
