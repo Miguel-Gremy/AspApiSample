@@ -11,26 +11,26 @@ namespace AspApiSample.Web.Models.Admin
         [Required]
         [EmailAddress]
         [Display(Name = "Email address", Prompt = "Email address")]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
         [Display(Name = "First name", Prompt = "First name")]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
 
         [Required]
         [Display(Name = "Last name", Prompt = "Last name")]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password", Prompt = "Password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password", Prompt = "Confirm password")]
         [Compare(nameof(Password), ErrorMessage = "Passwords does not match")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
 
 
         public override void ResetData()

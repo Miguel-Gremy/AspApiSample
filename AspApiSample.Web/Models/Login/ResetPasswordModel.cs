@@ -8,17 +8,17 @@ namespace AspApiSample.Web.Models.Login
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password", Prompt = "Password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password", Prompt = "Password")]
         [Compare(nameof(Password), ErrorMessage = "Passwords does not match")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
 
-        [Required] [HiddenInput] public string Email { get; set; }
+        [Required] [HiddenInput] public string Email { get; set; } = string.Empty;
 
-        [Required] [HiddenInput] public string Token { get; set; }
+        [Required] [HiddenInput] public string Token { get; set; } = string.Empty;
 
 
         public override void ResetData()

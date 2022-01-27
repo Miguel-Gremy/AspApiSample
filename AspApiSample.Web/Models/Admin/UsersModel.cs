@@ -13,7 +13,7 @@ namespace AspApiSample.Web.Models.Admin
 
         public override void ResetData()
         {
-            
+
         }
     }
 }

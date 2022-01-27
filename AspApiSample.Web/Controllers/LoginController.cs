@@ -80,7 +80,7 @@ namespace AspApiSample.Web.Controllers
                 catch (ApiException e)
                 {
                     model.ResetData();
-                    model.Errors = new List<string>(e.GetDetailTable());
+                    model.Errors = e.GetDetailTable();
                     output = View("Index", model);
                 }
             }
@@ -139,7 +139,7 @@ namespace AspApiSample.Web.Controllers
                 {
                     /* If catching ApiException, display the error from the API */
                     model.ResetData();
-                    model.Errors = new List<string>(e.GetDetailTable());
+                    model.Errors = e.GetDetailTable();
                     output = View(model);
                 }
             }
@@ -170,9 +170,7 @@ namespace AspApiSample.Web.Controllers
                 output = View(new ResetPasswordModel
                 {
                     Email = email,
-                    Token = token,
-                    Password = string.Empty,
-                    ConfirmPassword = string.Empty
+                    Token = token
                 });
             else
                 RedirectToAction("Index", "Login", new IndexModel

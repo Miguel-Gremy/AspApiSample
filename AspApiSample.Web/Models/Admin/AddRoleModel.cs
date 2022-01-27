@@ -6,7 +6,7 @@ namespace AspApiSample.Web.Models.Admin
     {
         [Required]
         [Display(Name = "Role name", Prompt = "Role name")]
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = string.Empty;
 
 
         public override void ResetData()

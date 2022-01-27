@@ -7,7 +7,7 @@ namespace AspApiSample.Web.Models.Login
         [Required]
         [EmailAddress]
         [Display(Name = "Email address", Prompt = "Email address")]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
 
         public override void ResetData()

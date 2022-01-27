@@ -81,10 +81,7 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public IActionResult AddRole()
         {
-            return View(new AddRoleModel
-            {
-                RoleName = string.Empty
-            });
+            return View(new AddRoleModel());
         }
 
         [HttpPost]
@@ -123,14 +120,7 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public IActionResult AddUser()
         {
-            return View(new AddUserModel
-            {
-                Email = string.Empty,
-                FirstName = string.Empty,
-                LastName = string.Empty,
-                Password = string.Empty,
-                ConfirmPassword = string.Empty
-            });
+            return View(new AddUserModel());
         }
 
         [HttpPost]

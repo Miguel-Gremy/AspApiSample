@@ -8,20 +8,20 @@ namespace AspApiSample.Web.Models.Account
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password", Prompt = "Current password")]
-        public string CurrentPassword { get; set; }
+        public string CurrentPassword { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "New password", Prompt = "New password")]
-        public string NewPassword { get; set; }
+        public string NewPassword { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password", Prompt = "Confirm new password")]
         [Compare(nameof(NewPassword), ErrorMessage = "Passwords does not match")]
-        public string ConfirmNewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; } = string.Empty;
 
-        [Required] [HiddenInput] public string EmailAddress { get; set; }
+        [Required] [HiddenInput] public string EmailAddress { get; set; } = string.Empty;
 
 
 
