@@ -29,7 +29,7 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Users()
         {
-            IActionResult output = null;
+            IActionResult output;
 
             try
             {
@@ -55,7 +55,7 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Roles()
         {
-            IActionResult output = null;
+            IActionResult output;
 
             try
             {
@@ -91,7 +91,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddRole(AddRoleModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddUser(AddUserModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {

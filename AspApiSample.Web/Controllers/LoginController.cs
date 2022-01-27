@@ -32,7 +32,7 @@ namespace AspApiSample.Web.Controllers
 
         public IActionResult Index()
         {
-            IActionResult output = null;
+            IActionResult output;
 
             /* Check if the User is already connected */
             if (User.Identity is { IsAuthenticated: true })
@@ -49,7 +49,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignIn(IndexModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {
@@ -188,7 +188,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {

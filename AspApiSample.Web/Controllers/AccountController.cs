@@ -60,7 +60,7 @@ namespace AspApiSample.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
         {
-            IActionResult output = null;
+            IActionResult output;
 
             if (ModelState.IsValid)
             {
