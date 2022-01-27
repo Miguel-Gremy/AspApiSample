@@ -1,3 +1,4 @@
+using AspApiSample.API.Resources.Admin;
 using AspApiSample.API.Resources.Auth;
 using AspApiSample.Lib.Models;
 using AutoMapper;
@@ -9,6 +10,9 @@ namespace AspApiSample.API.Mappings
         public AuthApiMapping()
         {
             CreateMap<UserSignUpResource, User>()
+                .ForMember(u => u.UserName, opt =>
+                    opt.MapFrom(ur => ur.Email));
+            CreateMap<UserCreateResource, User>()
                 .ForMember(u => u.UserName, opt =>
                     opt.MapFrom(ur => ur.Email));
         }

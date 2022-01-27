@@ -1,0 +1,25 @@
+﻿@model AspApiSample.Web.Models.Admin.AddUserModel
+@{
+    ViewData["Title"] = "Add user";
+}
+
+<form asp-controller="Admin" asp-action="AddUser" asp-antiforgery="true" method="post">
+    <div class="text-center login-div">
+        <main class="form-signin">
+
+            <h1 class="h3 mb-3 fw-normal">Add role</h1>
+
+            <partial name="_ErrorsMessagesDisplay" />
+
+            <div class="form-floating mb-2">
+                <input asp-for="Email" class="form-control" />
+                <input asp-for="FirstName" class="form-control" />
+                <input asp-for="LastName" class="form-control" />
+                <input asp-for="Password" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" />
+            </div>
+
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+        </main>
+    </div>
+</form>

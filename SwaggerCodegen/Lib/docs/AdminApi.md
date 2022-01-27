@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ApiAdminRolesCreatePost**](AdminApi.md#apiadminrolescreatepost) | **POST** /api/Admin/Roles/Create | 
 [**ApiAdminRolesDeleteRoleNameDelete**](AdminApi.md#apiadminrolesdeleterolenamedelete) | **DELETE** /api/Admin/Roles/Delete/{roleName} | 
 [**ApiAdminRolesGet**](AdminApi.md#apiadminrolesget) | **GET** /api/Admin/Roles | 
+[**ApiAdminUserCreatePost**](AdminApi.md#apiadminusercreatepost) | **POST** /api/Admin/User/Create | 
 [**ApiAdminUserUserEmailGet**](AdminApi.md#apiadminuseruseremailget) | **GET** /api/Admin/User/{userEmail} | 
 [**ApiAdminUserUserEmailRolesPost**](AdminApi.md#apiadminuseruseremailrolespost) | **POST** /api/Admin/User/{userEmail}/Roles | 
 [**ApiAdminUsersDeleteUserNameDelete**](AdminApi.md#apiadminusersdeleteusernamedelete) | **DELETE** /api/Admin/Users/Delete/{userName} | 
@@ -233,6 +234,62 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="apiadminusercreatepost"></a>
+# **ApiAdminUserCreatePost**
+> void ApiAdminUserCreatePost (UserCreateResource body = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ApiAdminUserCreatePostExample
+    {
+        public void main()
+        {
+            var apiInstance = new AdminApi();
+            var body = new UserCreateResource(); // UserCreateResource |  (optional) 
+
+            try
+            {
+                apiInstance.ApiAdminUserCreatePost(body);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AdminApi.ApiAdminUserCreatePost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UserCreateResource**](UserCreateResource.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/_*+json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiadminuseruseremailget"></a>

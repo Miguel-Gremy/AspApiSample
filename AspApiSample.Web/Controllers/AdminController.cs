@@ -119,5 +119,60 @@ namespace AspApiSample.Web.Controllers
 
             return output;
         }
+
+        [HttpGet]
+        public IActionResult AddUser()
+        {
+            return View(new AddUserModel
+            {
+                Email = string.Empty,
+                FirstName = string.Empty,
+                LastName = string.Empty,
+                Password = string.Empty,
+                ConfirmPassword = string.Empty
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddUser(AddUserModel model)
+        {
+            IActionResult output = null;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _adminApi.ApiAdminUserCreatePostAsync(
+                        new UserCreateResource(model.Email, model.FirstName, model.LastName, model.Password)
+                        );
+                    var outputModel = new IndexModel
+                        { Messages = new List<string> { "User has been added" } };
+                    output = RedirectToAction("Index", "Admin", outputModel);
+                }
+                catch (ApiException e)
+                {
+                    model.Email = string.Empty;
+                    model.FirstName = string.Empty;
+                    model.LastName = string.Empty;
+                    model.Password = string.Empty;
+                    model.ConfirmPassword = string.Empty;
+                    model.Errors = e.GetDetailTable();
+                    output = View("AddUser", model);
+                }
+            }
+            else
+            {
+                model.Email = string.Empty;
+                model.FirstName = string.Empty;
+                model.LastName = string.Empty;
+                model.Password = string.Empty;
+                model.ConfirmPassword = string.Empty;
+                model.Errors = ModelState.GetErrorsAsStringTable();
+                output = View("AddUser", model);
+            }
+
+            return output;
+        }
     }
 }

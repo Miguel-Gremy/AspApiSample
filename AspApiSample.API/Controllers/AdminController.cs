@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AspApiSample.API.Resources.Admin;
 using AspApiSample.API.Responses.Admin;
 using AspApiSample.Lib.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,13 @@ namespace AspApiSample.API.Controllers
     {
         private readonly RoleManager<Role> _roleManager;
         private readonly UserManager<User> _userManager;
+        private readonly IMapper _mapper;
 
-        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager)
+        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager, IMapper mapper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -33,7 +36,7 @@ namespace AspApiSample.API.Controllers
         [HttpGet]
         [Route("User/{userEmail}")]
         public async Task<ActionResult<UserGetUserResponse>> GetUser(
-            [Required] [EmailAddress] string userEmail)
+            [Required][EmailAddress] string userEmail)
         {
             var user = await _userManager.FindByEmailAsync(userEmail);
 
@@ -42,7 +45,36 @@ namespace AspApiSample.API.Controllers
             return Ok(new UserGetUserResponse { User = user });
         }
 
-        //TODO Create user (no signup)
+        [HttpPost]
+        [Route("User/Create")]
+        public async Task<IActionResult> CreateUser(UserCreateResource resource)
+        {
+            var user = _mapper.Map<UserCreateResource, User>(resource);
+
+            var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
+
+            if (userCreateResult.Succeeded)
+            {
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                var userConfirmEmailResult = await _userManager.ConfirmEmailAsync(user, token);
+
+                if (userConfirmEmailResult.Succeeded)
+                {
+                    return Ok();
+                }
+
+                var errorStringConfirmEmail = userCreateResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+
+                return BadRequest(errorStringConfirmEmail);
+            }
+
+            var errorStringUserCreate = userCreateResult.Errors.Aggregate(string.Empty,
+                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+
+            return BadRequest(errorStringUserCreate);
+        }
 
         [HttpDelete]
         [Route("Users/Delete/{userName}")]
@@ -81,7 +113,7 @@ namespace AspApiSample.API.Controllers
             if (role is null) return BadRequest("User not found");
 
             return Ok(new RoleGetRoleResponse
-                { Role = await _roleManager.FindByNameAsync(roleName) });
+            { Role = await _roleManager.FindByNameAsync(roleName) });
         }
 
         [HttpPost]

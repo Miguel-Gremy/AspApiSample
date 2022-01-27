@@ -239,7 +239,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="apiauthsignupconfirmget"></a>
 # **ApiAuthSignUpConfirmGet**
-> void ApiAuthSignUpConfirmGet (string token = null, string email = null)
+> void ApiAuthSignUpConfirmGet (string token, string email)
 
 
 
@@ -258,8 +258,8 @@ namespace Example
         public void main()
         {
             var apiInstance = new AuthApi();
-            var token = token_example;  // string |  (optional) 
-            var email = email_example;  // string |  (optional) 
+            var token = token_example;  // string | 
+            var email = email_example;  // string | 
 
             try
             {
@@ -278,8 +278,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string**|  | [optional] 
- **email** | **string**|  | [optional] 
+ **token** | **string**|  | 
+ **email** | **string**|  | 
 
 ### Return type
 

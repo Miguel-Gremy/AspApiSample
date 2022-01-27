@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**ApiAdminRolesCreatePost**](docs/AdminApi.md#apiadminrolescreatepost) | **POST** /api/Admin/Roles/Create | 
 *AdminApi* | [**ApiAdminRolesDeleteRoleNameDelete**](docs/AdminApi.md#apiadminrolesdeleterolenamedelete) | **DELETE** /api/Admin/Roles/Delete/{roleName} | 
 *AdminApi* | [**ApiAdminRolesGet**](docs/AdminApi.md#apiadminrolesget) | **GET** /api/Admin/Roles | 
+*AdminApi* | [**ApiAdminUserCreatePost**](docs/AdminApi.md#apiadminusercreatepost) | **POST** /api/Admin/User/Create | 
 *AdminApi* | [**ApiAdminUserUserEmailGet**](docs/AdminApi.md#apiadminuseruseremailget) | **GET** /api/Admin/User/{userEmail} | 
 *AdminApi* | [**ApiAdminUserUserEmailRolesPost**](docs/AdminApi.md#apiadminuseruseremailrolespost) | **POST** /api/Admin/User/{userEmail}/Roles | 
 *AdminApi* | [**ApiAdminUsersDeleteUserNameDelete**](docs/AdminApi.md#apiadminusersdeleteusernamedelete) | **DELETE** /api/Admin/Users/Delete/{userName} | 
@@ -119,6 +120,7 @@ Class | Method | HTTP request | Description
  - [Model.RoleGetRoleResponse](docs/RoleGetRoleResponse.md)
  - [Model.RoleGetRolesResponse](docs/RoleGetRolesResponse.md)
  - [Model.User](docs/User.md)
+ - [Model.UserCreateResource](docs/UserCreateResource.md)
  - [Model.UserForgotPasswordResponse](docs/UserForgotPasswordResponse.md)
  - [Model.UserGetUserResponse](docs/UserGetUserResponse.md)
  - [Model.UserGetUsersResponse](docs/UserGetUsersResponse.md)
