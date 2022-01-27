@@ -78,6 +78,7 @@ namespace AspApiSample.API
                 new Mapper(new MapperConfiguration(options =>
                 {
                     options.AddProfile<AuthApiMapping>();
+                    options.AddProfile<AdminApiMapping>();
                 }))
             );
 
