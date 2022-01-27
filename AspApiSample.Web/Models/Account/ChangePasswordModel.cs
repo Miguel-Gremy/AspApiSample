@@ -22,5 +22,14 @@ namespace AspApiSample.Web.Models.Account
         public string ConfirmNewPassword { get; set; }
 
         [Required] [HiddenInput] public string EmailAddress { get; set; }
+
+
+
+        public override void ResetData()
+        {
+            CurrentPassword = string.Empty;
+            NewPassword = string.Empty;
+            ConfirmNewPassword = string.Empty;
+        }
     }
 }

@@ -13,5 +13,11 @@ namespace AspApiSample.Web.Models.Login
         [DataType(DataType.Password)]
         [Display(Name = "Password", Prompt = "Password")]
         public string Password { get; set; } = string.Empty;
+
+
+        public override void ResetData()
+        {
+            Password = string.Empty;
+        }
     }
 }

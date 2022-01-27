@@ -8,5 +8,11 @@ namespace AspApiSample.Web.Models.Login
         [EmailAddress]
         [Display(Name = "Email address", Prompt = "Email address")]
         public string Email { get; set; }
+
+
+        public override void ResetData()
+        {
+            
+        }
     }
 }

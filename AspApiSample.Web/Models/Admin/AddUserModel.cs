@@ -31,5 +31,15 @@ namespace AspApiSample.Web.Models.Admin
         [Display(Name = "Confirm password", Prompt = "Confirm password")]
         [Compare(nameof(Password), ErrorMessage = "Passwords does not match")]
         public string ConfirmPassword { get; set; }
+
+
+        public override void ResetData()
+        {
+            Email = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+        }
     }
 }

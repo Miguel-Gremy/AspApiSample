@@ -6,5 +6,7 @@ namespace AspApiSample.Web.Models
     {
         public IEnumerable<string> Errors { get; set; }
         public IEnumerable<string> Messages { get; set; }
+
+        public abstract void ResetData();
     }
 }

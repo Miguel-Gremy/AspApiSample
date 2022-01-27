@@ -9,5 +9,11 @@ namespace AspApiSample.Web.Models.Admin
         [Required]
         [Display(Name = "Roles", Prompt = "Roles")]
         public IEnumerable<Role> Roles { get; set; }
+
+
+        public override void ResetData()
+        {
+            
+        }
     }
 }

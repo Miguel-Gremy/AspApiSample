@@ -19,5 +19,12 @@ namespace AspApiSample.Web.Models.Login
         [Required] [HiddenInput] public string Email { get; set; }
 
         [Required] [HiddenInput] public string Token { get; set; }
+
+
+        public override void ResetData()
+        {
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+        }
     }
 }

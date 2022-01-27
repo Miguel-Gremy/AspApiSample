@@ -100,19 +100,19 @@ namespace AspApiSample.Web.Controllers
                     await _adminApi.ApiAdminRolesCreatePostAsync(
                         new RoleCreateResource(model.RoleName));
                     var outputModel = new IndexModel
-                        { Messages = new List<string> { "Role has been added" } };
+                    { Messages = new List<string> { "Role has been added" } };
                     output = RedirectToAction("Index", "Admin", outputModel);
                 }
                 catch (ApiException e)
                 {
-                    model.RoleName = string.Empty;
+                    model.ResetData();
                     model.Errors = e.GetDetailTable();
                     output = View("AddRole", model);
                 }
             }
             else
             {
-                model.RoleName = string.Empty;
+                model.ResetData();
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("AddRole", model);
             }
@@ -147,27 +147,19 @@ namespace AspApiSample.Web.Controllers
                         new UserCreateResource(model.Email, model.FirstName, model.LastName, model.Password)
                         );
                     var outputModel = new IndexModel
-                        { Messages = new List<string> { "User has been added" } };
+                    { Messages = new List<string> { "User has been added" } };
                     output = RedirectToAction("Index", "Admin", outputModel);
                 }
                 catch (ApiException e)
                 {
-                    model.Email = string.Empty;
-                    model.FirstName = string.Empty;
-                    model.LastName = string.Empty;
-                    model.Password = string.Empty;
-                    model.ConfirmPassword = string.Empty;
+                    model.ResetData();
                     model.Errors = e.GetDetailTable();
                     output = View("AddUser", model);
                 }
             }
             else
             {
-                model.Email = string.Empty;
-                model.FirstName = string.Empty;
-                model.LastName = string.Empty;
-                model.Password = string.Empty;
-                model.ConfirmPassword = string.Empty;
+                model.ResetData();
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("AddUser", model);
             }

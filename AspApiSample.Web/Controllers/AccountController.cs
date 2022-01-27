@@ -76,18 +76,14 @@ namespace AspApiSample.Web.Controllers
                 }
                 catch (ApiException e)
                 {
-                    model.CurrentPassword = string.Empty;
-                    model.NewPassword = string.Empty;
-                    model.ConfirmNewPassword = string.Empty;
+                    model.ResetData();
                     model.Errors = e.GetDetailTable();
                     output = View(model);
                 }
             }
             else
             {
-                model.CurrentPassword = string.Empty;
-                model.NewPassword = string.Empty;
-                model.ConfirmNewPassword = string.Empty;
+                model.ResetData();
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View("ChangePassword", model);
             }

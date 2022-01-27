@@ -79,14 +79,14 @@ namespace AspApiSample.Web.Controllers
                 /* If catching ApiException, the user cannot authenticate */
                 catch (ApiException e)
                 {
-                    model.Password = string.Empty;
+                    model.ResetData();
                     model.Errors = new List<string>(e.GetDetailTable());
                     output = View("Index", model);
                 }
             }
             else
             {
-                model.Password = string.Empty;
+                model.ResetData();
                 model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
                 output = View("Index", model);
             }
@@ -138,12 +138,14 @@ namespace AspApiSample.Web.Controllers
                 catch (ApiException e)
                 {
                     /* If catching ApiException, display the error from the API */
+                    model.ResetData();
                     model.Errors = new List<string>(e.GetDetailTable());
                     output = View(model);
                 }
             }
             else
             {
+                model.ResetData();
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View(model);
             }
@@ -201,16 +203,14 @@ namespace AspApiSample.Web.Controllers
                 /* If catching ApiException, display the error from the API */
                 catch (ApiException e)
                 {
-                    model.Password = string.Empty;
-                    model.ConfirmPassword = string.Empty;
+                    model.ResetData();
                     model.Errors = e.GetDetailTable();
                     output = View(model);
                 }
             }
             else
             {
-                model.Password = string.Empty;
-                model.ConfirmPassword = string.Empty;
+                model.ResetData();
                 model.Errors = ModelState.GetErrorsAsStringTable();
                 output = View(model);
             }
