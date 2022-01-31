@@ -42,15 +42,11 @@ namespace AspApiSample.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ChangePassword()
+        public IActionResult ChangePassword()
         {
-            //TODO Remove API call, beause the cookie already know the EmailAddress
             var model = new ChangePasswordModel
             {
-                EmailAddress =
-                    (await _adminApi.ApiAdminUserUserEmailGetAsync(
-                        User.FindFirstValue(ClaimTypes.Email))).User
-                    .Email
+                EmailAddress = User.FindFirstValue(ClaimTypes.Email)
             };
 
             return View(model);

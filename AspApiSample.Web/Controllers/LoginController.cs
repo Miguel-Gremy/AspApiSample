@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AspApiSample.Web.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly IAuthApi _authApi;
@@ -102,14 +103,12 @@ namespace AspApiSample.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View(new ForgotPasswordModel());
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
@@ -153,14 +152,12 @@ namespace AspApiSample.Web.Controllers
             return output;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult ForgotPasswordConfirm(ForgotPasswordConfirmModel model)
         {
             return View(model);
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult ResetPassword([Required] string token, [Required] string email)
         {
@@ -181,7 +178,6 @@ namespace AspApiSample.Web.Controllers
             return output;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
@@ -216,7 +212,6 @@ namespace AspApiSample.Web.Controllers
             return output;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult ResetPasswordConfirm()
         {

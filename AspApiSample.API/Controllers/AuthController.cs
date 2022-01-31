@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
+using AspApiSample.API.Extensions;
 using AspApiSample.API.Resources.Auth;
 using AspApiSample.API.Responses.Auth;
 using AspApiSample.Lib.Models;
@@ -41,8 +41,7 @@ namespace AspApiSample.API.Controllers
                 return Ok(new UserSignUpResponse { Token = token });
             }
 
-            var errorString = userCreateResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userCreateResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -60,8 +59,7 @@ namespace AspApiSample.API.Controllers
 
             if (userSignUpConfirmResult.Succeeded) return Ok();
 
-            var errorString = userSignUpConfirmResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userSignUpConfirmResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -100,8 +98,7 @@ namespace AspApiSample.API.Controllers
 
             if (userChangePasswordResult.Succeeded) return Ok();
 
-            var errorString = userChangePasswordResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userChangePasswordResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -133,8 +130,7 @@ namespace AspApiSample.API.Controllers
 
             if (userResetPasswordResult.Succeeded) return Ok();
 
-            var errorString = userResetPasswordResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userResetPasswordResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }

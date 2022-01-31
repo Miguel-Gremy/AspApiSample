@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
+using AspApiSample.API.Extensions;
 using AspApiSample.API.Resources.Admin;
 using AspApiSample.API.Responses.Admin;
 using AspApiSample.Lib.Models;
@@ -64,14 +64,12 @@ namespace AspApiSample.API.Controllers
                     return Ok();
                 }
 
-                var errorStringConfirmEmail = userCreateResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+                var errorStringConfirmEmail = userCreateResult.Errors.GetErrorsAsString();
 
                 return BadRequest(errorStringConfirmEmail);
             }
 
-            var errorStringUserCreate = userCreateResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorStringUserCreate = userCreateResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorStringUserCreate);
         }
@@ -91,8 +89,7 @@ namespace AspApiSample.API.Controllers
 
             if (userDeleteResult.Succeeded) return Ok();
 
-            var errorString = userDeleteResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userDeleteResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -132,8 +129,7 @@ namespace AspApiSample.API.Controllers
 
             if (roleCreateResult.Succeeded) return Ok();
 
-            var errorString = roleCreateResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = roleCreateResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -153,8 +149,7 @@ namespace AspApiSample.API.Controllers
 
             if (roleDeleteResult.Succeeded) return Ok();
 
-            var errorString = roleDeleteResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = roleDeleteResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
@@ -174,8 +169,7 @@ namespace AspApiSample.API.Controllers
 
             if (userAddRoleResult.Succeeded) return Ok();
 
-            var errorString = userAddRoleResult.Errors.Aggregate(string.Empty,
-                (current, error) => current + $"{error.Code} : {error.Description} \r\n ");
+            var errorString = userAddRoleResult.Errors.GetErrorsAsString();
 
             return BadRequest(errorString);
         }
