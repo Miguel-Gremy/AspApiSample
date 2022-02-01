@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
 
@@ -534,7 +534,7 @@ namespace IO.Swagger.Api
             if (roleName == null)
                 throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRoleRoleNameGet");
 
-            var localVarPath = "/api/Admin/Role/{roleName}";
+            var localVarPath = "./api/Admin/Role/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -573,7 +573,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<RoleGetRoleResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (RoleGetRoleResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRoleResponse)));
         }
 
@@ -602,7 +602,7 @@ namespace IO.Swagger.Api
             if (roleName == null)
                 throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRoleRoleNameGet");
 
-            var localVarPath = "/api/Admin/Role/{roleName}";
+            var localVarPath = "./api/Admin/Role/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -641,7 +641,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<RoleGetRoleResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (RoleGetRoleResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRoleResponse)));
         }
 
@@ -665,7 +665,7 @@ namespace IO.Swagger.Api
         public ApiResponse<Object> ApiAdminRolesCreatePostWithHttpInfo (RoleCreateResource body = null)
         {
 
-            var localVarPath = "/api/Admin/Roles/Create";
+            var localVarPath = "./api/Admin/Roles/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -711,7 +711,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -736,7 +736,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminRolesCreatePostAsyncWithHttpInfo (RoleCreateResource body = null)
         {
 
-            var localVarPath = "/api/Admin/Roles/Create";
+            var localVarPath = "./api/Admin/Roles/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -782,7 +782,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -809,7 +809,7 @@ namespace IO.Swagger.Api
             if (roleName == null)
                 throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRolesDeleteRoleNameDelete");
 
-            var localVarPath = "/api/Admin/Roles/Delete/{roleName}";
+            var localVarPath = "./api/Admin/Roles/Delete/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -845,7 +845,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -873,7 +873,7 @@ namespace IO.Swagger.Api
             if (roleName == null)
                 throw new ApiException(400, "Missing required parameter 'roleName' when calling AdminApi->ApiAdminRolesDeleteRoleNameDelete");
 
-            var localVarPath = "/api/Admin/Roles/Delete/{roleName}";
+            var localVarPath = "./api/Admin/Roles/Delete/{roleName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -909,7 +909,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -932,7 +932,7 @@ namespace IO.Swagger.Api
         public ApiResponse< RoleGetRolesResponse > ApiAdminRolesGetWithHttpInfo ()
         {
 
-            var localVarPath = "/api/Admin/Roles";
+            var localVarPath = "./api/Admin/Roles";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -970,7 +970,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<RoleGetRolesResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (RoleGetRolesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRolesResponse)));
         }
 
@@ -994,7 +994,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<RoleGetRolesResponse>> ApiAdminRolesGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/api/Admin/Roles";
+            var localVarPath = "./api/Admin/Roles";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1032,7 +1032,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<RoleGetRolesResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (RoleGetRolesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoleGetRolesResponse)));
         }
 
@@ -1056,7 +1056,7 @@ namespace IO.Swagger.Api
         public ApiResponse<Object> ApiAdminUserCreatePostWithHttpInfo (UserCreateResource body = null)
         {
 
-            var localVarPath = "/api/Admin/User/Create";
+            var localVarPath = "./api/Admin/User/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1102,7 +1102,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1127,7 +1127,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAdminUserCreatePostAsyncWithHttpInfo (UserCreateResource body = null)
         {
 
-            var localVarPath = "/api/Admin/User/Create";
+            var localVarPath = "./api/Admin/User/Create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1173,7 +1173,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1201,7 +1201,7 @@ namespace IO.Swagger.Api
             if (userEmail == null)
                 throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailGet");
 
-            var localVarPath = "/api/Admin/User/{userEmail}";
+            var localVarPath = "./api/Admin/User/{userEmail}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1240,7 +1240,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserGetUserResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserGetUserResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUserResponse)));
         }
 
@@ -1269,7 +1269,7 @@ namespace IO.Swagger.Api
             if (userEmail == null)
                 throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailGet");
 
-            var localVarPath = "/api/Admin/User/{userEmail}";
+            var localVarPath = "./api/Admin/User/{userEmail}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1308,7 +1308,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserGetUserResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserGetUserResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUserResponse)));
         }
 
@@ -1337,7 +1337,7 @@ namespace IO.Swagger.Api
             if (userEmail == null)
                 throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailRolesPost");
 
-            var localVarPath = "/api/Admin/User/{userEmail}/Roles";
+            var localVarPath = "./api/Admin/User/{userEmail}/Roles";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1384,7 +1384,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1414,7 +1414,7 @@ namespace IO.Swagger.Api
             if (userEmail == null)
                 throw new ApiException(400, "Missing required parameter 'userEmail' when calling AdminApi->ApiAdminUserUserEmailRolesPost");
 
-            var localVarPath = "/api/Admin/User/{userEmail}/Roles";
+            var localVarPath = "./api/Admin/User/{userEmail}/Roles";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1461,7 +1461,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1488,7 +1488,7 @@ namespace IO.Swagger.Api
             if (userName == null)
                 throw new ApiException(400, "Missing required parameter 'userName' when calling AdminApi->ApiAdminUsersDeleteUserNameDelete");
 
-            var localVarPath = "/api/Admin/Users/Delete/{userName}";
+            var localVarPath = "./api/Admin/Users/Delete/{userName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1524,7 +1524,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1552,7 +1552,7 @@ namespace IO.Swagger.Api
             if (userName == null)
                 throw new ApiException(400, "Missing required parameter 'userName' when calling AdminApi->ApiAdminUsersDeleteUserNameDelete");
 
-            var localVarPath = "/api/Admin/Users/Delete/{userName}";
+            var localVarPath = "./api/Admin/Users/Delete/{userName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1588,7 +1588,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1611,7 +1611,7 @@ namespace IO.Swagger.Api
         public ApiResponse< UserGetUsersResponse > ApiAdminUsersGetWithHttpInfo ()
         {
 
-            var localVarPath = "/api/Admin/Users";
+            var localVarPath = "./api/Admin/Users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1649,7 +1649,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserGetUsersResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserGetUsersResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUsersResponse)));
         }
 
@@ -1673,7 +1673,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<UserGetUsersResponse>> ApiAdminUsersGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/api/Admin/Users";
+            var localVarPath = "./api/Admin/Users";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1711,7 +1711,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserGetUsersResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserGetUsersResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserGetUsersResponse)));
         }
 

@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
 
@@ -198,7 +198,7 @@ namespace IO.Swagger.Api
         public ApiResponse<Object> ApiMailSendPostWithHttpInfo (EmailSendResource body = null)
         {
 
-            var localVarPath = "/api/Mail/Send";
+            var localVarPath = "./api/Mail/Send";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -244,7 +244,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -269,7 +269,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiMailSendPostAsyncWithHttpInfo (EmailSendResource body = null)
         {
 
-            var localVarPath = "/api/Mail/Send";
+            var localVarPath = "./api/Mail/Send";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -315,7 +315,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 

@@ -56,11 +56,7 @@ namespace IO.Swagger.Client
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
                     response.Content);
             }
-            if (status == 0)
-            {
-                return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
-            }
+            
             return null;
         };
 
@@ -247,16 +243,14 @@ namespace IO.Swagger.Client
         /// </summary>
         public virtual int Timeout
         {
-            
             get
-            {
+            { 
                 if (_apiClient == null)
                 {
                     return _timeout;
-                } 
-                else
+                } else
                 {
-                    return ApiClient.RestClient.Timeout;
+                    return (int)ApiClient.RestClient.Timeout.GetValueOrDefault(TimeSpan.FromSeconds(0)).TotalMilliseconds;
                 }
             }
             set
@@ -264,7 +258,7 @@ namespace IO.Swagger.Client
                 _timeout = value;
                 if (_apiClient != null)
                 {
-                    ApiClient.RestClient.Timeout = _timeout;
+                    ApiClient.RestClient.Timeout = TimeSpan.FromMilliseconds(_timeout);
                 }
             }
         }
@@ -435,8 +429,7 @@ namespace IO.Swagger.Client
         public static String ToDebugReport()
         {
             String report = "C# SDK (IO.Swagger) Debug Report:\n";
-            report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
+            report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: v1\n";
             report += "    SDK Package Version: 1.0.0\n";
 

@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
 
@@ -412,7 +412,7 @@ namespace IO.Swagger.Api
         public ApiResponse<Object> ApiAuthChangePasswordPutWithHttpInfo (UserPasswordChangeResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ChangePassword";
+            var localVarPath = "./api/Auth/ChangePassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -458,7 +458,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -483,7 +483,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthChangePasswordPutAsyncWithHttpInfo (UserPasswordChangeResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ChangePassword";
+            var localVarPath = "./api/Auth/ChangePassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -529,7 +529,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -554,7 +554,7 @@ namespace IO.Swagger.Api
         public ApiResponse< UserForgotPasswordResponse > ApiAuthForgotPasswordPostWithHttpInfo (UserPasswordForgotResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ForgotPassword";
+            var localVarPath = "./api/Auth/ForgotPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -603,7 +603,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserForgotPasswordResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserForgotPasswordResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserForgotPasswordResponse)));
         }
 
@@ -629,7 +629,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<UserForgotPasswordResponse>> ApiAuthForgotPasswordPostAsyncWithHttpInfo (UserPasswordForgotResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ForgotPassword";
+            var localVarPath = "./api/Auth/ForgotPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -678,7 +678,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserForgotPasswordResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserForgotPasswordResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserForgotPasswordResponse)));
         }
 
@@ -702,7 +702,7 @@ namespace IO.Swagger.Api
         public ApiResponse<Object> ApiAuthResetPasswordPostWithHttpInfo (UserPasswordResetResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ResetPassword";
+            var localVarPath = "./api/Auth/ResetPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -748,7 +748,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -773,7 +773,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthResetPasswordPostAsyncWithHttpInfo (UserPasswordResetResource body = null)
         {
 
-            var localVarPath = "/api/Auth/ResetPassword";
+            var localVarPath = "./api/Auth/ResetPassword";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -819,7 +819,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -844,7 +844,7 @@ namespace IO.Swagger.Api
         public ApiResponse< UserSignInResponse > ApiAuthSignInPostWithHttpInfo (UserSignInResource body = null)
         {
 
-            var localVarPath = "/api/Auth/SignIn";
+            var localVarPath = "./api/Auth/SignIn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -893,7 +893,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserSignInResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
         }
 
@@ -919,7 +919,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<UserSignInResponse>> ApiAuthSignInPostAsyncWithHttpInfo (UserSignInResource body = null)
         {
 
-            var localVarPath = "/api/Auth/SignIn";
+            var localVarPath = "./api/Auth/SignIn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -968,7 +968,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserSignInResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserSignInResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignInResponse)));
         }
 
@@ -1000,7 +1000,7 @@ namespace IO.Swagger.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling AuthApi->ApiAuthSignUpConfirmGet");
 
-            var localVarPath = "/api/Auth/SignUpConfirm";
+            var localVarPath = "./api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1037,7 +1037,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1070,7 +1070,7 @@ namespace IO.Swagger.Api
             if (email == null)
                 throw new ApiException(400, "Missing required parameter 'email' when calling AuthApi->ApiAuthSignUpConfirmGet");
 
-            var localVarPath = "/api/Auth/SignUpConfirm";
+            var localVarPath = "./api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1107,7 +1107,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 null);
         }
 
@@ -1132,7 +1132,7 @@ namespace IO.Swagger.Api
         public ApiResponse< UserSignUpResponse > ApiAuthSignUpPostWithHttpInfo (UserSignUpResource body = null)
         {
 
-            var localVarPath = "/api/Auth/SignUp";
+            var localVarPath = "./api/Auth/SignUp";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1181,7 +1181,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserSignUpResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserSignUpResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignUpResponse)));
         }
 
@@ -1207,7 +1207,7 @@ namespace IO.Swagger.Api
         public async System.Threading.Tasks.Task<ApiResponse<UserSignUpResponse>> ApiAuthSignUpPostAsyncWithHttpInfo (UserSignUpResource body = null)
         {
 
-            var localVarPath = "/api/Auth/SignUp";
+            var localVarPath = "./api/Auth/SignUp";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1256,7 +1256,7 @@ namespace IO.Swagger.Api
             }
 
             return new ApiResponse<UserSignUpResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
                 (UserSignUpResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserSignUpResponse)));
         }
 

@@ -1,21 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <ItemGroup>
-        <Reference Include="IO.Swagger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\SwaggerCodegen\Lib\bin\IO.Swagger.dll</HintPath>
-        </Reference>
-        <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-            <HintPath>..\SwaggerCodegen\Lib\bin\Newtonsoft.Json.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
         <Folder Include="Models\Home" />
         <Folder Include="Views\Account" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SwaggerCodegen\Lib\src\IO.Swagger\IO.Swagger.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

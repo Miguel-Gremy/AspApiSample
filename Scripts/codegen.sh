@@ -1,0 +1,1 @@
+java -jar swagger-codegen-cli.jar generate -l csharp -o Lib/ -i http://localhost:5000/swagger/v1/swagger.json -c config.json
