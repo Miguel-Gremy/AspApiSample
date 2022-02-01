@@ -80,16 +80,12 @@ namespace AspApiSample.Web.Controllers
                 /* If catching ApiException, the user cannot authenticate */
                 catch (ApiException e)
                 {
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View("Index", model);
+                    output = this.ViewWithErrors("Index", model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = new List<string>(ModelState.GetErrorsAsStringTable());
-                output = View("Index", model);
+                output = this.ViewWithErrors("Index", model, ModelState);
             }
 
             return output;
@@ -137,16 +133,12 @@ namespace AspApiSample.Web.Controllers
                 catch (ApiException e)
                 {
                     /* If catching ApiException, display the error from the API */
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View(model);
+                    output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = ModelState.GetErrorsAsStringTable();
-                output = View(model);
+                output = this.ViewWithErrors(model, ModelState);
             }
 
             return output;
@@ -164,16 +156,17 @@ namespace AspApiSample.Web.Controllers
             IActionResult output = null;
 
             if (ModelState.IsValid)
+            {
                 output = View(new ResetPasswordModel
                 {
                     Email = email,
                     Token = token
                 });
+            }
             else
-                RedirectToAction("Index", "Login", new IndexModel
-                {
-                    Errors = ModelState.GetErrorsAsStringTable()
-                });
+            {
+                output = this.ViewWithErrors<IndexModel>(null, ModelState);
+            }
 
             return output;
         }
@@ -197,16 +190,12 @@ namespace AspApiSample.Web.Controllers
                 /* If catching ApiException, display the error from the API */
                 catch (ApiException e)
                 {
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View(model);
+                    output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = ModelState.GetErrorsAsStringTable();
-                output = View(model);
+                output = this.ViewWithErrors(model, ModelState);
             }
 
             return output;

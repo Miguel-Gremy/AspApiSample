@@ -12,7 +12,7 @@ namespace AspApiSample.Web.Extensions
 
         public static IEnumerable<string> GetDetailTable(this ApiException e)
         {
-            return e.GetDetailString().Split("\r\n");
+            return e.GetDetailString().Split(@"\r\n");
         }
     }
 }

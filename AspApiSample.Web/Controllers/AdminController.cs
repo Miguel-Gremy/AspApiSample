@@ -42,11 +42,7 @@ namespace AspApiSample.Web.Controllers
             }
             catch (ApiException e)
             {
-                var model = new UsersModel
-                {
-                    Errors = e.GetDetailTable()
-                };
-                output = View(model);
+                output = this.ViewWithErrors<UsersModel>(null, e);
             }
 
             return output;
@@ -68,11 +64,7 @@ namespace AspApiSample.Web.Controllers
             }
             catch (ApiException e)
             {
-                var model = new RolesModel
-                {
-                    Errors = e.GetDetailTable()
-                };
-                output = View(model);
+                output = this.ViewWithErrors<RolesModel>(null, e);
             }
 
             return output;
@@ -102,16 +94,12 @@ namespace AspApiSample.Web.Controllers
                 }
                 catch (ApiException e)
                 {
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View("AddRole", model);
+                    output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = ModelState.GetErrorsAsStringTable();
-                output = View("AddRole", model);
+                output = this.ViewWithErrors(model, ModelState);
             }
 
             return output;
@@ -142,16 +130,12 @@ namespace AspApiSample.Web.Controllers
                 }
                 catch (ApiException e)
                 {
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View("AddUser", model);
+                    output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = ModelState.GetErrorsAsStringTable();
-                output = View("AddUser", model);
+                output = this.ViewWithErrors(model, ModelState);
             }
 
             return output;

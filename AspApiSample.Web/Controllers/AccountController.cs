@@ -44,12 +44,10 @@ namespace AspApiSample.Web.Controllers
         [HttpGet]
         public IActionResult ChangePassword()
         {
-            var model = new ChangePasswordModel
+            return View(new ChangePasswordModel
             {
                 EmailAddress = User.FindFirstValue(ClaimTypes.Email)
-            };
-
-            return View(model);
+            });
         }
 
         [HttpPost]
@@ -72,16 +70,12 @@ namespace AspApiSample.Web.Controllers
                 }
                 catch (ApiException e)
                 {
-                    model.ResetData();
-                    model.Errors = e.GetDetailTable();
-                    output = View(model);
+                    output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
-                model.ResetData();
-                model.Errors = ModelState.GetErrorsAsStringTable();
-                output = View("ChangePassword", model);
+                output = this.ViewWithErrors(model, ModelState);
             }
 
             return output;
