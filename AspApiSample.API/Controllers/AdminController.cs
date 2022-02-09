@@ -61,7 +61,16 @@ namespace AspApiSample.API.Controllers
 
                 if (userConfirmEmailResult.Succeeded)
                 {
-                    return Ok();
+                    var addUserRolesResult = await _userManager.AddToRolesAsync(user, resource.Roles);
+
+                    if (addUserRolesResult.Succeeded)
+                    {
+                        return Ok();
+                    }
+
+                    var errorStringAddUserRoles = addUserRolesResult.Errors.GetErrorsAsString();
+
+                    return BadRequest(errorStringAddUserRoles);
                 }
 
                 var errorStringConfirmEmail = userCreateResult.Errors.GetErrorsAsString();

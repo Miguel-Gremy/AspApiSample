@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 AspApiSample.Web.API
 
@@ -43,10 +43,8 @@ OpenAPI spec version: v1
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs"
-             Exclude="obj\**" />
+    <Compile Include="**\*.cs" Exclude="obj\**" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
 </Project>
-

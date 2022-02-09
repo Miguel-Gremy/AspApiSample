@@ -7,6 +7,10 @@
 $(function () {
     $('.multiselect').multiselect({
         includeSelectAllOption: true,
-        enableFiltering: true
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        maxHeight: 500,
+
+        includeResetOption: true
     });
 });

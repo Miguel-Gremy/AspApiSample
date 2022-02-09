@@ -34,7 +34,8 @@ namespace IO.Swagger.Model
         /// <param name="firstName">firstName (required).</param>
         /// <param name="lastName">lastName (required).</param>
         /// <param name="password">password (required).</param>
-        public UserCreateResource(string email = default(string), string firstName = default(string), string lastName = default(string), string password = default(string))
+        /// <param name="roles">roles (required).</param>
+        public UserCreateResource(string email = default(string), string firstName = default(string), string lastName = default(string), string password = default(string), List<string> roles = default(List<string>))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -72,6 +73,15 @@ namespace IO.Swagger.Model
             {
                 this.Password = password;
             }
+            // to ensure "roles" is required (not null)
+            if (roles == null)
+            {
+                throw new InvalidDataException("roles is a required property for UserCreateResource and cannot be null");
+            }
+            else
+            {
+                this.Roles = roles;
+            }
         }
         
         /// <summary>
@@ -99,6 +109,12 @@ namespace IO.Swagger.Model
         public string Password { get; set; }
 
         /// <summary>
+        /// Gets or Sets Roles
+        /// </summary>
+        [DataMember(Name="roles", EmitDefaultValue=false)]
+        public List<string> Roles { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +126,7 @@ namespace IO.Swagger.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +180,12 @@ namespace IO.Swagger.Model
                     this.Password == input.Password ||
                     (this.Password != null &&
                     this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.Roles == input.Roles ||
+                    this.Roles != null &&
+                    input.Roles != null &&
+                    this.Roles.SequenceEqual(input.Roles)
                 );
         }
 
@@ -183,6 +206,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.LastName.GetHashCode();
                 if (this.Password != null)
                     hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.Roles != null)
+                    hashCode = hashCode * 59 + this.Roles.GetHashCode();
                 return hashCode;
             }
         }

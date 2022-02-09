@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IO.Swagger.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,22 @@ namespace AspApiSample.Web.Models.Admin
 {
     public class AddUserModel : ModelBase
     {
+        public AddUserModel()
+        {
+
+        }
+
+        public AddUserModel(IEnumerable<Role> roles)
+        {
+            Roles = roles;
+        }
+
+        public IEnumerable<Role> Roles { get; set; }
+
+        [Required]
+        [MinLength(1)]
+        public List<string> SelectedRoles { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email address", Prompt = "Email address")]

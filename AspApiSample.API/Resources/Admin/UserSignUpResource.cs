@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AspApiSample.API.Resources.Admin
@@ -11,5 +12,7 @@ namespace AspApiSample.API.Resources.Admin
         [Required] public string LastName { get; set; }
 
         [Required] public string Password { get; set; }
+
+        [Required] public IEnumerable<string> Roles { get; set; }
     }
 }

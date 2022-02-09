@@ -106,9 +106,10 @@ namespace AspApiSample.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddUser()
+        public async Task<IActionResult> AddUser()
         {
-            return View(new AddUserModel());
+            var roles = (await _adminApi.ApiAdminRolesGetAsync()).Roles;
+            return View(new AddUserModel(roles));
         }
 
         [HttpPost]
@@ -122,7 +123,7 @@ namespace AspApiSample.Web.Controllers
                 try
                 {
                     await _adminApi.ApiAdminUserCreatePostAsync(
-                        new UserCreateResource(model.Email, model.FirstName, model.LastName, model.Password)
+                        new UserCreateResource(model.Email, model.FirstName, model.LastName, model.Password, model.SelectedRoles)
                         );
                     var outputModel = new IndexModel
                     { Messages = new List<string> { "User has been added" } };
