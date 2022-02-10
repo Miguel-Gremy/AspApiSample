@@ -3,19 +3,26 @@
     ViewData["Title"] = "Add role";
 }
 
-<form asp-controller="Admin" asp-action="AddRole" asp-antiforgery="true" method="post">
-    <div class="text-center login-div">
-        <main class="form-signin">
+<div class="card p-3">
+    <form asp-controller="Admin" asp-action="AddRole" asp-antiforgery="true" method="post">
+        <div class="text-center login-div">
+            <main class="form-signin">
 
-            <h1 class="h3 mb-3 fw-normal">Add role</h1>
+                <h1 class="h3 mb-3 fw-normal">Add role</h1>
 
-            <partial name="_ErrorsMessagesDisplay" />
+                <partial name="_ErrorsMessagesDisplay" />
 
-            <div class="form-floating mb-2">
-                <input asp-for="RoleName" class="form-control" />
-            </div>
+                <div class="d-flex flex-row form-floating mb-2 row">
+                    <div class="col">
+                        <div class="form-group d-flex flex-row">
+                            <label class="col-2 col-form-label" asp-for="RoleName"></label>
+                            <input asp-for="RoleName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
 
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
-        </main>
-    </div>
-</form>
+                <button type="submit" class="w-25 btn btn-lg btn-primary">Submit</button>
+            </main>
+        </div>
+    </form>
+</div>

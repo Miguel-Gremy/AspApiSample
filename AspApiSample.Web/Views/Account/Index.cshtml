@@ -5,29 +5,34 @@
 
 <partial name="_ErrorsMessagesDisplay" />
 
-<table class="table table-responsive text-center">
-    <caption>User</caption>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First name</th>
-            <th scope="col">Last name</th>
-            <th scope="col">Email</th>
-            <th scope="col">User name</th>
-            <th scope="col">Is email confirmed</th>
-            <th scope="col">Phone number</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">@Model.User.Id</th>
-            <td>@Model.User.FirstName</td>
-            <td>@Model.User.LastName</td>
-            <td>@Model.User.Email</td>
-            <td>@Model.User.UserName</td>
-            <td><input disabled asp-for="User.EmailConfirmed.Value" /></td>
-            <td>@Model.User.PhoneNumber</td>
-        </tr>
-    </tbody>
-</table>
-<a class="btn btn-outline-secondary" asp-area="" asp-controller="Account" asp-action="ChangePassword">Change password</a>
+<div class="card p-3 m-2">
+    <div class="table-responsive">
+        <table class="table text-center">
+            <caption>User</caption>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">User name</th>
+                    <th scope="col">Is email confirmed</th>
+                    <th scope="col">Phone number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Model.User.Id</th>
+                    <td>@Model.User.FirstName</td>
+                    <td>@Model.User.LastName</td>
+                    <td>@Model.User.Email</td>
+                    <td>@Model.User.UserName</td>
+                    <td><input disabled asp-for="User.EmailConfirmed.Value" /></td>
+                    <td>@Model.User.PhoneNumber</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a class="btn btn-secondary m-2" asp-area="" asp-controller="Account" asp-action="ChangePassword">Change password</a>
