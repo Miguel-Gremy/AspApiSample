@@ -23,6 +23,7 @@ namespace AspApiSample.Web.Models.Admin
 
         [Required]
         [MinLength(1)]
+        [Display(Name = "Role(s)", Prompt = "Role(s)")]
         public List<string> SelectedRoles { get; set; }
 
         [Required]

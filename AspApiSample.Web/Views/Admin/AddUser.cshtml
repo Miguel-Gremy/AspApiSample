@@ -11,12 +11,45 @@
 
             <partial name="_ErrorsMessagesDisplay" />
 
-            <div class="d-flex flex-column form-floating mb-2">
-                <input asp-for="Email" class="form-control" />
-                <input asp-for="FirstName" class="form-control" />
-                <input asp-for="LastName" class="form-control" />
-                <input asp-for="Password" class="form-control" />
-                <input asp-for="ConfirmPassword" class="form-control" />
+            <div class="d-flex flex-column form-floating mb-2 row">
+                <div class="col">
+                    <div class="form-group d-flex flex-row">
+                        <label class="col-form-label" asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-group d-flex flex-row col row">
+                        <div class="col form-group d-flex flex-row">
+                            <label class="col-form-label" asp-for="FirstName"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                        </div>
+                        <div class="col form-group d-flex flex-row">
+                            <label class="col-form-label" asp-for="LastName"></label>
+                            <input asp-for="LastName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group d-flex flex-row">
+                        <label class="col-form-label" asp-for="SelectedRoles"></label>
+                        <div class="w-100">
+                            <select class="multiselect multiselect-filter form-control"
+                                    asp-for="SelectedRoles"
+                                    asp-items="@(new MultiSelectList(Model.Roles, "Name", "Name"))"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group d-flex flex-row col row">
+                        <div class="col form-group d-flex flex-row">
+                            <label class="col-form-label" asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+                        <div class="col form-group d-flex flex-row">
+                            <label class="col-form-label" asp-for="ConfirmPassword"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>

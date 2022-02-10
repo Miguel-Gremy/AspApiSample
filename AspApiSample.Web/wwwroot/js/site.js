@@ -10,6 +10,7 @@ $(function () {
         enableFiltering: true,
         enableCaseInsensitiveFiltering: true,
         maxHeight: 500,
+        buttonWidth: '100%',
 
         includeResetOption: true
     });
