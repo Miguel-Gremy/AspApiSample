@@ -22,10 +22,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                     <div class="form-inline my-2 my-lg-0">
@@ -38,16 +38,16 @@
                                 {
                                     if (User.IsInRole("admin"))
                                     {
-                                        <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Admin</a>
                                         <div class="dropdown-divider"></div>
                                     }
-                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Index">Account</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="SignOut">Logout <em class="bi bi-box-arrow-right"></em></a>
+                                    <a class="dropdown-item" asp-controller="Login" asp-action="SignOut">Logout <em class="bi bi-box-arrow-right"></em></a>
                                 }
                                 else
                                 {
-                                    <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                                    <a class="dropdown-item" asp-controller="Login" asp-action="Index">Login</a>
                                 }
                             </div>
                         </div>
