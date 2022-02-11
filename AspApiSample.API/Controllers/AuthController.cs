@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using AspApiSample.API.Configuration;
 using AspApiSample.API.Extensions;
 using AspApiSample.API.Resources.Auth;
 using AspApiSample.API.Responses.Auth;
@@ -7,6 +8,7 @@ using AspApiSample.Lib.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace AspApiSample.API.Controllers
 {
@@ -14,22 +16,26 @@ namespace AspApiSample.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IMapper _mapper;
-        private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly IMapper _mapper;
+        private readonly ILogger<AuthController> _logger;
 
         public AuthController(UserManager<User> userManager, SignInManager<User> signInManager,
-            IMapper mapper)
+            IMapper mapper, ILogger<AuthController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpPost]
         [Route("SignUp")]
         public async Task<ActionResult<UserSignUpResponse>> SignUp(UserSignUpResource resource)
         {
+            _logger.LogInformation(LogEvents.SignUp, LogMessages.SignUp, resource.Email);
+
             var user = _mapper.Map<UserSignUpResource, User>(resource);
 
             var userCreateResult = await _userManager.CreateAsync(user, resource.Password);
@@ -51,6 +57,8 @@ namespace AspApiSample.API.Controllers
         public async Task<IActionResult> SignUpConfirm([Required] string token,
             [Required] string email)
         {
+            _logger.LogInformation(LogEvents.SignUpConfirm, LogMessages.SignUpConfirm, email);
+
             var user = await _userManager.FindByEmailAsync(email);
 
             if (user is null) return NotFound("User not found");
@@ -68,6 +76,8 @@ namespace AspApiSample.API.Controllers
         [Route("SignIn")]
         public async Task<ActionResult<UserSignInResponse>> SignIn(UserSignInResource resource)
         {
+            _logger.LogInformation(LogEvents.SignIn, LogMessages.SignIn, resource.Email);
+
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
             if (user is null) return NotFound("User not found");
@@ -80,7 +90,7 @@ namespace AspApiSample.API.Controllers
 
             return userCanSignInResult
                 ? Ok(new UserSignInResponse
-                    { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
+                { Email = user.Email, Roles = await _userManager.GetRolesAsync(user) })
                 : BadRequest("User cannot sign in");
         }
 
@@ -88,6 +98,8 @@ namespace AspApiSample.API.Controllers
         [Route("ChangePassword")]
         public async Task<IActionResult> ChangePassword(UserPasswordChangeResource resource)
         {
+            _logger.LogInformation(LogEvents.ChangePassword, LogMessages.ChangePassword, resource.Email);
+
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
             if (user is null) return NotFound("User not found");
@@ -108,6 +120,8 @@ namespace AspApiSample.API.Controllers
         public async Task<ActionResult<UserForgotPasswordResponse>> ForgotPassword(
             UserPasswordForgotResource resource)
         {
+            _logger.LogInformation(LogEvents.ForgotPassword, LogMessages.ForgotPassword, resource.Email);
+
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
             if (user is null) return NotFound("User not found");
@@ -121,6 +135,8 @@ namespace AspApiSample.API.Controllers
         [Route("ResetPassword")]
         public async Task<IActionResult> ResetPassword(UserPasswordResetResource resource)
         {
+            _logger.LogInformation(LogEvents.ResetPassword, LogMessages.ResetPassword, resource.Email);
+
             var user = await _userManager.FindByEmailAsync(resource.Email);
 
             if (user is null) return NotFound("User not found");
