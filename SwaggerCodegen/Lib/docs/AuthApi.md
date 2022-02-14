@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ApiAuthForgotPasswordPost**](AuthApi.md#apiauthforgotpasswordpost) | **POST** /api/Auth/ForgotPassword | 
 [**ApiAuthResetPasswordPost**](AuthApi.md#apiauthresetpasswordpost) | **POST** /api/Auth/ResetPassword | 
 [**ApiAuthSignInPost**](AuthApi.md#apiauthsigninpost) | **POST** /api/Auth/SignIn | 
-[**ApiAuthSignUpConfirmGet**](AuthApi.md#apiauthsignupconfirmget) | **GET** /api/Auth/SignUpConfirm | 
+[**ApiAuthSignUpConfirmPost**](AuthApi.md#apiauthsignupconfirmpost) | **POST** /api/Auth/SignUpConfirm | 
 [**ApiAuthSignUpPost**](AuthApi.md#apiauthsignuppost) | **POST** /api/Auth/SignUp | 
 
 <a name="apiauthchangepasswordput"></a>
@@ -237,9 +237,9 @@ No authorization required
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="apiauthsignupconfirmget"></a>
-# **ApiAuthSignUpConfirmGet**
-> void ApiAuthSignUpConfirmGet (string token, string email)
+<a name="apiauthsignupconfirmpost"></a>
+# **ApiAuthSignUpConfirmPost**
+> void ApiAuthSignUpConfirmPost (UserSignUpConfirmResource body = null)
 
 
 
@@ -253,21 +253,20 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class ApiAuthSignUpConfirmGetExample
+    public class ApiAuthSignUpConfirmPostExample
     {
         public void main()
         {
             var apiInstance = new AuthApi();
-            var token = token_example;  // string | 
-            var email = email_example;  // string | 
+            var body = new UserSignUpConfirmResource(); // UserSignUpConfirmResource |  (optional) 
 
             try
             {
-                apiInstance.ApiAuthSignUpConfirmGet(token, email);
+                apiInstance.ApiAuthSignUpConfirmPost(body);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling AuthApi.ApiAuthSignUpConfirmGet: " + e.Message );
+                Debug.Print("Exception when calling AuthApi.ApiAuthSignUpConfirmPost: " + e.Message );
             }
         }
     }
@@ -278,8 +277,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string**|  | 
- **email** | **string**|  | 
+ **body** | [**UserSignUpConfirmResource**](UserSignUpConfirmResource.md)|  | [optional] 
 
 ### Return type
 
@@ -291,7 +289,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, text/json, application/_*+json
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

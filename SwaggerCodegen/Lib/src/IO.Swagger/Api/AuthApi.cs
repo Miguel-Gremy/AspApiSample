@@ -114,10 +114,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        void ApiAuthSignUpConfirmGet (string token, string email);
+        void ApiAuthSignUpConfirmPost (UserSignUpConfirmResource body = null);
 
         /// <summary>
         /// 
@@ -126,10 +125,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiAuthSignUpConfirmGetWithHttpInfo (string token, string email);
+        ApiResponse<Object> ApiAuthSignUpConfirmPostWithHttpInfo (UserSignUpConfirmResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -244,10 +242,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiAuthSignUpConfirmGetAsync (string token, string email);
+        System.Threading.Tasks.Task ApiAuthSignUpConfirmPostAsync (UserSignUpConfirmResource body = null);
 
         /// <summary>
         /// 
@@ -256,10 +253,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmGetAsyncWithHttpInfo (string token, string email);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmPostAsyncWithHttpInfo (UserSignUpConfirmResource body = null);
         /// <summary>
         /// 
         /// </summary>
@@ -976,29 +972,21 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns></returns>
-        public void ApiAuthSignUpConfirmGet (string token, string email)
+        public void ApiAuthSignUpConfirmPost (UserSignUpConfirmResource body = null)
         {
-             ApiAuthSignUpConfirmGetWithHttpInfo(token, email);
+             ApiAuthSignUpConfirmPostWithHttpInfo(body);
         }
 
         /// <summary>
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiAuthSignUpConfirmGetWithHttpInfo (string token, string email)
+        public ApiResponse<Object> ApiAuthSignUpConfirmPostWithHttpInfo (UserSignUpConfirmResource body = null)
         {
-            // verify the required parameter 'token' is set
-            if (token == null)
-                throw new ApiException(400, "Missing required parameter 'token' when calling AuthApi->ApiAuthSignUpConfirmGet");
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling AuthApi->ApiAuthSignUpConfirmGet");
 
             var localVarPath = "./api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1010,6 +998,9 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/_*+json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1020,19 +1011,25 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (token != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
-            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1045,12 +1042,11 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiAuthSignUpConfirmGetAsync (string token, string email)
+        public async System.Threading.Tasks.Task ApiAuthSignUpConfirmPostAsync (UserSignUpConfirmResource body = null)
         {
-             await ApiAuthSignUpConfirmGetAsyncWithHttpInfo(token, email);
+             await ApiAuthSignUpConfirmPostAsyncWithHttpInfo(body);
 
         }
 
@@ -1058,17 +1054,10 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="token"></param>
-        /// <param name="email"></param>
+        /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmGetAsyncWithHttpInfo (string token, string email)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiAuthSignUpConfirmPostAsyncWithHttpInfo (UserSignUpConfirmResource body = null)
         {
-            // verify the required parameter 'token' is set
-            if (token == null)
-                throw new ApiException(400, "Missing required parameter 'token' when calling AuthApi->ApiAuthSignUpConfirmGet");
-            // verify the required parameter 'email' is set
-            if (email == null)
-                throw new ApiException(400, "Missing required parameter 'email' when calling AuthApi->ApiAuthSignUpConfirmGet");
 
             var localVarPath = "./api/Auth/SignUpConfirm";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1080,6 +1069,9 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/_*+json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1090,19 +1082,25 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (token != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
-            if (email != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "email", email)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmGet", localVarResponse);
+                Exception exception = ExceptionFactory("ApiAuthSignUpConfirmPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
