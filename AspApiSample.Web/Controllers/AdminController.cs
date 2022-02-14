@@ -131,11 +131,13 @@ namespace AspApiSample.Web.Controllers
                 }
                 catch (ApiException e)
                 {
+                    model.Roles = (await _adminApi.ApiAdminRolesGetAsync()).Roles;
                     output = this.ViewWithErrors(model, e);
                 }
             }
             else
             {
+                model.Roles = (await _adminApi.ApiAdminRolesGetAsync()).Roles;
                 output = this.ViewWithErrors(model, ModelState);
             }
 
