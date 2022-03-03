@@ -52,18 +52,17 @@ namespace AspApiSample.API.Controllers
             return BadRequest(errorString);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("SignUpConfirm")]
-        public async Task<IActionResult> SignUpConfirm([Required] string token,
-            [Required] string email)
+        public async Task<IActionResult> SignUpConfirm(UserSignUpConfirmResource resource)
         {
-            _logger.LogInformation(LogEvents.SignUpConfirm, LogMessages.SignUpConfirm, email);
+            _logger.LogInformation(LogEvents.SignUpConfirm, LogMessages.SignUpConfirm, resource.Email);
 
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailAsync(resource.Email);
 
             if (user is null) return NotFound("User not found");
 
-            var userSignUpConfirmResult = await _userManager.ConfirmEmailAsync(user, token);
+            var userSignUpConfirmResult = await _userManager.ConfirmEmailAsync(user, resource.Token);
 
             if (userSignUpConfirmResult.Succeeded) return Ok();
 

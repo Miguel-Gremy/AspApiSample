@@ -84,7 +84,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**ApiAuthForgotPasswordPost**](docs/AuthApi.md#apiauthforgotpasswordpost) | **POST** /api/Auth/ForgotPassword | 
 *AuthApi* | [**ApiAuthResetPasswordPost**](docs/AuthApi.md#apiauthresetpasswordpost) | **POST** /api/Auth/ResetPassword | 
 *AuthApi* | [**ApiAuthSignInPost**](docs/AuthApi.md#apiauthsigninpost) | **POST** /api/Auth/SignIn | 
-*AuthApi* | [**ApiAuthSignUpConfirmGet**](docs/AuthApi.md#apiauthsignupconfirmget) | **GET** /api/Auth/SignUpConfirm | 
+*AuthApi* | [**ApiAuthSignUpConfirmPost**](docs/AuthApi.md#apiauthsignupconfirmpost) | **POST** /api/Auth/SignUpConfirm | 
 *AuthApi* | [**ApiAuthSignUpPost**](docs/AuthApi.md#apiauthsignuppost) | **POST** /api/Auth/SignUp | 
 *MailApi* | [**ApiMailSendPost**](docs/MailApi.md#apimailsendpost) | **POST** /api/Mail/Send | 
 
@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
  - [Model.UserPasswordResetResource](docs/UserPasswordResetResource.md)
  - [Model.UserSignInResource](docs/UserSignInResource.md)
  - [Model.UserSignInResponse](docs/UserSignInResponse.md)
+ - [Model.UserSignUpConfirmResource](docs/UserSignUpConfirmResource.md)
  - [Model.UserSignUpResource](docs/UserSignUpResource.md)
  - [Model.UserSignUpResponse](docs/UserSignUpResponse.md)
 
